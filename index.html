@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurante Delivery</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+ <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="Logo do Restaurante">
+
+  </header>
+
+  <main>
+    <!-- Cardápio -->
+    <section id="menu">
+      <h2>Nosso Cardápio</h2>
+      <div class="grid">
+        <div class="item">
+          <img src="./Porção de batata frita completa.jpeg" alt="Batata Frita">
+          <h3>Batata Frita</h3>
+          <p class="preco">R$ 45,00</p>
+          <button onclick="adicionarPedido('Batata Frita', 45.00)">Adicionar</button>
+        </div>
+        <div class="item">
+          <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos Avulsos">
+          <h3>Espetinhos Avulsos</h3>
+          <p class="preco">R$ 10,00</p>
+          <button onclick="adicionarPedido('Espetinhos Avulsos', 10.00)">Adicionar</button>
+        </div>
+        <div class="item">
+          <img src="./Barca de churrasco completo.jpeg" alt="Barca de Churrasco Completa">
+          <h3>Barca de Churrasco Completa</h3>
+          <p class="preco">Media R$ 55,00</p>
+          <button onclick="adicionarPedido('Barca de Churrasco Completa', 55.00)">Adicionar</button>
+        </div>
+
+        <div class="item">
+          <img src="./Barca de churrasco completo.jpeg" alt="Barca de Churrasco Grande">
+          <h3>Barca de Churrasco Completa</h3>
+          <p class="preco">Grande R$ 60,00</p>
+          <button onclick="adicionarPedido('Barca de Churrasco Completa', 60.00)">Adicionar</button>
+        </div>
+
+        <div class="item">
+          <img src="./Barca petiscos de churrasco.jpeg" alt="Barca Petisco de Churrasco">
+          <h3>Barca Petisco de Churrasco</h3>
+          <p class="preco">Media R$ 69,99</p>
+          <button onclick="adicionarPedido('Barca Petisco de Churrasco', 69.99)">Adicionar</button>
+        </div>
+        <div class="item">
+          <img src="./Barca petiscos de churrasco.jpeg" alt="Barca Petisco de Churrasco">
+          <h3>Barca Petisco de Churrasco</h3>
+          <p class="preco">Grande R$ 79,99</p>
+          <button onclick="adicionarPedido('Barca Petisco de Churrasco', 79.99)">Adicionar</button>
+        </div>
+    </section>
+
+  
+    <section id="pedido">
+      <h2>Seu Pedido</h2>
+      <ul id="lista-pedido"></ul>
+      <p id="total">Total: R$ 0,00</p>
+      <button onclick="imprimirPedido()">🖨️ Imprimir Pedido</button>
+      <button onclick="pedidos = []; atualizarLista();">🗑️ Limpar Pedido</button>
+      <button onclick="window.open('https://w.app/pontodosabor', '_blank')">📞 Finalizar Pedido</button>
+
+    </section>
+  </main>
+
+  <footer id="contato">
+    <button onclick="window.open('https://w.app/pontodosabor', '_blank')">Nosso WhatsApp</button>
+    <button onclick="window.open('https://maps.app.goo.gl/dLFkBJVTujHyAWtV9', '_blank')">Nosso Endereço</button>
+ 
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
