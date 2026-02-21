@@ -23,13 +23,14 @@ function atualizarLista() {
 }
 
 function imprimirPedido() {
-  let recibo = "=== Restaurante Delivery ===\n\n";
+  let recibo = "=== Ponto Do Sabor ===\n\n";
   pedidos.forEach(p => {
     recibo += `${p.item} - R$ ${p.preco.toFixed(2)}\n`;
   });
-  recibo += `\nTotal: R$ ${total.toFixed(2)}\n\nObrigado pela preferência!`;
+  recibo += `\nTotal: R$ ${total.toFixed(2)}\n\nObrigado e Volte Sempre!`;
 
   const printWindow = window.open("", "", "width=600,height=400");
   printWindow.document.write("<pre>" + recibo + "</pre>");
   printWindow.print();
+
 }
