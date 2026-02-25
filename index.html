@@ -4,76 +4,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ponto Do Sabor Delivery</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Ponto Do Sabor</title>
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: #dbcdcd;
+    }
+
+    header {
+      background: linear-gradient(90deg, #FFA07A, #FF7F50, #FF6347);
+      color: white;
+      padding: 15px;
+      text-align: center;
+
+
+    }
+
+    header img {
+      height: 300px;
+    }
+
+
+
+
+    .container {
+      display: grid;
+      grid-template-rows: repeat(auto-fit, minmax(240px, 7));
+       border-radius: 10px;
+      text-align: center;
+      gap: 20px;
+    }
+
+
+
+    .bebidas {
+      text-align: center;
+
+    }
+
+    .card {
+      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
+      margin: 50px;
+      justify-items: center;
+      align-items: center;
+      margin-bottom: auto;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .card img {
+      width: 150px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    button {
+      background: #e60000;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+ 
+    }
+
+    button:hover {
+      background: #b30000;
+     
+      
+
+    }
+
+    input,
+    select {
+      width: 200px;
+      padding: 8px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+     
+    }
+
+    #resumo {
+      white-space: pre-line;
+    }
+ @media (max-width: 600px) {
+      .card { font-size: 14px; }
+      button { width: 100%; }
+
+      }
+
+      button {
+        width: 150px;
+      }
+    
+  </style>
 </head>
 
 <body>
+
   <header>
- <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="Logo do Restaurante">
-<h2> O Segredo Da Receita? Amor de Casa.</h2>
-
+    <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="">
+    <h2>  O Segredo Da Receita? Amor De Casa</h2>
   </header>
+  <section>
+    <div class="container">
+      <div class="card">
+        <img src="./mandioca.jpeg" alt="Porção de Mandioca">
+        <h3>Porção de Mandioca</h3>
+        <p><strong>R$35,00</strong></p>
+        <button onclick="adicionarPedido('Porção de Mandioca',35)">Adicionar</button>
+      </div>
+      <div class="container">
+        <div class="card">
+          <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
+          <h3>Porção de Batata Frita</h3>
+          <p><strong>R45,00</strong></p>
+          <button onclick="adicionarPedido('Porção de Batata Frita',45)">Adicionar</button>
+        </div>
+        <div class="container">
+          <div class="card">
+            <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos avulsos">
+            <h3>Espetinhos Avulsos</h3>
+            <p><strong>R$10,00</strong></p>
+            <button onclick="adicionarPedido('Espetinho de Linguiça',10)">Linguiça</button>
+            <button onclick="adicionarPedido('Espetinho de Carne',10)">Carne</button>
+            <button onclick="adicionarPedido('Espetinho de Linguiça Apimentada',10)">Linguiça Apimentada</button>
+            <button onclick="adicionarPedido('Espetinho de coraçãozinho',10)">Coraçãozinho</button>
+            <button onclick="adicionarPedido('Espetinho de Frango',10)">Frango</button>
+            <button onclick="adicionarPedido('Espetinho de Queijo Coalho',10)">Queijo Coalho</button>
+            <button onclick="adicionarPedido('Espetinho de Pão de Alho',10)">Pão de Alho</button>
+          </div>
 
-  <main>
-    <!-- Cardápio -->
-    <section id="menu">
-      <h2>Nosso Cardápio</h2>
-      <div class="grid">
-        <div class="item">
-          <img src="./Porção de batata frita completa.jpeg" alt="Batata Frita">
-          <h3>Batata Frita</h3>
-          <p class="preco">R$ 45,00</p>
-          <button onclick="adicionarPedido('Batata Frita', 45.00)">Adicionar</button>
-        </div>
-          <div class="item">
-          <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos Avulsos">
-          <h3>Espetinhos Avulsos</h3>
-          <p class="preco">R$ 10,00</p>
-          <button onclick="adicionarPedido('Espetinho De Carne', 10.00)">Carne</button>
-          <button onclick="adicionarPedido('Espetinho De Linguiça', 10.00)">Linguiça</button>
-          <button onclick="adicionarPedido('Espetinho De Coraçãozinho', 10.00)">Coraçãozinho</button>
-          <button onclick="adicionarPedido('Espetinho De Linguica Apimentada', 10.00)">Linguica Apimentada</button>
-          <button onclick="adicionarPedido('Espetinho De Frango', 10.00)">Frango</button>
-          <button onclick="adicionarPedido('Espetinho De Queijo Coalho', 10.00)"> Queijo Coalho'</button>
-          <button onclick="adicionarPedido('Pão De Alho', 10.00)"> Pão de Alho'</button>
-        </div>
-        <div class="item">
-          <img src="./Barca de churrasco completo.jpeg" alt="Barca de Churrasco Completa">
-          <h3>Barca de Churrasco Completa</h3>
-          <p class="preco">Media R$ 55,00</p>
-          <button onclick="adicionarPedido('Barca de Churrasco Completa', 55.00)">Adicionar</button>
-        </div>
+          <div class="container">
+            <div class="card">
+              <img src="./Barca de churrasco completo.jpeg" alt="Barca de Churrasco Completa">
+              <h3>Barca de Churrasco Completa</h3>
+              <p>Media</p>
+              <p><strong>R$55,00</strong></p>
+              <button onclick="adicionarPedido('Barca de Churrasco Completa',55)">Adicionar</button>
+            </div>
 
-        <div class="item">
-          <img src="./Barca de churrasco completo.jpeg" alt="Barca de Churrasco Grande">
-          <h3>Barca de Churrasco Completa</h3>
-          <p class="preco">Grande R$ 60,00</p>
-          <button onclick="adicionarPedido('Barca de Churrasco Completa', 60.00)">Adicionar</button>
-        </div>
+            <div class="container">
+              <div class="card">
+                <img src="./Barca de churrasco completo.jpeg" alt="Barca de Churrasco Completa">
+                <h3>Barca de Churrasco Completa</h3>
+                <p>Grande</p>
+                <p><strong>R60,00</strong></p>
+                <button onclick="adicionarPedido('Barca de Churrasco Completa',60)">Adicionar</button>
+              </div>
 
-        <div class="item">
-          <img src="./Barca petiscos de churrasco.jpeg" alt="Barca Petisco de Churrasco">
-          <h3>Barca Petisco de Churrasco</h3>
-          <p class="preco">Media R$ 69,99</p>
-          <button onclick="adicionarPedido('Barca Petisco de Churrasco', 69.99)">Adicionar</button>
-        </div>
-        <div class="item">
-          <img src="./Barca petiscos de churrasco.jpeg" alt="Barca Petisco de Churrasco">
-          <h3>Barca Petisco de Churrasco</h3>
-          <p class="preco">Grande R$ 79,99</p>
-          <button onclick="adicionarPedido('Barca Petisco de Churrasco', 79.99)">Adicionar</button>
-        </div>
-      <div class="item">
-          <img src="./mandioca.jpeg" alt="Porção De Mandioquinha">
-          <h3>Porção De Mandioquinha</h3>
-          <p class="preco">R$ 35,00</p>
-          <button onclick="adicionarPedido('Porção De Mandioquinha', 35.00)">Adicionar</button>
-        </div>
+              <div class="container">
+                <div class="card">
+                  <img src="./Barca petiscos de churrasco.jpeg" alt="Barca de Pestiscos">
+                  <h3>Barca de Petiscos Completa</h3>
+                  <p>Media</p>
+                  <p><strong>R69,99</strong></p>
+                  <button onclick="adicionarPedido('Barca de Petiscos Media',69.99)">Adicionar</button>
+                </div>
 
-    </section>
+                <div class="container">
+                  <div class="card">
+                    <img src="./Barca petiscos de churrasco.jpeg" alt="Barca de Pestiscos">
+                    <h3>Barca de Petiscos Completa</h3>
+                    <p>Grande</p>
+                    <p><strong>R79,99</strong></p>
+                    <button onclick="adicionarPedido('Barca de Petiscos Grande',79.99)">Adicionar</button>
+                  </div>
 
-     <section>
+  </section>
+  </div>
+
+  <section>
+    <section class="bebidas">
       <div>
         <h2>Refrigerantes</h2>
         <h3>200ml R$ 3,50</h3>
@@ -95,7 +205,7 @@
         <button onclick="adicionarPedido('Guarana Antartica 1L', 10.00)">Guarana Antartica</button>
         <button onclick="adicionarPedido('Coca Cola 1L', 10.00)">Coca Cola</button>
 
-         <div>
+        <div>
           <h3>2L R$ 10,00 e Coca Cola 2L R$ 15,00</h3>
           <button onclick="adicionarPedido('Frutuba 2L', 10.00 )">Frutuba</button>
           <button onclick="adicionarPedido('Itubaina 2L', 10.00)">Itubaina</button>
@@ -104,30 +214,120 @@
           <button onclick="adicionarPedido('Coca Cola 2L', 15.00)">Coca Cola</button>
         </div>
 
-
-  
-    <section id="pedido">
-      <h2>Seu Pedido</h2>
-      <ul id="lista-pedido"></ul>
-      <p id="total">Total: R$ 0,00</p>
-      <button onclick="imprimirPedido()">🖨️ Imprimir Pedido</button>
-      <button onclick="pedidos = []; atualizarLista();">🗑️ Limpar Pedido</button>
-      <button onclick="window.open('https://w.app/pontodosaboor', '_blank')">📞 Finalizar Pedido</button>
-
     </section>
-  </main>
 
-  <footer id="contato">
-    <button onclick="window.open('https://w.app/pontodosabor', '_blank')">Nosso WhatsApp</button>
-    <button onclick="window.open('https://maps.app.goo.gl/dLFkBJVTujHyAWtV9', '_blank')">Nosso Endereço</button>
- 
-  </footer>
 
-  <script src="script.js"></script>
+
+    <section>
+      <div>
+        <div style="grid-template-columns: 1 / 1;">
+          <h2>Resumo do Pedido</h2>
+          <p id="resumo">Nenhum pedido ainda.</p>
+
+          <label>Endereço de entrega:</label>
+          <input type="text" id="endereco" placeholder="Rua, número...">
+
+          <label>Bairro:</label>
+          <select id="bairro">
+            <option value="">Selecione</option>
+            <option value="Rio Da Praia">Rio Da Praia</option>
+            <option value="Maitinga">Maitinga</option>
+            <option value="Mangue Seco">Mangue Seco</option>
+            <option value="Jardim Rafael">Jardim Rafael</option>
+            <option value="Jardim  Das Cançoes">Jardim Das Cançoes</option>
+            <option value="Vila Ho">Vila Ho</option>
+            <option value="Rivieira">Rivieira</option>
+            <option value="Centro">Centro</option>
+            <option value="Centreville(Balsa)">Centreville(Balsa)</option>
+            <option value="Sitio São João">Sitio São João</option>
+            <option value="São Lourenço">São Lourenço</option>
+            <option value="Chacaras">Chacaras</option>
+            <option value="Vista Linda">Vista Linda</option>
+            <option value="Indaia">Indaia</option>
+            <option value="Saoc">Saoc</option>
+
+          </select>
+
+          <button onclick="finalizarPedido()">Finalizar Pedido</button>
+          <button onclick="limparPedidos()">Limpar Pedido</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let pedidos = [];
+
+      // Tabela de taxas por bairro
+      const taxas = {
+        "Rio Da Praia": 6,
+        "Maitinga": 7,
+        "Mangue Seco": 8,
+        "Jardim Rafael": 9,
+        "Jardim  Das Cançoes": 9,
+        "Vila Ho": 7,
+        "Rivieira": 20,
+        "Centro": 15,
+        "Centreville(Balsa)": 18,
+        "Sitio São João": 25,
+        "São Lourenço": 25,
+        "Chacaras": 15,
+        "Vista Linda": 12,
+        "Indaia": 15,
+        "Saoc": 10,
+
+      };
+
+      function adicionarPedido(nome, preco) {
+        pedidos.push({ nome, preco });
+        atualizarResumo();
+      }
+
+      function atualizarResumo() {
+        if (pedidos.length === 0) {
+          document.getElementById("resumo").innerText = "Nenhum pedido ainda.";
+          return;
+        }
+
+        let resumo = "";
+        let subtotal = 0;
+        pedidos.forEach((item, i) => {
+          resumo += `${i + 1}. ${item.nome} - R$${item.preco.toFixed(2)}\n`;
+          subtotal += item.preco;
+        });
+
+        document.getElementById("resumo").innerText = resumo + `\nSubtotal: R$${subtotal.toFixed(2)}`;
+      }
+
+      function finalizarPedido() {
+        let endereco = document.getElementById("endereco").value;
+        let bairro = document.getElementById("bairro").value;
+
+        if (!endereco || !bairro) {
+          alert("Por favor, insira o endereço e selecione o bairro.");
+          return;
+        }
+
+        let subtotal = pedidos.reduce((acc, item) => acc + item.preco, 0);
+        let taxaEntrega = taxas[bairro] || 0;
+        let total = subtotal + taxaEntrega;
+
+        let resumo = document.getElementById("resumo").innerText;
+        resumo += `\nTaxa de entrega (${bairro}): R$${taxaEntrega.toFixed(2)}\nTotal: R$${total.toFixed(2)}\nEndereço: ${endereco}`;
+
+        let mensagem = encodeURIComponent(resumo);
+        let url = `https://wa.me/5513991873557?text=${mensagem}`;
+        window.open(url, "_blank");
+      }
+
+      function limparPedidos() {
+        pedidos = [];
+        document.getElementById("resumo").innerText = "Nenhum pedido ainda.";
+      }
+    </script>
 </body>
 
-
 </html>
+
 
 
 
