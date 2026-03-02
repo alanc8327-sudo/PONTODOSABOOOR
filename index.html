@@ -8,12 +8,18 @@
 
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
+* {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      background: #dbcdcd;
+    }
+    
+    body {
+       font-family: Arial, sans-serif;
+      height: 100vh;
+      width: 100vw;
+      display: block;
+   
     }
 
     header {
@@ -43,13 +49,18 @@
 
 
     .bebidas {
+       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      border-radius: 10px;
+      margin: 75px;
+      padding: auto;
       text-align: center;
 
     }
 
     .card {
       background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
-      margin: 50px;
+      margin: 100px;
       justify-items: center;
       align-items: center;
       margin-bottom: auto;
@@ -84,8 +95,11 @@
 
     input,
     select {
-      width: 200px;
+       width: 200px;
       padding: 8px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
       margin: 8px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -102,7 +116,9 @@
       }
 
       button {
-        width: 150px;
+        width: 100px;
+        text-align: center;
+        justify-content: center;
       }
     
   </style>
@@ -184,35 +200,29 @@
 
   <section>
     <section class="bebidas">
-      <div>
-        <h2>Refrigerantes</h2>
-        <h3>200ml R$ 3,50</h3>
-        <button onclick="adicionarPedido('Guarana Antartica 200ml', 3.50)">Guarana Antartica</button>
-        <button onclick="adicionarPedido('Coca Cola 200ml', 3.50)">Coca Cola</button>
-        <button onclick="adicionarPedido('Sukita Laranja 200ml', 3.50)">Sukita Laranja</button>
-        <button onclick="adicionarPedido('Pepsi 200ml', 3.50)">Pepsi</button>
-      </div>
-
-      <div>
-        <h3>600ml R$ 8,00</h3>
-        <button onclick="adicionarPedido('Guarana Antartica 600ml', 8.00)">Guarana Antartica</button>
-        <button onclick="adicionarPedido('Coca Cola 600ml', 8.00)">Coca Cola</button>
-        <button onclick="adicionarPedido('Itubaina 600ml', 8.00)">Itubaina</button>
-      </div>
-
-      <div>
-        <h3>1L R$ 10,00</h3>
-        <button onclick="adicionarPedido('Guarana Antartica 1L', 10.00)">Guarana Antartica</button>
-        <button onclick="adicionarPedido('Coca Cola 1L', 10.00)">Coca Cola</button>
-
         <div>
-          <h3>2L R$ 10,00 e Coca Cola 2L R$ 15,00</h3>
-          <button onclick="adicionarPedido('Frutuba 2L', 10.00 )">Frutuba</button>
-          <button onclick="adicionarPedido('Itubaina 2L', 10.00)">Itubaina</button>
-          <button onclick="adicionarPedido('Dolly 2L', 10.00)">Dolly</button>
-          <button onclick="adicionarPedido('It 2L', 10.00)">It</button>
-          <button onclick="adicionarPedido('Coca Cola 2L', 15.00)">Coca Cola</button>
-        </div>
+        <h2>Refrigerantes</h2>
+        <h3>200ml R$ 4,00</h3>
+
+        <button onclick="adicionarPedido('Coca Cola 200ml', 3.50)">Coca Cola</button>
+
+      </div>
+
+      <div>
+        <h3>350ml Lata R$ 6,00</h3>
+
+        <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">Coca Cola</button>
+
+      </div>
+
+
+
+      <div>
+        <h3>2L R$ 12,00</h3>
+
+        <button onclick="adicionarPedido('Dolly 2L', 12.00)">Dolly</button>
+
+      </div>
 
     </section>
 
@@ -327,6 +337,7 @@
 </body>
 
 </html>
+
 
 
 
