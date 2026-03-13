@@ -4,128 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Ponto Do Sabor</title>
-
-
-  <style>
-* {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-       font-family: Arial, sans-serif;
-      height: 100vh;
-      width: 100vw;
-      display: block;
-   
-    }
-
-    header {
-      background: linear-gradient(90deg, #FFA07A, #FF7F50, #FF6347);
-      color: white;
-      padding: 15px;
-      text-align: center;
-
-
-    }
-
-    header img {
-      height: 300px;
-    }
-
-
-
-
-    .container {
-      display: grid;
-      grid-template-rows: repeat(auto-fit, minmax(240px, 7));
-       border-radius: 10px;
-      text-align: center;
-      gap: 20px;
-    }
-
-
-
-    .bebidas {
-       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      border-radius: 10px;
-      margin: 75px;
-      padding: auto;
-      text-align: center;
-
-    }
-
-    .card {
-      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
-      margin: 100px;
-      justify-items: center;
-      align-items: center;
-      margin-bottom: auto;
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-    }
-
-    .card img {
-      width: 150px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    button {
-      background: #e60000;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
- 
-    }
-
-    button:hover {
-      background: #b30000;
-     
-      
-
-    }
-
-    input,
-    select {
-       width: 200px;
-      padding: 8px;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-     
-    }
-
-    .resumo {
-       white-space: pre-wrap;
-      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
-      padding: 20px;
-      text-align: center;
-      margin-top: 20px;
-    }
- @media (max-width: 600px) {
-      .card { font-size: 15px; }
-   
-
-      }
-
-      button {
-        width: 150px;
-        text-align: center;
-        justify-content: center;
-      }
-    
-  </style>
 </head>
 
 <body>
@@ -135,13 +15,18 @@
     <h2>  O Segredo Da Receita? Amor De Casa</h2>
   </header>
   <section>
-    
+    <div class="container">
+      <div class="card">
+        <img src="./mandioca.jpeg" alt="Porção de Mandioca">
+        <h3>Porção de Mandioca</h3>
+        <p><strong>R$35,00</strong></p>
+        <button onclick="adicionarPedido('Porção de Mandioca',35)">Adicionar</button>
       </div>
       <div class="container">
         <div class="card">
           <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
           <h3>Porção de Batata Frita</h3>
-          <p><strong>R$45,00</strong></p>
+          <p><strong>R45,00</strong></p>
           <button onclick="adicionarPedido('Porção de Batata Frita',45)">Adicionar</button>
         </div>
         <div class="container">
@@ -156,55 +41,42 @@
             <button onclick="adicionarPedido('Espetinho de Frango',10)">Frango</button>
             <button onclick="adicionarPedido('Espetinho de Queijo Coalho',10)">Queijo Coalho</button>
             <button onclick="adicionarPedido('Espetinho de Pão de Alho',10)">Pão de Alho</button>
- <!--<button onclick="adicionarPedido('Espetinho de Kafta',10)">Kafta</button>-->
-</div>
-
-   <div class="container">
-            <div class="card">
-              <img src="./Barca pequena.jpeg" alt="Barca Pequena">
-              <h3>Barca Pequena</h3>
-              <p>2 proteínas, 1 pão de alho, arroz, farofa e vinagrete. Serve até 2 pessoas</p>
-              <p><strong>R$40,00</strong></p>
-              <button onclick="adicionarPedido('Barca Pequena',40)">Adicionar</button>
-            </div>
-
-
-
+          </div>
 
           <div class="container">
             <div class="card">
-              <img src="./barca média completa.jpeg" alt="Barca Completa Media">
-              <h3>Barca Completa Media</h3>
-              <p>2 Proteínas, Queijo coalho (ou pão de alho), arroz vinagrete,farofa e batata Frita. Serve de 2 a 3 Pessoas</p>
+              <img src="./Barca de churrasco completo.jpeg" alt="Barca de Churrasco Completa">
+              <h3>Barca de Churrasco Completa</h3>
+              <p>Media</p>
               <p><strong>R$55,00</strong></p>
               <button onclick="adicionarPedido('Barca de Churrasco Completa',55)">Adicionar</button>
             </div>
 
             <div class="container">
               <div class="card">
-                <img src="./barca grande completa.jpeg" alt="Barca Familia Completa">
-             <h3>Barca Familia Completa</h3>
-                <p>3 Proteínas,Queijo Coalho, Pão de Alho,Arroz, Vinagrete,farofa e Batata frita. Serve Até 4 Pessoas</p>
-                <p><strong>R$75,00</strong></p>
-                <button onclick="adicionarPedido('Barca Família Completa',75)">Adicionar</button>
+                <img src="./Barca de churrasco completo.jpeg" alt="Barca de Churrasco Completa">
+                <h3>Barca de Churrasco Completa</h3>
+                <p>Grande</p>
+                <p><strong>R60,00</strong></p>
+                <button onclick="adicionarPedido('Barca de Churrasco Completa',60)">Adicionar</button>
               </div>
 
               <div class="container">
                 <div class="card">
-                  <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
-                  <h3>Barca de Petiscos Media</h3>
-                  <p>5 Proteínas+Vinagrete,Farofa e Batata Frita. Serve Até 3 Pessoas</p>
-                  <p><strong>R$65,00</strong></p>
-                  <button onclick="adicionarPedido('Barca de Petiscos Media',65)">Adicionar</button>
+                  <img src="./Barca petiscos de churrasco.jpeg" alt="Barca de Pestiscos">
+                  <h3>Barca de Petiscos Completa</h3>
+                  <p>Media</p>
+                  <p><strong>R69,99</strong></p>
+                  <button onclick="adicionarPedido('Barca de Petiscos Media',69.99)">Adicionar</button>
                 </div>
 
                 <div class="container">
                   <div class="card">
-                    <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
-                    <h3>Barca de Petiscos Grande</h3>
-                    <p>7 Proteínas + Vinagrete,Farofa e batata frita. Serve Até 4 Pessoas</p>
-                    <p><strong>R$79,00</strong></p>
-                    <button onclick="adicionarPedido('Barca de Petiscos Grande',79)">Adicionar</button>
+                    <img src="./Barca petiscos de churrasco.jpeg" alt="Barca de Pestiscos">
+                    <h3>Barca de Petiscos Completa</h3>
+                    <p>Grande</p>
+                    <p><strong>R79,99</strong></p>
+                    <button onclick="adicionarPedido('Barca de Petiscos Grande',79.99)">Adicionar</button>
                   </div>
 
   </section>
@@ -270,7 +142,7 @@
 
           </select>
 
-          <label>Pagamento</label>
+          <label>pagamento</label>
           <select id="pagamento">
             <option value="">Selecione</option>
             <option value="Débito">Débito</option>
@@ -285,85 +157,11 @@
       
     </section>
 
-    <script>
-      let pedidos = [];
-
-      // Tabela de taxas por bairro
-      const taxas = {
-        "Rio Da Praia": 6,
-        "Maitinga": 7,
-        "Mangue Seco": 8,
-        "Jardim Rafael": 9,
-        "Jardim  Das Cançoes": 9,
-        "Vila Ho": 7,
-        "Rivieira": 20,
-        "Centro": 15,
-        "Centreville(Balsa)": 18,
-        "Sitio São João": 25,
-        "São Lourenço": 25,
-        "Chacaras": 15,
-        "Vista Linda": 12,
-        "Indaia": 15,
-        "Saoc": 10,
-
-      };
-
-      function adicionarPedido(nome, preco) {
-        pedidos.push({ nome, preco });
-        atualizarResumo();
-      }
-
-      function atualizarResumo() {
-        if (pedidos.length === 0) {
-          document.getElementById("resumo").innerText = "Nenhum pedido ainda.";
-          return;
-        }
-
-        let resumo = "";
-        let subtotal = 0;
-        pedidos.forEach((item, i) => {
-          resumo += `${i + 1}. ${item.nome} - R$${item.preco.toFixed(2)}\n`;
-          subtotal += item.preco;
-        });
-
-        document.getElementById("resumo").innerText = resumo + `\nSubtotal: R$${subtotal.toFixed(2)}`;
-      }
-
-      function finalizarPedido() {
-        let endereco = document.getElementById("endereco").value;
-        let bairro = document.getElementById("bairro").value;
-        let pagamento = document.getElementById("pagamento").value;
-
-        if (!endereco || !bairro || !pagamento) {
-          alert("Por favor, preencha todos os campos.");
-          return;
-        }
-
-        let subtotal = pedidos.reduce((acc, item) => acc + item.preco, 0);
-        let taxaEntrega = taxas[bairro] || 0;
-        let total = subtotal + taxaEntrega;
-        let pagamentoTexto = `Pagamento: ${pagamento}`;
-
-        let resumo = document.getElementById("resumo").innerText;
-        resumo += `\nTaxa de entrega (${bairro}): R$${taxaEntrega.toFixed(2)}\nTotal: R$${total.toFixed(2)}\nEndereço: ${endereco} - ${bairro}\n${pagamentoTexto}\nPrazo de entrega: 55-65 minutos.`;
-
-        let mensagem = encodeURIComponent(resumo);
-        let url = `https://wa.me/5513991873557?text=${mensagem}`;
-        window.open(url, "_blank");
-      }
-
-      function limparPedidos() {
-        pedidos = [];
-        document.getElementById("resumo").innerText = "Nenhum pedido ainda.";
-      }
-    </script>
 </body>
 
+<script src="script.js"></script>
+
 </html>
-
-
-
-
 
 
 
