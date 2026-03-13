@@ -57,7 +57,7 @@
         let pagamentoTexto = `Pagamento: ${pagamento}`;
 
         let resumo = document.getElementById("resumo").innerText;
-        resumo += `\nTaxa de entrega (${bairro}): R$${taxaEntrega.toFixed(2)}\nTotal: R$${total.toFixed(2)}\nEndereço: ${endereco} - ${bairro}\n${pagamentoTexto} \nPrazo de entrega: 55-65 minutos.`;
+        resumo += `\nTaxa de entrega (${bairro}): R$${taxaEntrega.toFixed(2)}\nTotal: R$${total.toFixed(2)}\nEndereço: ${endereco} - ${bairro}\n${pagamentoTexto} \nPrazo de entrega: 55-65 minutos.\nObrigado por escolher o Ponto Do Sabor!`;
 
         let mensagem = encodeURIComponent(resumo);
         let url = `https://wa.me/5513991873557?text=${mensagem}`;
@@ -69,3 +69,4 @@
         document.getElementById("resumo").innerText = "Nenhum pedido ainda.";
 
       }
+
