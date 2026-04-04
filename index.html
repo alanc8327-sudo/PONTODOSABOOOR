@@ -1,182 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Honk:MORF@15&family=Racing+Sans+One&display=swap" rel="stylesheet">
-  <title>Ponto Do Sabor</title>
+<link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Belanosima:wght@400;600;700&family=Boldonse&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oleo+Script+Swash+Caps:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet"><link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+<link href='https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css' rel='stylesheet'>
+<link href='https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+  <title>Fotografias Cordeiro</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
   <header>
-    <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="">
-    <h2> O Segredo Da Receita? Amor De Casa</h2>
+    <img src="./logo.jpeg" alt="logo" class="logo">
+   
+
   </header>
-  <section>
-    <div class="container">
-      <div class="card">
-        <img src="./Barca pequena.jpeg" alt="Porção de Mandioca">
-        <h3>Barca Pequena</h3>
-        <p>Serve no máximo 2 pessoas:
-2 proteínas, 1 pão de alho, arroz, farofa e vinagrete.</p>
-        <p><strong>R$40,00</strong></p>
-        <button onclick="adicionarPedido('Barca Pequena',40)">Adicionar</button>
-      </div>
-      <div class="container">
-        <div class="card">
-          <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
-          <h3>Porção de Batata Frita</h3>
-          <p><strong>R$45,00</strong></p>
-          <button onclick="adicionarPedido('Porção de Batata Frita',45)">Adicionar</button>
-        </div>
-        <div class="container">
-          <div class="card">
-            <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos avulsos">
-            <h3>Espetinhos Avulsos</h3>
-            <p><strong>R$10,00</strong></p>
-            <button onclick="adicionarPedido('Espetinho de Linguiça',10)">Linguiça</button>
-            <button onclick="adicionarPedido('Espetinho de Carne',10)">Carne</button>
-         
-            <button onclick="adicionarPedido('Espetinho de Frango',10)">Frango</button>
-            <button onclick="adicionarPedido('Espetinho de Queijo Coalho',10)">Queijo Coalho</button>
-            <button onclick="adicionarPedido('Espetinho de Pão de Alho',10)">Pão de Alho</button>
-          </div>
 
-          <div class="container">
-            <div class="card">
-              <img src="./barca média completa.jpeg" alt="Barca de Churrasco Completa">
-              <h3>Barca Media Completa</h3>
-              <p>2 proteínas, queijo coalho (ou pão de alho), arroz, vinagrete, farofa e batata frita.
-                Serve de 2 a 3 pessoas.</p>
-              <p><strong>R$55,00</strong></p>
-              <button onclick="adicionarPedido('Barca Media Completa',55)">Adicionar</button>
-            </div>
+  <section id="sobremim" class="trabalhos">
+    <h2>Sobre mim</h2>
+    <p>Meu Nome é Juscelina, Tenho 19 anos, Sou Cristã e desde pequena tenho paixão por fotografia. Amo a natureza, casamentos e tudo e o que envolve memorias reais e cheias de emoção. Minha missão é capturar lembranças que aquecem o coração e se foram eternas.</p>
+   <img src="./Fotografa.png" alt="">
+  </section>
 
-           <div class="container">
-              <div class="card">
-                <img src="./barca grande completa.jpeg" alt="Barca de Churrasco Completa">
-                <h3>Barca Familia Completa</h3>
-                <p>Serve até 4 pessoas:
-                  3 proteínas + queijo coalho + pão de alho
-                  Arroz, vinagrete, farofa e batata frita.</p>
-                <p><strong>R$75,00</strong></p>
-                <button onclick="adicionarPedido('Barca Familia Completa',75)">Adicionar</button>
-              </div>
+  <section id="galeria" class="galeria">
+    <img src="./Fotos (1).jpeg" alt="Foto 1">
+    <img src="./Fotos (2).jpeg" alt="Foto 2">
+    <img src="./Fotos (3).jpeg" alt="Foto 3">
+    <img src="./Fotos (4).jpeg" alt="Foto 4">
+    <img src="./Fotos (5).jpeg" alt="Foto 5">
+    
 
-              <div class="container">
-                <div class="card">
-                  <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
-                  <h3>Barca de Petiscos Media</h3>
-                  <p>Serve até 3 pessoas:
-                    5 proteínas
-                    Acompanha: vinagrete, farofa e batata frita.</p>
-                  <p><strong>R$65,00</strong></p>
-                  <button onclick="adicionarPedido('Barca de Petiscos Media',65)">Adicionar</button>
-                </div>
-
-                div class="container">
-                  <div class="card">
-                    <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
-                    <h3>Barca de Petiscos Grande</h3>
-                    <p>Descrição:
-                      Serve até 4 pessoas:
-                      7 proteínas + vinagrete, farofa e batata frita
-
-                      </p>
-                    <p><strong>R$79,00</strong></p>
-                    <button onclick="adicionarPedido('Barca de Petiscos Grande',79)">Adicionar</button>
-                  </div>
 
   </section>
-  </div>
 
-  <section>
-    <section class="bebidas">
-      <div>
-        <h2>Refrigerantes</h2>
-        <h3>200ml R$ 4,00</h3>
-
-        <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">Coca Cola</button>
-
-      </div>
-
-      <div>
-        <h3>350ml Lata R$ 6,00</h3>
-
-        <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">Coca Cola</button>
-
-      </div>
+  <section id="precos" class="precos">
+    <h2>Preços</h2>
+   <img src="./tabela.jpeg" alt="">
+  </section>
 
 
 
-      <div>
-        <h3>2L R$ 12,00</h3>
+  <section id="contato" class="contato">
+    <h2>Entre em contato</h2>
+    <button id="whatsappBtn"><img src="https://cdn.boxicons.com/3.0.8/svg/brands/bx-whatsapp.svg" alt="WhatsApp"></button>
+    <button id="instagramBtn"><img src="https://cdn.boxicons.com/3.0.8/svg/brands/bx-instagram.svg" alt="Instagram"></button>
 
-        <button onclick="adicionarPedido('Dolly 2L', 12.00)">Dolly</button>
+  </section>
 
-      </div>
+  <footer>
+    <p>&copy; 2026 Fotografias Cordeiro </p>
+  </footer>
 
-    </section>
-
-
-
-    <section>
-      <div>
-        <div class="resumo">
-          <h2>Resumo do Pedido</h2>
-          <p id="resumo">Nenhum pedido ainda.</p>
-
-          <label>Endereço de entrega:</label>
-          <input type="text" id="endereco" placeholder="Rua, número...">
-
-          <label>Bairro:</label>
-          <select id="bairro">
-            <option value="">Selecione</option>
-            <option value="Rio Da Praia">Rio Da Praia</option>
-            <option value="Maitinga">Maitinga</option>
-            <option value="Mangue Seco">Mangue Seco</option>
-            <option value="Jardim Rafael">Jardim Rafael</option>
-            <option value="Jardim  Das Cançoes">Jardim Das Cançoes</option>
-            <option value="Vila Ho">Vila Ho</option>
-            <option value="Rivieira">Rivieira</option>
-            <option value="Centro">Centro</option>
-            <option value="Centreville(Balsa)">Centreville(Balsa)</option>
-            <option value="Sitio São João">Sitio São João</option>
-            <option value="São Lourenço">São Lourenço</option>
-            <option value="Chacaras">Chacaras</option>
-            <option value="Vista Linda">Vista Linda</option>
-            <option value="Indaia">Indaia</option>
-            <option value="Saoc">Saoc</option>
-
-          </select>
-
-          <label>Pagamento</label>
-          <select id="pagamento">
-            <option value="">Selecione</option>
-            <option value="Débito">Débito</option>
-            <option value="Crédito">Crédito</option>
-            <option value="Pix">Pix</option>
-          </select>
-
-          <button onclick="finalizarPedido()">Finalizar Pedido</button>
-          <button onclick="limparPedidos()">Limpar Pedido</button>
-        </div>
-      </div>
-
-    </section>
-
+  <script src="script.js"></script>
 </body>
-
-<script src="script.js"></script>
-
 </html>
-
-
-
-
-
