@@ -69,6 +69,8 @@
     button {
       background: #e60000;
       color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 18px;
       border: none;
       padding: 10px 15px;
       border-radius: 5px;
@@ -88,6 +90,8 @@
     select {
        width: 200px;
       padding: 8px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 18px;
       text-align: center;
       justify-content: center;
       align-items: center;
