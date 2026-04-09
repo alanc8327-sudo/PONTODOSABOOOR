@@ -1,116 +1,65 @@
+
 * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-       font-family: "Oleo Script", system-ui;
-      height: 100vh;
-      width: 100vw;
-      display: block;
-   
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    header {
-      background: linear-gradient(90deg, #FFA07A, #FF7F50, #FF6347);
-      color: white;
-      padding: 15px;
-      text-align: center;
+body {
+  font-family: "Oleo Script", system-ui;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
+header {
+  background: linear-gradient(90deg, #FFA07A, #FF7F50, #FF6347);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
 
-    }
+header img {
+  max-height: 18rem;
+}
 
-    header img {
-      height: 300px;
-    }
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  padding: 1rem;
+}
 
+.card {
+  background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
+  border-radius: 0.625rem;
+  padding: 1rem;
+  text-align: center;
+}
 
+.card img {
+  width: 9.375rem;
+  border-radius: 0.625rem;
+}
 
+button {
+  background: #e60000;
+  color: white;
+  border: none;
+  padding: 0.625rem 0.9375rem;
+  border-radius: 0.3125rem;
+  cursor: pointer;
+}
 
-    .container {
-      display: grid;
-      grid-template-rows: repeat(auto-fit, minmax(240px, 7));
-       border-radius: 10px;
-      text-align: center;
-      gap: 20px;
-    }
+button:hover {
+  background: #b30000;
+}
 
-
-
-    .bebidas {
-       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      border-radius: 10px;
-      margin: 75px;
-      padding: auto;
-      text-align: center;
-
-    }
-
-    .card {
-      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
-      margin: 100px;
-      justify-items: center;
-      align-items: center;
-      margin-bottom: auto;
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-    }
-
-    .card img {
-      width: 150px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    button {
-      background: #e60000;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
- 
-    }
-
-    button:hover {
-      background: #b30000;
-     
-      
-
-    }
-
-    input,
-    select {
-       width: 200px;
-      padding: 8px;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-     
-    }
-
-    .resumo {
-       white-space: pre-wrap;
-      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
-      padding: 20px;
-      text-align: center;
-      margin-top: 20px;
-    }
- @media (max-width: 600px) {
-      .card { font-size: 15px; }
-   
-
-      }
-
-      button {
-        width: 150px;
-        text-align: center;
-        justify-content: center;
-      }
+@media (max-width: 37.5rem) {
+  .card {
+    font-size: 0.9375rem;
+  }
+  button {
+    width: 9.375rem;
+  }
+}
