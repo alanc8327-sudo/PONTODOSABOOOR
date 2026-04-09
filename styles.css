@@ -6,8 +6,9 @@
 }
 
 body {
-  font-family: "Oleo Script", system-ui;
-  min-height: 100vh;
+ 
+  font-family: "Montserrat", sans-serif;
+ min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
