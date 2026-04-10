@@ -4,10 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Belanosima:wght@400;600;700&family=Boldonse&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oleo+Script+Swash+Caps:wght@400;700&family=Oleo+Script:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Belanosima:wght@400;600;700&family=Boldonse&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oleo+Script+Swash+Caps:wght@400;700&family=Oleo+Script:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link rel="stylesheet" href="styles.css">
+  
   <title>Ponto Do Sabor</title>
 </head>
 
@@ -23,7 +28,7 @@
         <img src="./Barca pequena.jpeg" alt="Porção de Mandioca">
         <h3>Barca Pequena</h3>
         <p>Serve no máximo 2 pessoas:
-2 proteínas, 1 pão de alho, arroz, farofa e vinagrete.</p>
+          2 proteínas, 1 pão de alho, arroz, farofa e vinagrete.</p>
         <p><strong>R$40,00</strong></p>
         <button onclick="adicionarPedido('Barca Pequena',40)">Adicionar</button>
       </div>
@@ -167,6 +172,30 @@
         </div>
       </div>
 
+    </section>
+
+  
+
+    <section class="feedback">
+      <h2>Deixe seu Feedback</h2>
+      <div class="stars">
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+      </div>
+      <textarea id="comentario" placeholder="Escreva seu comentário..."></textarea>
+      <button onclick="enviarFeedback()">Enviar Feedback</button>
+    </section>
+    
+    <section>
+      <div>
+        <a href="https://www.instagram.com/ponto.do.sabor.fs/" target="_blank" class="btn-instagram-fixo">
+  <i class="fab fa-instagram"></i>
+</a>
+
+      </div>
     </section>
 
 </body>
