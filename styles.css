@@ -164,20 +164,63 @@
   margin-bottom: 15px;
 }
 
-.feedback button {
+.feedback {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 500px;
+  background: #fff3e6;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.feedback h2 {
+   font-family: "Bebas Neue", sans-serif;
+  margin-bottom: 15px;
+  color: #d35400;
+}
+
+.feedback textarea, 
+.feedback input {
   width: 100%;
-  padding: 12px;
-  background: #ff9800;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+   font-family: "Bebas Neue", sans-serif;
+}
+
+.feedback button {
+  background:#d35400; /* cor do WhatsApp */
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  display: block;
+  margin: 0 auto;
   border: none;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
   cursor: pointer;
 }
 
 .feedback button:hover {
-  background: #e68900;
+  background: #e60000;
 }
+
+.stars {
+  margin-bottom: 10px;
+}
+
+.stars i {
+  font-size: 28px;
+  color: #ccc;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.stars i.selecionada {
+  color: #f1c40f; /* amarelo das estrelas */
+}
+
 
 .btn-instagram-fixo {
   position: fixed;
