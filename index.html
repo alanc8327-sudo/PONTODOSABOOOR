@@ -1,210 +1,244 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Belanosima:wght@400;600;700&family=Boldonse&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oleo+Script+Swash+Caps:wght@400;700&family=Oleo+Script:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <link rel="stylesheet" href="styles.css">
-  
-  <title>Ponto Do Sabor</title>
-</head>
-
-<body>
-
-  <header>
-    <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="">
-    <h2> O Segredo Da Receita? Amor De Casa</h2>
-  </header>
-  <section>
-    <div class="container">
-      <div class="card">
-        <img src="./Barca pequena.jpeg" alt="Porção de Mandioca">
-        <h3>Barca Pequena</h3>
-        <p>Serve no máximo 2 pessoas:
-          2 proteínas, 1 pão de alho, arroz, farofa e vinagrete.</p>
-        <p><strong>R$40,00</strong></p>
-        <button onclick="adicionarPedido('Barca Pequena',40)">Adicionar</button>
-      </div>
-      <div class="container">
-        <div class="card">
-          <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
-          <h3>Porção de Batata Frita</h3>
-          <p><strong>R45,00</strong></p>
-          <button onclick="adicionarPedido('Porção de Batata Frita',45)">Adicionar</button>
-        </div>
-        <div class="container">
-          <div class="card">
-            <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos avulsos">
-            <h3>Espetinhos Avulsos</h3>
-            <p><strong>R$10,00</strong></p>
-            <button onclick="adicionarPedido('Espetinho de Linguiça',10)">Linguiça</button>
-            <button onclick="adicionarPedido('Espetinho de Carne',10)">Carne</button>
-            <button onclick="adicionarPedido('Espetinho de Frango',10)">Frango</button>
-            <button onclick="adicionarPedido('Espetinho de Queijo Coalho',10)">Queijo Coalho</button>
-            <button onclick="adicionarPedido('Espetinho de Pão de Alho',10)">Pão de Alho</button>
-          </div>
-
-          <div class="container">
-            <div class="card">
-              <img src="./barca média completa.jpeg" alt="Barca de Churrasco Completa">
-              <h3>Barca Media Completa</h3>
-              <p>2 proteínas, queijo coalho (ou pão de alho), arroz, vinagrete, farofa e batata frita.
-                Serve de 2 a 3 pessoas.</p>
-              <p><strong>R$55,00</strong></p>
-              <button onclick="adicionarPedido('Barca de Churrasco Completa',55)">Adicionar</button>
-            </div>
-
-            <div class="container">
-              <div class="card">
-                <img src="./barca grande completa.jpeg" alt="Barca de Churrasco Completa">
-                <h3>Barca Familia Completa</h3>
-                <p>Serve até 4 pessoas:
-                  3 proteínas + queijo coalho + pão de alho
-                  Arroz, vinagrete, farofa e batata frita.</p>
-                <p><strong>R75,00</strong></p>
-                <button onclick="adicionarPedido('Barca de Churrasco Completa',75)">Adicionar</button>
-              </div>
-
-              <div class="container">
-                <div class="card">
-                  <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
-                  <h3>Barca de Petiscos Media</h3>
-                  <p>Serve até 3 pessoas:
-                    5 proteínas
-                    Acompanha: vinagrete, farofa e batata frita.</p>
-                  <p><strong>R65,00</strong></p>
-                  <button onclick="adicionarPedido('Barca de Petiscos Media',65.00)">Adicionar</button>
-                </div>
-
-                <div class="container">
-                  <div class="card">
-                    <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
-                    <h3>Barca de Petiscos Grande</h3>
-                    <p>Descrição:
-                      Serve até 4 pessoas:
-                      7 proteínas + vinagrete, farofa e batata frita
-
-                      Valor: 79,00</p>
-                    <p><strong>R79,00</strong></p>
-                    <button onclick="adicionarPedido('Barca de Petiscos Grande',79.00)">Adicionar</button>
-                  </div>
-
-  </section>
-  </div>
-
-  <section>
-    <section class="bebidas">
-      <div>
-        <h2>Refrigerantes</h2>
-        <h3>200ml R$ 4,00</h3>
-
-        <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">Coca Cola</button>
-
-      </div>
-
-      <div>
-        <h3>350ml Lata R$ 6,00</h3>
-
-        <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">Coca Cola</button>
-
-      </div>
-
-
-
-      <div>
-        <h3>2L R$ 12,00</h3>
-
-        <button onclick="adicionarPedido('Dolly 2L', 12.00)">Dolly</button>
-
-      </div>
-
-    </section>
-
-
-
-    <section>
-      <div>
-        <div class="resumo">
-          <h2>Resumo do Pedido</h2>
-          <p id="resumo">Nenhum pedido ainda.</p>
-
-          <label>Endereço de entrega:</label>
-          <input type="text" id="endereco" placeholder="Rua, número...">
-
-          <label>Bairro:</label>
-          <select id="bairro">
-            <option value="">Selecione</option>
-            <option value="Rio Da Praia">Rio Da Praia</option>
-            <option value="Maitinga">Maitinga</option>
-            <option value="Mangue Seco">Mangue Seco</option>
-            <option value="Jardim Rafael">Jardim Rafael</option>
-            <option value="Jardim  Das Cançoes">Jardim Das Cançoes</option>
-            <option value="Vila Ho">Vila Ho</option>
-            <option value="Rivieira">Rivieira</option>
-            <option value="Centro">Centro</option>
-            <option value="Centreville(Balsa)">Centreville(Balsa)</option>
-            <option value="Sitio São João">Sitio São João</option>
-            <option value="São Lourenço">São Lourenço</option>
-            <option value="Chacaras">Chacaras</option>
-            <option value="Vista Linda">Vista Linda</option>
-            <option value="Indaia">Indaia</option>
-            <option value="Saoc">Saoc</option>
-
-          </select>
-
-          <label>pagamento</label>
-          <select id="pagamento">
-            <option value="">Selecione</option>
-            <option value="Débito">Débito</option>
-            <option value="Crédito">Crédito</option>
-            <option value="Pix">Pix</option>
-          </select>
-
-          <button onclick="finalizarPedido()">Finalizar Pedido</button>
-          <button onclick="limparPedidos()">Limpar Pedido</button>
-        </div>
-      </div>
-
-    </section>
-<section class="feedback">
-  <h2>Deixe seu Feedback</h2>
-  
-  <div class="stars">
-    <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
-    <i class="fa-regular fa-star" onclick="avaliar(2)"></i>
-    <i class="fa-regular fa-star" onclick="avaliar(3)"></i>
-    <i class="fa-regular fa-star" onclick="avaliar(4)"></i>
-    <i class="fa-regular fa-star" onclick="avaliar(5)"></i>
-  </div>
-
-  <textarea id="feedbackMsg" placeholder="Deixe sua opinião aqui..."></textarea>
-  
-  <label>Nome:</label>
-  <input type="text" id="feedbackNome" placeholder="Seu nome">
-
-  <button onclick="enviarFeedback()">Enviar Feedback</button>
-</section>
-
-
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     
-    <section>
-      <div>
-        <a href="https://www.instagram.com/ponto.do.sabor.fs/" target="_blank" class="btn-instagram-fixo">
-  <i class="fab fa-instagram"></i>
-</a>
+    body {
+      font-family: "Bebas Neue", sans-serif;
+      height: 100vh;
+      width: 100vw;
+      display: block;
+      font-size: 20px;
+   
+    }
 
-      </div>
-    </section>
+    header {
+      background: linear-gradient(90deg, #FFA07A, #FF7F50, #FF6347);
+      color: white;
+      padding: 15px;
+      text-align: center;
 
-</body>
 
-<script src="script.js"></script>
+    }
 
-</html>
+    header img {
+      height: 300px;
+    }
+
+
+
+
+    .container {
+      display: grid;
+      grid-template-rows: repeat(auto-fit, minmax(240px, 7));
+       border-radius: 10px;
+      text-align: center;
+      gap: 20px;
+    }
+
+
+
+    .bebidas {
+       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      border-radius: 10px;
+      margin: 75px;
+      padding: auto;
+      text-align: center;
+
+    }
+
+    .card {
+      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
+      margin: 100px;
+      justify-items: center;
+      align-items: center;
+      margin-bottom: auto;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .card img {
+      width: 150px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    button {
+      background: #e60000;
+      color: white;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 18px;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+ 
+    }
+
+    button:hover {
+      background: #b30000;
+     
+      
+
+    }
+
+    input,
+    select {
+       width: 200px;
+      padding: 8px;
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 18px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+     
+    }
+
+    .resumo {
+       white-space: pre-wrap;
+      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
+      padding: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+ @media (max-width: 600px) {
+      .card { font-size: 15px; }
+   
+
+      }
+
+      button {
+        width: 150px;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .feedback {
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
+
+.feedback h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.star {
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.star.selected {
+  color: #ff9800;
+}
+
+.feedback textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  resize: none;
+  margin-bottom: 15px;
+}
+
+.feedback {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 500px;
+  background: #fff3e6;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.feedback h2 {
+   font-family: "Bebas Neue", sans-serif;
+  margin-bottom: 15px;
+  color: #d35400;
+}
+
+.feedback textarea, 
+.feedback input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+   font-family: "Bebas Neue", sans-serif;
+}
+
+.feedback button {
+  background:#d35400; /* cor do WhatsApp */
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  display: block;
+  margin: 0 auto;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.feedback button:hover {
+  background: #e60000;
+}
+
+.stars {
+  margin-bottom: 10px;
+}
+
+.stars i {
+  font-size: 28px;
+  color: #ccc;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.stars i.selecionada {
+  color: #f1c40f; /* amarelo das estrelas */
+}
+
+
+.btn-instagram-fixo {
+  position: fixed;
+  bottom: 20px;   /* distância do rodapé */
+  right: 20px;    /* canto inferior direito */
+  background: #e68900;
+  color: #fff;
+  font-size: 24px;
+  padding: 12px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s, background 0.3s;
+  z-index: 999; /* garante que fique acima de outros elementos */
+}
+
+.btn-instagram-fixo:hover {
+  background: #ff9800;
+  transform: scale(1.1);
+}
+
