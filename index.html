@@ -173,21 +173,26 @@
       </div>
 
     </section>
-
+<section class="feedback">
+  <h2>Deixe seu Feedback</h2>
   
+  <div class="stars">
+    <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
+    <i class="fa-regular fa-star" onclick="avaliar(2)"></i>
+    <i class="fa-regular fa-star" onclick="avaliar(3)"></i>
+    <i class="fa-regular fa-star" onclick="avaliar(4)"></i>
+    <i class="fa-regular fa-star" onclick="avaliar(5)"></i>
+  </div>
 
-    <section class="feedback">
-      <h2>Deixe seu Feedback</h2>
-      <div class="stars">
-        <span class="star" data-value="1">&#9733;</span>
-        <span class="star" data-value="2">&#9733;</span>
-        <span class="star" data-value="3">&#9733;</span>
-        <span class="star" data-value="4">&#9733;</span>
-        <span class="star" data-value="5">&#9733;</span>
-      </div>
-      <textarea id="comentario" placeholder="Escreva seu comentário..."></textarea>
-      <button onclick="enviarFeedback()">Enviar Feedback</button>
-    </section>
+  <textarea id="feedbackMsg" placeholder="Deixe sua opinião aqui..."></textarea>
+  
+  <label>Nome:</label>
+  <input type="text" id="feedbackNome" placeholder="Seu nome">
+
+  <button onclick="enviarFeedback()">Enviar Feedback</button>
+</section>
+
+
     
     <section>
       <div>
