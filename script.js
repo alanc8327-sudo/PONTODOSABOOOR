@@ -2,21 +2,21 @@ let pedidos = [];
 
 // Tabela de taxas por bairro
 const taxas = {
-  "Rio Da Praia": 6,
-  "Maitinga": 7,
-  "Mangue Seco": 8,
-  "Jardim Rafael": 9,
-  "Jardim  Das Cançoes": 9,
-  "Vila Ho": 7,
-  "Rivieira": 20,
-  "Centro": 15,
-  "Centreville(Balsa)": 18,
-  "Sitio São João": 25,
-  "São Lourenço": 25,
-  "Chacaras": 15,
-  "Vista Linda": 12,
-  "Indaia": 15,
-  "Saoc": 10,
+  "Saoc": 6,
+  "Albatroz 2": 7,
+  "Centro": 10,
+  "Sitio": 15,
+  "Maitinga": 10,
+  "Rio Da Praia": 9,
+  "Mangue Seco": 9,
+  "Pedralina": 8,
+  "Ana Paula": 10,
+  " V.L Lado Praia": 10,
+  "V.L Lado Chacara": 12,
+  "V.L Invasao": 15,
+  "Indiaia": 18,
+  "Rivieira": 25,
+  "Sao Lourenco": 30,
 
 
 };
@@ -47,7 +47,7 @@ function finalizarPedido() {
   let bairro = document.getElementById("bairro").value;
   let pagamento = document.getElementById("pagamento").value;
 
-  if (!endereco || !bairro || !pagamento) {
+  if (!endereco || !bairro || !pagamento || pedidos.length === 0) {
     alert("Por favor, preencha todos os campos.");
     return;
 
