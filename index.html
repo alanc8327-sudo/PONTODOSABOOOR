@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Belanosima:wght@400;600;700&family=Boldonse&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oleo+Script+Swash+Caps:wght@400;700&family=Oleo+Script:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Belanosima:wght@400;600;700&family=Boldonse&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oleo+Script+Swash+Caps:wght@400;700&family=Oleo+Script:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -30,25 +29,31 @@
         <p>Serve no máximo 2 pessoas:
           2 proteínas, 1 pão de alho, arroz, farofa e vinagrete.</p>
         <p><strong>R$40,00</strong></p>
-        <button onclick="adicionarPedido('Barca Pequena',40)">Adicionar</button>
+        <button onclick="adicionarPedido('Barca Pequena', 40)">+</button>
+        <button onclick="removerPedido('Barca Pequena')">-</button>
       </div>
       <div class="container">
         <div class="card">
           <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
           <h3>Porção de Batata Frita</h3>
           <p><strong>R$45,00</strong></p>
-          <button onclick="adicionarPedido('Porção de Batata Frita',45)">Adicionar</button>
+          <button onclick="adicionarPedido('Porção de Batata Frita',45)">+</button>
+          <button onclick="removerPedido('Porção de Batata Frita')">-</button>
         </div>
         <div class="container">
           <div class="card">
             <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos avulsos">
             <h3>Espetinhos Avulsos</h3>
             <p><strong>R$10,00</strong></p>
-            <button onclick="adicionarPedido('Espetinho de Linguiça',10)">Linguiça</button>
-            <button onclick="adicionarPedido('Espetinho de Carne',10)">Carne</button>
-            <button onclick="adicionarPedido('Espetinho de Frango',10)">Frango</button>
-            <button onclick="adicionarPedido('Espetinho de Queijo Coalho',10)">Queijo Coalho</button>
-            <button onclick="adicionarPedido('Espetinho de Pão de Alho',10)">Pão de Alho</button>
+            <select name="espetinho" id="espetinho">
+              <option value="Linguiça">Linguiça</option>
+              <option value="Carne">Carne</option>
+              <option value="Frango">Frango</option>
+              <option value="Queijo Coalho">Queijo Coalho</option>
+              <option value="Pão de Alho">Pão de Alho</option>
+            </select>
+            <button onclick="adicionarPedido(document.getElementById('espetinho').value, 10)">+</button>
+            <button onclick="removerPedido(document.getElementById('espetinho').value)">-</button>
           </div>
 
           <div class="container">
@@ -58,7 +63,8 @@
               <p>2 proteínas, queijo coalho (ou pão de alho), arroz, vinagrete, farofa e batata frita.
                 Serve de 2 a 3 pessoas.</p>
               <p><strong>R$55,00</strong></p>
-              <button onclick="adicionarPedido('Barca de Churrasco Completa',55)">Adicionar</button>
+              <button onclick="adicionarPedido('Barca de Churrasco Completa',55)">+</button>
+              <button onclick="removerPedido('Barca de Churrasco Completa')">-</button>
             </div>
 
             <div class="container">
@@ -68,10 +74,12 @@
                 <p>Serve até 4 pessoas:
                   3 proteínas + queijo coalho + pão de alho
                   Arroz, vinagrete, farofa e batata frita.</p>
-                <p><strong>R75,00</strong></p>
-                <button onclick="adicionarPedido('Barca de Churrasco Completa',75)">Adicionar</button>
+                <p><strong>R$75,00</strong></p>
+                <button onclick="adicionarPedido('Barca de Churrasco Completa',75)">+</button>
+                <button onclick="removerPedido('Barca de Churrasco Completa')">-</button>
               </div>
-                  <div class="container">
+
+              <div class="container">
                 <div class="card">
                   <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
                   <h3>Barca de Petiscos Media</h3>
@@ -79,7 +87,8 @@
                     5 proteínas
                     Acompanha: vinagrete, farofa e batata frita.</p>
                   <p><strong>R$89,99</strong></p>
-                  <button onclick="adicionarPedido('Barca de Petiscos Media',89.99)">Adicionar</button>
+                  <button onclick="adicionarPedido('Barca de Petiscos Media',89.99)">+</button>
+                  <button onclick="removerPedido('Barca de Petiscos Media')">-</button>
                 </div>
 
                 <div class="container">
@@ -92,9 +101,9 @@
 
                       
                     <p><strong>R$99,99</strong></p>
-                    <button onclick="adicionarPedido('Barca de Petiscos Grande',99.99)">Adicionar</button>
+                    <button onclick="adicionarPedido('Barca de Petiscos Grande',99.99)">+</button>
+                    <button onclick="removerPedido('Barca de Petiscos Grande')">-</button>
                   </div>
-             
 
   </section>
   </div>
@@ -103,25 +112,36 @@
     <section class="bebidas">
       <div>
         <h2>Refrigerantes</h2>
-        <h3>200ml R$ 4,00</h3>
 
-        <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">Coca Cola</button>
+        <h3> Coca Cola 200ml R$ 4,00</h3>
+
+        <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">+</button>
+        <button onclick="removerPedido('Coca Cola 200ml')">-</button>
 
       </div>
 
       <div>
-        <h3>350ml Lata R$ 6,00</h3>
+        <h3> Coca Cola 350ml Lata R$ 6,00</h3>
 
-        <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">Coca Cola</button>
+        <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">+</button>
+        <button onclick="removerPedido('Coca Cola Lata 350ml')">-</button>
 
       </div>
 
 
 
       <div>
-        <h3>2L R$ 12,00</h3>
+        <h3>Dolly 2L R$ 12,00</h3>
 
-        <button onclick="adicionarPedido('Dolly 2L', 12.00)">Dolly</button>
+        <button onclick="adicionarPedido('Dolly 2L', 12.00)">+</button>
+        <button onclick="removerPedido('Dolly 2L')">-</button>
+
+      </div>
+       <div>
+        <h3>Coca Cola 2L R$ 12,00</h3>
+
+        <button onclick="adicionarPedido('Coca Cola 2L', 12.00)">+</button>
+        <button onclick="removerPedido('Coca Cola 2L')">-</button>
 
       </div>
 
@@ -132,7 +152,7 @@
     <section>
       <div>
         <div class="resumo">
-          <h2>Pedidos</h2>
+          <h2>Resumo do Pedido</h2>
           <p id="resumo">Nenhum pedido ainda.</p>
 
           <label>Endereço de entrega:</label>
@@ -159,7 +179,7 @@
 
           </select>
 
-          <label>Pagamento</label>
+          <label>pagamento</label>
           <select id="pagamento">
             <option value="">Selecione</option>
             <option value="Débito">Débito</option>
@@ -174,7 +194,7 @@
 
     </section>
 <section class="feedback">
-  <h2>Gostou Do nossa Barca ?Deixe seu Feedback</h2>
+  <h2>Deixe seu Feedback</h2>
   
   <div class="stars">
     <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
