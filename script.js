@@ -34,15 +34,17 @@ function adicionarPedido(nome, preco, quantidade = 1) {
 }
 
 
-function removerPedido(nome) {
-  const index = pedidos.findIndex(item => item.nome === nome);
+function removerPedido(nome,preco, quantidade = 1) {
+  let index = pedidos.findIndex(p => p.nome === nome && p.quantidade >= quantidade);
   if (index !== -1) {
-    pedidos.splice(index, 1);
+    pedidos[index].quantidade -= quantidade;
+    if (pedidos[index].quantidade <= 0) {
+      pedidos.splice(index, 1);
+    }
     atualizarResumo();
-  } else {
-    alert("Item não encontrado no pedido.");
-  }   
-}
+    }
+  }
+
 
 
 // Atualiza o resumo do pedido listando cada item
