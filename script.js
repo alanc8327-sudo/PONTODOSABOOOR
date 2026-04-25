@@ -21,26 +21,55 @@ const taxas = {
 
 };
 
-function adicionarPedido(nome, preco) {
-  pedidos.push({ nome, preco });
+function adicionarPedido(nome, preco, quantidade = 1) {
+  let itemExistente = pedidos.find(p => p.nome === nome);
+
+  if (itemExistente) {
+    itemExistente.quantidade += quantidade;
+  } else {
+    pedidos.push({ nome, preco, quantidade });
+  }
+
   atualizarResumo();
 }
 
+
+function removerPedido(nome) {
+  const index = pedidos.findIndex(item => item.nome === nome);
+  if (index !== -1) {
+    pedidos.splice(index, 1);
+    atualizarResumo();
+  } else {
+    alert("Item não encontrado no pedido.");
+  }   
+}
+
+
+// Atualiza o resumo do pedido listando cada item
 function atualizarResumo() {
-  if (pedidos.length === 0) {
-    document.getElementById("resumo").innerText = "Nenhum pedido ainda.";
-    return;
+  let resumo = "";
+  let total = 0;
+
+
+  for (let item in pedidos) {
+    let qtd = pedidos[item].quantidade;
+    let preco = pedidos[item].preco;
+    let nome = pedidos[item].nome;
+    let subtotal = qtd * preco;
+    total += subtotal;
+    resumo += `${nome} x${qtd} - R$ ${subtotal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
   }
 
-  let resumo = "";
-  let subtotal = 0;
-  pedidos.forEach((item, i) => {
-    resumo += `${i + 1}. ${item.nome} - R$${item.preco.toFixed(2)}\n`;
-    subtotal += item.preco;
-  });
+  if (resumo === "") {
+    resumo = "Nenhum pedido ainda.";
+  } else {
+    resumo += `\nTotal: R$ ${total.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+  }
 
-  document.getElementById("resumo").innerText = resumo + `\nSubtotal: R$${subtotal.toFixed(2)}`;
+  document.getElementById("resumo").innerText = resumo;
 }
+
+
 
 function finalizarPedido() {
   let endereco = document.getElementById("endereco").value;
@@ -50,22 +79,35 @@ function finalizarPedido() {
   if (!endereco || !bairro || !pagamento || pedidos.length === 0) {
     alert("Por favor, preencha todos os campos.");
     return;
-
   }
 
-  let subtotal = pedidos.reduce((acc, item) => acc + item.preco, 0);
+  // Calcula subtotal corretamente
+  let subtotal = pedidos.reduce((acc, item) => acc + (item.quantidade * item.preco), 0);
+
   let taxaEntrega = taxas[bairro] || 0;
   let total = subtotal + taxaEntrega;
   let pagamentoTexto = `Pagamento: ${pagamento}`;
 
+  // Monta resumo para envio
+  let resumo = "";
+  pedidos.forEach(item => {
+    let subtotalItem = item.quantidade * item.preco;
+    resumo += `${item.nome} x${item.quantidade} - R$ ${subtotalItem.toFixed(2)}\n`;
+  });
 
-  let resumo = document.getElementById("resumo").innerText;
-  resumo += `\nTaxa de entrega (${bairro}): R$${taxaEntrega.toFixed(2)}\nTotal: R$${total.toFixed(2)}\nEndereço: ${endereco} - ${bairro}\n${pagamentoTexto} \nPrazo de entrega: 55-65 minutos.\nObrigado por escolher o Ponto Do Sabor!`;
+  resumo += `\nSubtotal: R$ ${subtotal.toFixed(2)}`;
+  resumo += `\nTaxa de entrega (${bairro}): R$ ${taxaEntrega.toFixed(2)}`;
+  resumo += `\nTotal: R$ ${total.toFixed(2)}`;
+  resumo += `\nEndereço: ${endereco} - ${bairro}`;
+  resumo += `\n${pagamentoTexto}`;
+  resumo += `\nPrazo de entrega: 55-65 minutos.`;
+  resumo += `\nObrigado por escolher o Ponto Do Sabor!`;
 
   let mensagem = encodeURIComponent(resumo);
   let url = `https://wa.me/5513991873557?text=${mensagem}`;
   window.open(url, "_blank");
 }
+
 
 function limparPedidos() {
   pedidos = [];
