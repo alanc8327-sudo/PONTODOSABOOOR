@@ -1,192 +1,189 @@
+/* Reset e base */
 * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: "Bebas Neue", sans-serif;
-      height: 100vh;
-      width: 100vw;
-      display: block;
-      font-size: 20px;
-   
-    }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    header {
-      background: linear-gradient(90deg, #FFA07A, #FF7F50, #FF6347);
-      color: white;
-      padding: 15px;
-      text-align: center;
+body {
+  font-family: "Bebas Neue", sans-serif;
+  background-color: #fffaf0;
+  color: #333;
+  font-size: 18px;
+  line-height: 1.4;
+}
 
-
-    }
-
-    header img {
-      height: 300px;
-    }
-
-    .indique img {
-      height: 400px;
-        display: block;
-      margin: 20px auto;
-    }
-
-    .indique button {
-      background: #e60000;
-      color: white;
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 25px;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      display: block;
-      margin: 20px auto;
-    }
-
-    .indique p {
-      text-align: center;
-      font-size: 20px;
-      color: #333;
-      margin-top: 10px;
-    }
-
-
-
-    .container {
-      display: grid;
-      grid-template-rows: repeat(auto-fit, minmax(240px, 7));
-       border-radius: 10px;
-      text-align: center;
-      gap: 20px;
-    }
-
-
-
-    .bebidas {
-       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      font-size: 18px;
-      border-radius: 10px;
-      margin: 75px;
-      padding: auto;
-      text-align: center;
-
-    }
-
-    .card {
-      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
-      margin: 100px;
-      justify-items: center;
-      align-items: center;
-      margin-bottom: auto;
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px;
-    }
-
-    .card img {
-      width: 150px;
-      border-radius: 10px;
-      text-align: center;
-    }
-     
-    .card h3 {
-      margin-top: 10px;
-      color: #333;
-      font-size: 20px;
-    }
-
-    .card p {
-      color: #333;
-      font-size: 19px;
-    }
-    button {
-      background: #e60000;
-      color: white;
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 30px;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
- 
-    }
-
-    button:hover {
-      background: #b30000;
-     
-      
-
-    }
-
-    input,
-    select {
-       width: 200px;
-      padding: 8px;
-      font-family: "Bebas Neue", sans-serif;
-      font-size: 18px;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
-      margin: 0.5rem auto;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-     
-    }
-    
-
-    .resumo {
-       white-space: pre-wrap;
-      background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700, #FFFF00);
-      padding: 20px;
-      text-align: center;
-      margin-top: 20px;
-    }
- @media (max-width: 600px) {
-      .card { font-size: 15px; }
-   
-
-      }
-
-      button {
-        width: 150px;
-        text-align: center;
-        justify-content: center;
-      }
-
-      .feedback {
-  background: #fff;
+/* Header estilo iFood */
+header {
+  background: linear-gradient(90deg, #FFA07A, #FF7F50, #FF6347);
+  color: white;
+  text-align: center;
   padding: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+header img {
+  max-width: 250px;
+  height: auto;
+  margin: 10px auto;
+}
+
+/* Botão principal */
+button,
+.btn {
+  background: #e60000;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover,
+.btn:hover {
+  background: #b30000;
+}
+
+/* Seção Indique */
+.indique {
+  text-align: center;
+  padding: 30px 15px;
+}
+
+.indique img {
+  max-width: 300px;
+  height: auto;
   margin: 20px auto;
+}
+
+.indique p {
+  font-size: 18px;
+  color: #444;
+  margin-top: 10px;
+}
+
+/* Cards de bebidas */
+.bebidas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 40px 20px;
+  text-align: center;
+}
+
+.card {
+  background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card select {
+  text-align: center;
+   padding: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+.card img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 25px;
+  color: #000;
+}
+
+.card p {
+  font-size: 18px;
+  color: #000000;
+}
+
+.resumo {
+  background: #fff3e6;
+  padding: 25px;
+  margin: 40px auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 400px;
+  max-width: 500px;
+  text-align: center;
+}
+
+.resumo h2 {
+  color: #d35400;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.resumo p {
+  font-size: 18px;
+  color: #444;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.resumo button {
+  display: block;
+  margin: 20px auto;
+}
+
+
+.resumo input {
+  width: 100%;
+  padding: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.resumo select {
+  width: 100%;
+  padding: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+/* Feedback */
+.feedback {
+  background: #fff3e6;
+  padding: 25px;
+  margin: 40px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 500px;
 }
 
 .feedback h2 {
-  text-align: center;
+  color: #d35400;
   margin-bottom: 15px;
-  color: #333;
-}
-
-.stars {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-.star {
-  font-size: 30px;
-  cursor: pointer;
-  color: #ccc;
-  transition: color 0.3s;
-}
-
-.star.selected {
-  color: #ff9800;
 }
 
 .feedback textarea {
@@ -195,55 +192,29 @@
   padding: 10px;
   font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  border-radius: 6px;
+  border: 1px solid #ccc;
   resize: none;
   margin-bottom: 15px;
 }
-
-.feedback {
-  margin: 30px auto;
-  padding: 20px;
-  max-width: 500px;
-  background: #fff3e6;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.feedback h2 {
-   font-family: "Bebas Neue", sans-serif;
-  margin-bottom: 15px;
-  color: #d35400;
-}
-
-.feedback textarea, 
 .feedback input {
   width: 100%;
   padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-   font-family: "Bebas Neue", sans-serif;
-}
-
-.feedback button {
-  background:#d35400; /* cor do WhatsApp */
-  color: white;
   font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+}
+.feedback button {
   display: block;
   margin: 0 auto;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.feedback button:hover {
-  background: #e60000;
-}
-
+/* Estrelas */
 .stars {
+  display: flex;
+  justify-content: center;
   margin-bottom: 10px;
 }
 
@@ -252,17 +223,18 @@
   color: #ccc;
   cursor: pointer;
   margin-right: 5px;
+  transition: color 0.3s;
 }
 
 .stars i.selecionada {
-  color: #f1c40f; /* amarelo das estrelas */
+  color: #f1c40f;
 }
 
-
+/* Botão Instagram fixo */
 .btn-instagram-fixo {
   position: fixed;
-  bottom: 20px;   /* distância do rodapé */
-  right: 20px;    /* canto inferior direito */
+  bottom: 20px;
+  right: 20px;
   background: #e68900;
   color: #fff;
   font-size: 24px;
@@ -271,7 +243,7 @@
   text-decoration: none;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: transform 0.3s, background 0.3s;
-  z-index: 999; /* garante que fique acima de outros elementos */
+  z-index: 999;
 }
 
 .btn-instagram-fixo:hover {
@@ -279,3 +251,15 @@
   transform: scale(1.1);
 }
 
+/* Responsividade */
+@media (max-width: 768px) {
+  header h1 { font-size: 2rem; }
+  .card img { width: 100px; }
+  button { font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+  .bebidas { grid-template-columns: 1fr; }
+  .indique img { max-width: 200px; }
+  .feedback { width: 90%; }
+}
