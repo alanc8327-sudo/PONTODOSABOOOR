@@ -17,62 +17,91 @@ const taxas = {
   "Indiaia": 18,
   "Rivieira": 25,
   "Sao Lourenco": 30,
-
-
 };
 
+// ===== TOGGLE CARRINHO =====
+function toggleCarrinho() {
+    const conteudo = document.getElementById('carrinhoConteudo');
+    const icon = document.getElementById('carrinhoIcon');
+    conteudo.classList.toggle('aberto');
+    icon.classList.toggle('girado');
+}
+
+// ===== ADICIONAR/REMOVER PEDIDO =====
 function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
-  let itemExistente = pedidos.find(p => p.nome === nome);
+  // Se tiver obs, cria chave única pra não agrupar errado
+  let nomeChave = observacao? `${nome}_${observacao}` : nome;
+  let itemExistente = pedidos.find(p => p.nomeChave === nomeChave);
 
   if (itemExistente) {
     itemExistente.quantidade += quantidade;
-    if (observacao) {
-      itemExistente.observacao = observacao; // atualiza observação se houver
-    }
   } else {
-    pedidos.push({ nome, preco, quantidade, observacao });
+    pedidos.push({
+      nome,
+      nomeChave,
+      preco,
+      quantidade,
+      observacao
+    });
   }
-
   atualizarResumo();
+
+  // Abre o carrinho quando adiciona primeiro item
+  if (pedidos.length === 1) {
+    const conteudo = document.getElementById('carrinhoConteudo');
+    const icon = document.getElementById('carrinhoIcon');
+    if (!conteudo.classList.contains('aberto')) {
+      conteudo.classList.add('aberto');
+      icon.classList.add('girado');
+    }
+  }
 }
 
-
-
-
-function removerPedido(nome,preco, quantidade = 1) {
-  let index = pedidos.findIndex(p => p.nome === nome && p.quantidade >= quantidade);
-  if (index !== -1) {
-    pedidos[index].quantidade -= quantidade;
+function removerPedido(nome) {
+  let index = pedidos.findIndex(p => p.nome === nome);
+  if (index!== -1) {
+    pedidos[index].quantidade -= 1;
     if (pedidos[index].quantidade <= 0) {
       pedidos.splice(index, 1);
     }
-
-    
     atualizarResumo();
-    }
+  }
+}
+
+// ===== ATUALIZA RESUMO + HEADER DO CARRINHO =====
+function atualizarResumo() {
+  const resumoEl = document.getElementById("resumo");
+  const qtdEl = document.getElementById("carrinhoQtd");
+  const totalEl = document.getElementById("carrinhoTotal");
+
+  if (pedidos.length === 0) {
+    resumoEl.innerHTML = "Nenhum pedido ainda.";
+    qtdEl.textContent = "0 itens";
+    totalEl.textContent = "R$ 0,00";
+    return;
   }
 
+  let html = "";
+  let subtotal = 0;
+  let qtdTotal = 0;
 
+  pedidos.forEach((item) => {
+    const subtotalItem = item.quantidade * item.preco;
+    subtotal += subtotalItem;
+    qtdTotal += item.quantidade;
+    let obs = item.observacao? `<br><small style="color:#FF6347;font-weight:700;">Obs: ${item.observacao}</small>` : "";
 
-// Atualiza o resumo do pedido listando cada item
-function atualizarResumo() {
-  let resumo = "";
-  let total = 0;
-
-  pedidos.forEach(item => {
-    let subtotal = item.quantidade * item.preco;
-    total += subtotal;
-    let obs = item.observacao ? ` (Obs: ${item.observacao})` : "";
-    resumo += `${item.nome} x${item.quantidade} - R$ ${subtotal.toFixed(2)}${obs}\n`;
+    html += `
+      <div class="item-pedido">
+        <span>${item.quantidade}x ${item.nome} - R$ ${subtotalItem.toFixed(2)}${obs}</span>
+        <button class="btn-remover" onclick="removerPedido('${item.nome}')">×</button>
+      </div>`;
   });
 
-  if (resumo === "") {
-    resumo = "Nenhum pedido ainda.";
-  } else {
-    resumo += `\nTotal: R$ ${total.toFixed(2)}`;
-  }
-
-  document.getElementById("resumo").innerText = resumo;
+  html += `<br><strong style="font-size:20px;">Subtotal: R$ ${subtotal.toFixed(2)}</strong>`;
+  resumoEl.innerHTML = html;
+  qtdEl.textContent = `${qtdTotal} ${qtdTotal === 1? 'item' : 'itens'}`;
+  totalEl.textContent = `R$ ${subtotal.toFixed(2)}`;
 }
 
 function finalizarPedido() {
@@ -80,7 +109,7 @@ function finalizarPedido() {
   let bairro = document.getElementById("bairro").value;
   let pagamento = document.getElementById("pagamento").value;
 
-  if (!endereco || !bairro || !pagamento || pedidos.length === 0) {
+  if (!endereco ||!bairro ||!pagamento || pedidos.length === 0) {
     alert("Por favor, preencha todos os campos.");
     return;
   }
@@ -89,71 +118,32 @@ function finalizarPedido() {
   let taxaEntrega = taxas[bairro] || 0;
   let total = subtotal + taxaEntrega;
 
-  let resumo = "";
+  let resumo = "🧾 *PEDIDO PONTO DO SABOR*\n\n";
   pedidos.forEach(item => {
     let subtotalItem = item.quantidade * item.preco;
-    let obs = item.observacao ? ` (Obs: ${item.observacao})` : "";
-    resumo += `${item.nome} x${item.quantidade} - R$ ${subtotalItem.toFixed(2)}${obs}\n`;
+    let obs = item.observacao? ` (Obs: ${item.observacao})` : "";
+    resumo += `${item.quantidade}x ${item.nome} - R$ ${subtotalItem.toFixed(2)}${obs}\n`;
   });
 
   resumo += `\nSubtotal: R$ ${subtotal.toFixed(2)}`;
   resumo += `\nTaxa de entrega (${bairro}): R$ ${taxaEntrega.toFixed(2)}`;
-  resumo += `\nTotal: R$ ${total.toFixed(2)}`;
-  resumo += `\nEndereço: ${endereco} - ${bairro}`;
-  resumo += `\nPagamento: ${pagamento}`;
-  resumo += `\nPrazo de entrega: 55-65 minutos.`;
-  resumo += `\nObrigado por escolher o Ponto Do Sabor!`;
+  resumo += `\n*Total: R$ ${total.toFixed(2)}*`;
+  resumo += `\n\n📍 Endereço: ${endereco} - ${bairro}`;
+  resumo += `\n💳 Pagamento: ${pagamento}`;
+  resumo += `\n⏱ Prazo de entrega: 55-65 minutos`;
+  resumo += `\n\nObrigado por escolher o Ponto Do Sabor!`;
 
   let mensagem = encodeURIComponent(resumo);
   let url = `https://wa.me/5513991873557?text=${mensagem}`;
   window.open(url, "_blank");
 }
 
-
-
-
-
-
- 
-
-
 function limparPedidos() {
   pedidos = [];
-  document.getElementById("resumo").innerText = "Nenhum pedido ainda.";
+  atualizarResumo();
 }
 
-const stars = document.querySelectorAll('.star');
-let rating = 0;
-
-stars.forEach(star => {
-  star.addEventListener('click', () => {
-    rating = star.getAttribute('data-value');
-    stars.forEach(s => s.classList.remove('selected'));
-    for (let i = 0; i < rating; i++) {
-      stars[i].classList.add('selected');
-    }
-  });
-});
-
-function enviarFeedback() {
-  const comentario = document.getElementById('comentario').value;
-  if (rating === 0) {
-    alert("Por favor, selecione uma nota.");
-    return;
-  }
-  if (comentario.trim() === "") {
-    alert("Por favor, escreva um comentário.");
-    return;
-  }
-
-  let whatsappMessage = `Feedback do cliente:\nNota: ${rating} estrelas\nComentário: ${comentario}`;
-  let url = `https://wa.me/5513991873557?text=${encodeURIComponent(whatsappMessage)}`;
-  window.open(url, "_blank");
-
-
-}
-
-
+// ===== FEEDBACK =====
 let nota = 0;
 
 function avaliar(valor) {
@@ -186,12 +176,7 @@ function enviarFeedback() {
   }
 
   const texto = `⭐ Avaliação: ${nota} estrelas\n👤 Nome: ${nome || "Cliente"}\n💬 Feedback: ${mensagem}`;
-  
-  // Número do WhatsApp da empresa (substitua pelo seu)
-  const numero = "5513991873557"; 
-  
+  const numero = "5513991873557";
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
   window.open(url, "_blank");
 }
-
-
