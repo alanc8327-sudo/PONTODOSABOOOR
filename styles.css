@@ -51,6 +51,13 @@ button:hover,
   background: #b30000;
 }
 
+.categoria-titulo {
+  font-size: 30px;
+  color: #d35400;
+  margin: 30px 0 15px;
+  text-align: center;
+}
+
 /* Seção Indique */
 .indique {
   text-align: center;
@@ -103,7 +110,7 @@ button:hover,
 }
 
 .card img {
-  width: 250px;
+  width: 300px;
   height: auto;
   border-radius: 10px;
 }
@@ -117,6 +124,19 @@ button:hover,
 .card p {
   font-size: 18px;
   color: #000000;
+}
+
+.card input{
+   text-align: center;
+   padding: 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+
+
+
 }
 
 .resumo {
