@@ -6,242 +6,220 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Bebas+Neue&family=Belanosima:wght@400;600;700&family=Boldonse&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oleo+Script+Swash+Caps:wght@400;700&family=Oleo+Script:wght@400;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <link rel="stylesheet" href="styles.css">
-
   <title>Ponto Do Sabor</title>
 </head>
 
 <body>
-
   <header>
-    <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="">
-    <h2> O Segredo Da Receita? Amor De Casa</h2>
+    <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="Ponto Do Sabor">
+    <h2>O Segredo Da Receita? Amor De Casa</h2>
   </header>
 
   <section>
     <div class="indique">
-      <img src="./Indique e Ganhe.jpeg" alt="">
-      <p>Promoção Valida até dia 24/05</p>
+      <img src="./Indique e Ganhe.jpeg" alt="Indique e Ganhe">
+      <p>Promoção Válida até dia 24/05</p>
     </div>
   </section>
 
- <!-- Categoria: Barcas de Jantar -->
-<section class="categoria barcas-jantar">
-  <h1 class="categoria-titulo">🍽️ Barcas de Jantar</h1>
-  <div class="container">
-    <!-- Barca Pequena -->
-    <div class="card">
-      <img src="./Barca pequena.jpeg" alt="Barca Pequena">
-      <h3>Barca Pequena</h3>
-      <p>Serve no máximo 2 pessoas: 1 proteína, 1 pão de alho, arroz, farofa e vinagrete.</p>
-      <p><strong>R$40,00</strong></p>
-      <input type="text" id="obs-barca-pequena" placeholder="Ex: Remover arroz...">
-      <button onclick="adicionarPedido('Barca Pequena', 40, 1, document.getElementById('obs-barca-pequena').value)">+</button>
-      <button onclick="removerPedido('Barca Pequena')">-</button>
+  <!-- Categoria: Barcas de Jantar -->
+  <section class="categoria barcas-jantar">
+    <h1 class="categoria-titulo">🍽️ Barcas de Jantar</h1>
+    <div class="container">
+      <div class="card">
+        <img src="./Barca pequena.jpeg" alt="Barca Pequena">
+        <h3>Barca Pequena</h3>
+        <p>Serve no máximo 2 pessoas: 1 proteína, 1 pão de alho, arroz, farofa e vinagrete.</p>
+        <p><strong>R$40,00</strong></p>
+        <input type="text" id="obs-barca-pequena" placeholder="Ex: Sem arroz...">
+        <button onclick="adicionarPedido('Barca Pequena', 40, 1, document.getElementById('obs-barca-pequena').value)">+</button>
+      </div>
+
+      <div class="card">
+        <img src="./barca média completa.jpeg" alt="Barca Média Completa">
+        <h3>Barca Média Completa</h3>
+        <p>2 proteínas, queijo coalho (ou pão de alho), arroz, vinagrete, farofa e batata frita. Serve 2 a 3 pessoas.</p>
+        <p><strong>R$65,00</strong></p>
+        <input type="text" id="obs-barca-media" placeholder="Ex: Sem linguiça...">
+        <button onclick="adicionarPedido('Barca Média Completa', 65, 1, document.getElementById('obs-barca-media').value)">+</button>
+      </div>
+
+      <div class="card">
+        <img src="./barca grande completa.jpeg" alt="Barca Família Completa">
+        <h3>Barca Família Completa</h3>
+        <p>Serve até 4 pessoas: 3 proteínas + queijo coalho + pão de alho, arroz, vinagrete, farofa e batata frita.</p>
+        <p><strong>R$75,00</strong></p>
+        <input type="text" id="obs-barca-grande" placeholder="Ex: Sem vinagrete...">
+        <button onclick="adicionarPedido('Barca Família Completa', 75, 1, document.getElementById('obs-barca-grande').value)">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categoria: Porções -->
+  <section class="categoria porcoes">
+    <h1 class="categoria-titulo">🥔 Porções</h1>
+    <div class="container">
+      <div class="card">
+        <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
+        <h3>Porção de Batata Frita</h3>
+        <p><strong>R$45,00</strong></p>
+        <button onclick="adicionarPedido('Porção de Batata Frita', 45)">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categoria: Espetinhos -->
+  <section class="categoria espetinhos">
+    <h1 class="categoria-titulo">🍢 Espetinhos</h1>
+    <div class="container">
+      <div class="card">
+        <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos Avulsos">
+        <h3>Espetinhos Avulsos</h3>
+        <p><strong>R$10,00</strong></p>
+        <select id="espetinho">
+          <option value="Linguiça">Linguiça</option>
+          <option value="Carne">Carne</option>
+          <option value="Frango">Frango</option>
+          <option value="Queijo Coalho">Queijo Coalho</option>
+          <option value="Pão de Alho">Pão de Alho</option>
+        </select>
+        <button onclick="adicionarPedido('Espetinho de ' + document.getElementById('espetinho').value, 10)">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categoria: Barcas de Petiscos -->
+  <section class="categoria petiscos">
+    <h1 class="categoria-titulo">🍤 Barcas de Petiscos</h1>
+    <div class="container">
+      <div class="card">
+        <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Média">
+        <h3>Barca de Petiscos Média</h3>
+        <p>Serve até 3 pessoas: 5 proteínas + vinagrete, farofa e batata frita.</p>
+        <p><strong>R$89,99</strong></p>
+        <input type="text" id="obs-barca-petisco-media" placeholder="Ex: Sem farofa...">
+        <button onclick="adicionarPedido('Barca de Petiscos Média', 89.99, 1, document.getElementById('obs-barca-petisco-media').value)">+</button>
+      </div>
+
+      <div class="card">
+        <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Grande">
+        <h3>Barca de Petiscos Grande</h3>
+        <p>Serve até 4 pessoas: 7 proteínas + vinagrete, farofa e batata frita.</p>
+        <p><strong>R$99,99</strong></p>
+        <input type="text" id="obs-barca-petisco-grande" placeholder="Ex: Sem batata...">
+        <button onclick="adicionarPedido('Barca de Petiscos Grande', 99.99, 1, document.getElementById('obs-barca-petisco-grande').value)">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categoria: Bebidas -->
+  <section class="categoria bebidas">
+    <h1 class="categoria-titulo">🥤 Bebidas</h1>
+    <div class="container">
+      <div class="card">
+        <h3>Coca Cola 200ml</h3>
+        <p><strong>R$4,00</strong></p>
+        <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">+</button>
+      </div>
+
+      <div class="card">
+        <h3>Coca Cola Lata 350ml</h3>
+        <p><strong>R$6,00</strong></p>
+        <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">+</button>
+      </div>
+
+      <div class="card">
+        <h3>Dolly 2L</h3>
+        <p><strong>R$12,00</strong></p>
+        <button onclick="adicionarPedido('Dolly 2L', 12.00)">+</button>
+      </div>
+
+      <div class="card">
+        <h3>Coca Cola 2L</h3>
+        <p><strong>R$20,00</strong></p>
+        <button onclick="adicionarPedido('Coca Cola 2L', 20.00)">+</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback -->
+  <section class="feedback">
+    <h2>Deixe seu Feedback</h2>
+    <div class="stars">
+      <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
+      <i class="fa-regular fa-star" onclick="avaliar(2)"></i>
+      <i class="fa-regular fa-star" onclick="avaliar(3)"></i>
+      <i class="fa-regular fa-star" onclick="avaliar(4)"></i>
+      <i class="fa-regular fa-star" onclick="avaliar(5)"></i>
+    </div>
+    <textarea id="feedbackMsg" placeholder="Deixe sua opinião aqui..."></textarea>
+    <input type="text" id="feedbackNome" placeholder="Seu nome">
+    <button onclick="enviarFeedback()">Enviar pelo WhatsApp</button>
+  </section>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/ponto.do.sabor.fs/" target="_blank" class="btn-instagram-fixo">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- BOTÃO FLUTUANTE MOBILE -->
+  <button class="btn-toggle-sidebar" onclick="toggleSidebar()" id="btnToggleSidebar">
+    <i class="fas fa-shopping-bag"></i>
+    <span id="badgeQtd">0</span>
+  </button>
+
+  <!-- CARRINHO LATERAL -->
+  <div class="sidebar-carrinho" id="sidebarCarrinho">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-shopping-bag"></i> Seu Pedido</h2>
+      <button class="btn-fechar-sidebar" onclick="toggleSidebar()">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
 
-    <!-- Barca Média -->
-    <div class="card">
-      <img src="./barca média completa.jpeg" alt="Barca Média Completa">
-      <h3>Barca Média Completa</h3>
-      <p>2 proteínas, queijo coalho (ou pão de alho), arroz, vinagrete, farofa e batata frita. Serve 2 a 3 pessoas.</p>
-      <p><strong>R$65,00</strong></p>
-      <input type="text" id="obs-barca-media" placeholder="Ex: Remover linguiça...">
-      <button onclick="adicionarPedido('Barca Média Completa', 65, 1, document.getElementById('obs-barca-media').value)">+</button>
-      <button onclick="removerPedido('Barca Média Completa')">-</button>
-    </div>
+    <div class="sidebar-itens" id="resumo">Nenhum pedido ainda.</div>
 
-    <!-- Barca Grande -->
-    <div class="card">
-      <img src="./barca grande completa.jpeg" alt="Barca Família Completa">
-      <h3>Barca Família Completa</h3>
-      <p>Serve até 4 pessoas: 3 proteínas + queijo coalho + pão de alho, arroz, vinagrete, farofa e batata frita.</p>
-      <p><strong>R$75,00</strong></p>
-      <input type="text" id="obs-barca-grande" placeholder="Ex: Remover vinagrete...">
-      <button onclick="adicionarPedido('Barca Família Completa', 75, 1, document.getElementById('obs-barca-grande').value)">+</button>
-      <button onclick="removerPedido('Barca Família Completa')">-</button>
-    </div>
-  </div>
-</section>
-
-<!-- Categoria: Porções -->
-<section class="categoria porcoes">
-  <h1 class="categoria-titulo">🥔 Porções</h1>
-  <div class="container">
-    <div class="card">
-      <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
-      <h3>Porção de Batata Frita</h3>
-      <p><strong>R$45,00</strong></p>
-      <button onclick="adicionarPedido('Porção de Batata Frita',45)">+</button>
-      <button onclick="removerPedido('Porção de Batata Frita')">-</button>
-    </div>
-  </div>
-</section>
-
-<!-- Categoria: Espetinhos -->
-<section class="categoria espetinhos">
-  <h1 class="categoria-titulo">🍢 Espetinhos</h1>
-  <div class="container">
-    <div class="card">
-      <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos Avulsos">
-      <h3>Espetinhos Avulsos</h3>
-      <p><strong>R$10,00</strong></p>
-      <select id="espetinho">
-        <option value="Linguiça">Linguiça</option>
-        <option value="Carne">Carne</option>
-        <option value="Frango">Frango</option>
-        <option value="Queijo Coalho">Queijo Coalho</option>
-        <option value="Pão de Alho">Pão de Alho</option>
+    <div class="sidebar-footer">
+      <input type="text" id="endereco" placeholder="Rua, número...">
+      <select id="bairro">
+        <option value="">Selecione o bairro</option>
+        <option value="Saoc">Saoc</option>
+        <option value="Albatroz 2">Albatroz 2</option>
+        <option value="Centro">Centro</option>
+        <option value="Sitio">Sitio</option>
+        <option value="Maitinga">Maitinga</option>
+        <option value="Rio Da Praia">Rio Da Praia</option>
+        <option value="Mangue Seco">Mangue Seco</option>
+        <option value="Pedralina">Pedralina</option>
+        <option value="Ana Paula">Ana Paula</option>
+        <option value=" V.L Lado Praia">V.L Lado Praia</option>
+        <option value="V.L Lado Chacara">V.L Lado Chacara</option>
+        <option value="V.L Invasao">V.L Invasao</option>
+        <option value="Indiaia">Indiaia</option>
+        <option value="Rivieira">Rivieira</option>
+        <option value="Sao Lourenco">Sao Lourenco</option>
       </select>
-      <button onclick="adicionarPedido(document.getElementById('espetinho').value, 10)">+</button>
-      <button onclick="removerPedido(document.getElementById('espetinho').value)">-</button>
+
+      <select id="pagamento">
+        <option value="">Forma de pagamento</option>
+        <option value="Débito">Débito</option>
+        <option value="Crédito">Crédito</option>
+        <option value="Pix">Pix</option>
+      </select>
+
+      <div class="sidebar-total" id="sidebarTotal">Total: R$ 0,00</div>
+
+      <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+      <button class="btn-limpar" onclick="limparPedidos()">Limpar Pedido</button>
     </div>
   </div>
-</section>
 
-<!-- Categoria: Barcas de Petiscos -->
-<section class="categoria petiscos">
-  <h1 class="categoria-titulo">🍤 Barcas de Petiscos</h1>
-  <div class="container">
-    <div class="card">
-      <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Média">
-      <h3>Barca de Petiscos Média</h3>
-      <p>Serve até 3 pessoas: 5 proteínas + vinagrete, farofa e batata frita.</p>
-      <p><strong>R$89,99</strong></p>
-        <input type="text" id="obs-barca-petisco-media" placeholder="Ex: Remover arroz...">
-      <button onclick="adicionarPedido('Barca de Petiscos Média',89.99, 1, document.getElementById('obs-barca-petisco-media').value)">+</button>
-      <button onclick="removerPedido('Barca de Petiscos Média')">-</button>
-    </div>
+  <!-- OVERLAY -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
-    <div class="card">
-      <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Grande">
-      <h3>Barca de Petiscos Grande</h3>
-      <p>Serve até 4 pessoas: 7 proteínas + vinagrete, farofa e batata frita.</p>
-      <p><strong>R$99,99</strong></p>
-      <input type="text" id="obs-barca-petisco-grande" placeholder="Ex: Remover arroz...">
-      <button onclick="adicionarPedido('Barca de Petiscos Grande',99.99, 1, document.getElementById('obs-barca-petisco-grande').value)">+</button>
-      <button onclick="removerPedido('Barca de Petiscos Grande')">-</button>
-    </div>
-  </div>
-</section>
-
-<!-- Categoria: Bebidas -->
-<section class="categoria bebidas">
-  <h1 class="categoria-titulo">🥤 Bebidas</h1>
-  <div class="container">
-    <div class="container1">
-      <h3>Coca Cola 200ml</h3>
-      <p><strong>R$4,00</strong></p>
-      <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">+</button>
-      <button onclick="removerPedido('Coca Cola 200ml')">-</button>
-    </div>
-
-    <div class="container1">
-      <h3>Coca Cola Lata 350ml</h3>
-      <p><strong>R$6,00</strong></p>
-      <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">+</button>
-      <button onclick="removerPedido('Coca Cola Lata 350ml')">-</button>
-    </div>
-
-    <div class="container1">
-      <h3>Dolly 2L</h3>
-      <p><strong>R$12,00</strong></p>
-      <button onclick="adicionarPedido('Dolly 2L', 12.00)">+</button>
-      <button onclick="removerPedido('Dolly 2L')">-</button>
-    </div>
-
-    <div class="container1">
-      <h3>Coca Cola 2L</h3>
-      <p><strong>R$20,00</strong></p>
-      <button onclick="adicionarPedido('Coca Cola 2L', 20.00)">+</button>
-      <button onclick="removerPedido('Coca Cola 2L')">-</button>
-    </div>
-  </div>
-</section>
-
-
-
-
-    <section>
-      <div>
-        <div class="resumo">
-          <h2>Resumo do Pedido</h2>
-          <p id="resumo">Nenhum pedido ainda.</p>
-
-          <label>Endereço de entrega:</label>
-          <input type="text" id="endereco" placeholder="Rua, número...">
-
-          <label>Bairro:</label>
-          <select id="bairro">
-            <option value="">Selecione</option>
-            <option value="Saoc">Saoc</option>
-            <option value="Albatroz 2">Albatroz 2</option>
-            <option value="Centro">Centro</option>
-            <option value="Sitio">Sitio</option>
-            <option value="Maitinga">Maitinga</option>
-            <option value="Rio Da Praia">Rio Da Praia</option>
-            <option value="Mangue Seco">Mangue Seco</option>
-            <option value="Pedralina">Pedralina</option>
-            <option value="Ana Paula">Ana Paula</option>
-            <option value=" V.L Lado Praia">V.L Lado Praia</option>
-            <option value="V.L Lado Chacara">V.L Lado Chacara</option>
-            <option value="V.L Invasao">V.L Invasao</option>
-            <option value="Indiaia">Indiaia</option>
-            <option value="Rivieira">Rivieira</option>
-            <option value="Sao Lourenco">Sao Lourenco</option>
-
-          </select>
-
-          <label>pagamento:</label>
-          <select id="pagamento">
-            <option value="">Selecione</option>
-            <option value="Débito">Débito</option>
-            <option value="Crédito">Crédito</option>
-            <option value="Pix">Pix</option>
-          </select>
-
-          <button onclick="finalizarPedido()">Finalizar Pedido</button>
-          <button onclick="limparPedidos()">Limpar Pedido</button>
-        </div>
-      </div>
-
-    </section>
-    <section class="feedback">
-      <h2>Deixe seu Feedback</h2>
-
-      <div class="stars">
-        <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
-        <i class="fa-regular fa-star" onclick="avaliar(2)"></i>
-        <i class="fa-regular fa-star" onclick="avaliar(3)"></i>
-        <i class="fa-regular fa-star" onclick="avaliar(4)"></i>
-        <i class="fa-regular fa-star" onclick="avaliar(5)"></i>
-      </div>
-
-      <textarea id="feedbackMsg" placeholder="Deixe sua opinião aqui..."></textarea>
-      <label>Nome:</label>
-      <input type="text" id="feedbackNome" placeholder="Seu nome">
-
-      <button onclick="enviarFeedback()">Enviar pelo WhatsApp</button>
-    </section>
-
-
-
-    <section>
-      <div>
-        <a href="https://www.instagram.com/ponto.do.sabor.fs/" target="_blank" class="btn-instagram-fixo">
-          <i class="fab fa-instagram"></i>
-        </a>
-
-      </div>
-    </section>
-
+  <script src="script.js"></script>
 </body>
-
-<script src="script.js"></script>
-
 </html>
