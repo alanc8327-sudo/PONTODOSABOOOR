@@ -58,6 +58,7 @@ button:hover,
   text-align: center;
 }
 
+
 /* Seção Indique */
 .indique {
   text-align: center;
@@ -77,7 +78,7 @@ button:hover,
 }
 
 /* Cards de bebidas */
-.bebidas {
+.container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
@@ -135,9 +136,9 @@ button:hover,
   border: 1px solid #ccc;
   margin-top: 10px;
 
-
-
 }
+
+
 
 .resumo {
   background: #fff3e6;
