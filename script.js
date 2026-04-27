@@ -19,17 +19,19 @@ const taxas = {
   "Sao Lourenco": 30,
 };
 
-// ===== TOGGLE CARRINHO =====
-function toggleCarrinho() {
-    const conteudo = document.getElementById('carrinhoConteudo');
-    const icon = document.getElementById('carrinhoIcon');
-    conteudo.classList.toggle('aberto');
-    icon.classList.toggle('girado');
+// ===== TOGGLE SIDEBAR =====
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebarCarrinho');
+    const overlay = document.getElementById('sidebarOverlay');
+    const body = document.body;
+
+    sidebar.classList.toggle('aberto');
+    overlay.classList.toggle('ativo');
+    body.classList.toggle('sidebar-aberta');
 }
 
 // ===== ADICIONAR/REMOVER PEDIDO =====
 function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
-  // Se tiver obs, cria chave única pra não agrupar errado
   let nomeChave = observacao? `${nome}_${observacao}` : nome;
   let itemExistente = pedidos.find(p => p.nomeChave === nomeChave);
 
@@ -46,14 +48,17 @@ function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
   }
   atualizarResumo();
 
-  // Abre o carrinho quando adiciona primeiro item
-  if (pedidos.length === 1) {
-    const conteudo = document.getElementById('carrinhoConteudo');
-    const icon = document.getElementById('carrinhoIcon');
-    if (!conteudo.classList.contains('aberto')) {
-      conteudo.classList.add('aberto');
-      icon.classList.add('girado');
-    }
+  // Animação no botão mobile
+  const btn = document.getElementById('btnToggleSidebar');
+  btn.classList.add('pulse');
+  setTimeout(() => btn.classList.remove('pulse'), 500);
+
+  // Limpa input de obs
+  if (observacao) {
+    const inputs = document.querySelectorAll('input[type="text"]');
+    inputs.forEach(input => {
+      if (input.value === observacao) input.value = '';
+    });
   }
 }
 
@@ -68,16 +73,16 @@ function removerPedido(nome) {
   }
 }
 
-// ===== ATUALIZA RESUMO + HEADER DO CARRINHO =====
+// ===== ATUALIZA RESUMO + BADGE =====
 function atualizarResumo() {
   const resumoEl = document.getElementById("resumo");
-  const qtdEl = document.getElementById("carrinhoQtd");
-  const totalEl = document.getElementById("carrinhoTotal");
+  const badgeEl = document.getElementById("badgeQtd");
+  const totalEl = document.getElementById("sidebarTotal");
 
   if (pedidos.length === 0) {
     resumoEl.innerHTML = "Nenhum pedido ainda.";
-    qtdEl.textContent = "0 itens";
-    totalEl.textContent = "R$ 0,00";
+    badgeEl.textContent = "0";
+    totalEl.textContent = "Total: R$ 0,00";
     return;
   }
 
@@ -89,7 +94,7 @@ function atualizarResumo() {
     const subtotalItem = item.quantidade * item.preco;
     subtotal += subtotalItem;
     qtdTotal += item.quantidade;
-    let obs = item.observacao? `<br><small style="color:#FF6347;font-weight:700;">Obs: ${item.observacao}</small>` : "";
+    let obs = item.observacao? `<br><small>Obs: ${item.observacao}</small>` : "";
 
     html += `
       <div class="item-pedido">
@@ -98,10 +103,9 @@ function atualizarResumo() {
       </div>`;
   });
 
-  html += `<br><strong style="font-size:20px;">Subtotal: R$ ${subtotal.toFixed(2)}</strong>`;
   resumoEl.innerHTML = html;
-  qtdEl.textContent = `${qtdTotal} ${qtdTotal === 1? 'item' : 'itens'}`;
-  totalEl.textContent = `R$ ${subtotal.toFixed(2)}`;
+  badgeEl.textContent = qtdTotal;
+  totalEl.textContent = `Total: R$ ${subtotal.toFixed(2)}`;
 }
 
 function finalizarPedido() {
