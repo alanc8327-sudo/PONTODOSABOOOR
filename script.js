@@ -21,17 +21,22 @@ const taxas = {
 
 };
 
-function adicionarPedido(nome, preco, quantidade = 1) {
+function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
   let itemExistente = pedidos.find(p => p.nome === nome);
 
   if (itemExistente) {
     itemExistente.quantidade += quantidade;
+    if (observacao) {
+      itemExistente.observacao = observacao; // atualiza observação se houver
+    }
   } else {
-    pedidos.push({ nome, preco, quantidade });
+    pedidos.push({ nome, preco, quantidade, observacao });
   }
 
   atualizarResumo();
 }
+
+
 
 
 function removerPedido(nome,preco, quantidade = 1) {
@@ -41,6 +46,8 @@ function removerPedido(nome,preco, quantidade = 1) {
     if (pedidos[index].quantidade <= 0) {
       pedidos.splice(index, 1);
     }
+
+    
     atualizarResumo();
     }
   }
@@ -52,26 +59,21 @@ function atualizarResumo() {
   let resumo = "";
   let total = 0;
 
-
-  for (let item in pedidos) {
-    let qtd = pedidos[item].quantidade;
-    let preco = pedidos[item].preco;
-    let nome = pedidos[item].nome;
-    let subtotal = qtd * preco;
+  pedidos.forEach(item => {
+    let subtotal = item.quantidade * item.preco;
     total += subtotal;
-    resumo += `${nome} x${qtd} - R$ ${subtotal.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}\n`;
-  }
+    let obs = item.observacao ? ` (Obs: ${item.observacao})` : "";
+    resumo += `${item.nome} x${item.quantidade} - R$ ${subtotal.toFixed(2)}${obs}\n`;
+  });
 
   if (resumo === "") {
     resumo = "Nenhum pedido ainda.";
   } else {
-    resumo += `\nTotal: R$ ${total.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
+    resumo += `\nTotal: R$ ${total.toFixed(2)}`;
   }
 
   document.getElementById("resumo").innerText = resumo;
 }
-
-
 
 function finalizarPedido() {
   let endereco = document.getElementById("endereco").value;
@@ -83,25 +85,22 @@ function finalizarPedido() {
     return;
   }
 
-  // Calcula subtotal corretamente
   let subtotal = pedidos.reduce((acc, item) => acc + (item.quantidade * item.preco), 0);
-
   let taxaEntrega = taxas[bairro] || 0;
   let total = subtotal + taxaEntrega;
-  let pagamentoTexto = `Pagamento: ${pagamento}`;
 
-  // Monta resumo para envio
   let resumo = "";
   pedidos.forEach(item => {
     let subtotalItem = item.quantidade * item.preco;
-    resumo += `${item.nome} x${item.quantidade} - R$ ${subtotalItem.toFixed(2)}\n`;
+    let obs = item.observacao ? ` (Obs: ${item.observacao})` : "";
+    resumo += `${item.nome} x${item.quantidade} - R$ ${subtotalItem.toFixed(2)}${obs}\n`;
   });
 
   resumo += `\nSubtotal: R$ ${subtotal.toFixed(2)}`;
   resumo += `\nTaxa de entrega (${bairro}): R$ ${taxaEntrega.toFixed(2)}`;
   resumo += `\nTotal: R$ ${total.toFixed(2)}`;
   resumo += `\nEndereço: ${endereco} - ${bairro}`;
-  resumo += `\n${pagamentoTexto}`;
+  resumo += `\nPagamento: ${pagamento}`;
   resumo += `\nPrazo de entrega: 55-65 minutos.`;
   resumo += `\nObrigado por escolher o Ponto Do Sabor!`;
 
@@ -109,6 +108,13 @@ function finalizarPedido() {
   let url = `https://wa.me/5513991873557?text=${mensagem}`;
   window.open(url, "_blank");
 }
+
+
+
+
+
+
+ 
 
 
 function limparPedidos() {
