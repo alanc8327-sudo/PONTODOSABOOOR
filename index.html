@@ -30,134 +30,138 @@
     </div>
   </section>
 
-  <section>
-    <div class="container">
-      <div class="card">
-        <img src="./Barca pequena.jpeg" alt="Porção de Mandioca">
-        <h3>Barca Pequena</h3>
-        <p>Serve no máximo 2 pessoas:
-          1 proteína, 1 pão de alho, arroz, farofa e vinagrete.</p>
-        <p><strong>R$40,00</strong></p>
-        <button onclick="adicionarPedido('Barca Pequena', 40)">+</button>
-        <button onclick="removerPedido('Barca Pequena')">-</button>
-      </div>
+ <!-- Categoria: Barcas de Jantar -->
+<section class="categoria barcas-jantar">
+  <h1 class="categoria-titulo">🍽️ Barcas de Jantar</h1>
+  <div class="container">
+    <!-- Barca Pequena -->
+    <div class="card">
+      <img src="./Barca pequena.jpeg" alt="Barca Pequena">
+      <h3>Barca Pequena</h3>
+      <p>Serve no máximo 2 pessoas: 1 proteína, 1 pão de alho, arroz, farofa e vinagrete.</p>
+      <p><strong>R$40,00</strong></p>
+      <input type="text" id="obs-barca-pequena" placeholder="Ex: Remover arroz...">
+      <button onclick="adicionarPedido('Barca Pequena', 40, 1, document.getElementById('obs-barca-pequena').value)">+</button>
+      <button onclick="removerPedido('Barca Pequena')">-</button>
+    </div>
 
-      <div class="container">
-        <div class="card">
-          <img src="./barca média completa.jpeg" alt="Barca de Churrasco Completa">
-          <h3>Barca Media Completa</h3>
-          <p>2 proteínas, queijo coalho (ou pão de alho), arroz, vinagrete, farofa e batata frita.
-            Serve de 2 a 3 pessoas.</p>
-          <p><strong>R$65,00</strong></p>
-          <button onclick="adicionarPedido('Barca de Churrasco Completa',65)">+</button>
-          <button onclick="removerPedido('Barca de Churrasco Completa')">-</button>
-        </div>
+    <!-- Barca Média -->
+    <div class="card">
+      <img src="./barca média completa.jpeg" alt="Barca Média Completa">
+      <h3>Barca Média Completa</h3>
+      <p>2 proteínas, queijo coalho (ou pão de alho), arroz, vinagrete, farofa e batata frita. Serve 2 a 3 pessoas.</p>
+      <p><strong>R$65,00</strong></p>
+      <input type="text" id="obs-barca-media" placeholder="Ex: Remover linguiça...">
+      <button onclick="adicionarPedido('Barca Média Completa', 65, 1, document.getElementById('obs-barca-media').value)">+</button>
+      <button onclick="removerPedido('Barca Média Completa')">-</button>
+    </div>
 
-        <div class="container">
-          <div class="card">
-            <img src="./barca grande completa.jpeg" alt="Barca de Churrasco Completa">
-            <h3>Barca Familia Completa</h3>
-            <p>Serve até 4 pessoas:
-              3 proteínas + queijo coalho + pão de alho
-              Arroz, vinagrete, farofa e batata frita.</p>
-            <p><strong>R$75,00</strong></p>
-            <button onclick="adicionarPedido('Barca de Churrasco Completa',75)">+</button>
-            <button onclick="removerPedido('Barca de Churrasco Completa')">-</button>
-          </div>
-
-
-          <div class="container">
-            <div class="card">
-              <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
-              <h3>Porção de Batata Frita</h3>
-              <p><strong>R$45,00</strong></p>
-              <button onclick="adicionarPedido('Porção de Batata Frita',45)">+</button>
-              <button onclick="removerPedido('Porção de Batata Frita')">-</button>
-            </div>
-            <div class="container">
-              <div class="card">
-                <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos avulsos">
-                <h3>Espetinhos Avulsos</h3>
-                <p><strong>R$12,00</strong></p>
-                <select name="espetinho" id="espetinho">
-                  <option value="Linguiça">Linguiça</option>
-                  <option value="Carne">Carne</option>
-                  <option value="Frango">Frango</option>
-                  <option value="Queijo Coalho">Queijo Coalho</option>
-                  <option value="Pão de Alho">Pão de Alho</option>
-                </select>
-                <button onclick="adicionarPedido(document.getElementById('espetinho').value, 12)">+</button>
-                <button onclick="removerPedido(document.getElementById('espetinho').value)">-</button>
-              </div>
-
-
-              <div class="container">
-                <div class="card">
-                  <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
-                  <h3>Barca de Petiscos Media</h3>
-                  <p>Serve até 3 pessoas:
-                    5 proteínas
-                    Acompanha: vinagrete, farofa e batata frita.</p>
-                  <p><strong>R$89,99</strong></p>
-                  <button onclick="adicionarPedido('Barca de Petiscos Media',89.99)">+</button>
-                  <button onclick="removerPedido('Barca de Petiscos Media')">-</button>
-                </div>
-
-                <div class="container">
-                  <div class="card">
-                    <img src="./barca de pesticos.jpeg" alt="Barca de Pestiscos">
-                    <h3>Barca de Petiscos Grande</h3>
-                    <p>Descrição:
-                      Serve até 4 pessoas:
-                      7 proteínas + vinagrete, farofa e batata frita
-
-
-                    <p><strong>R$99,99</strong></p>
-                    <button onclick="adicionarPedido('Barca de Petiscos Grande',99.99)">+</button>
-                    <button onclick="removerPedido('Barca de Petiscos Grande')">-</button>
-                  </div>
-
-  </section>
+    <!-- Barca Grande -->
+    <div class="card">
+      <img src="./barca grande completa.jpeg" alt="Barca Família Completa">
+      <h3>Barca Família Completa</h3>
+      <p>Serve até 4 pessoas: 3 proteínas + queijo coalho + pão de alho, arroz, vinagrete, farofa e batata frita.</p>
+      <p><strong>R$75,00</strong></p>
+      <input type="text" id="obs-barca-grande" placeholder="Ex: Remover vinagrete...">
+      <button onclick="adicionarPedido('Barca Família Completa', 75, 1, document.getElementById('obs-barca-grande').value)">+</button>
+      <button onclick="removerPedido('Barca Família Completa')">-</button>
+    </div>
   </div>
+</section>
 
-  <section>
-    <section class="bebidas">
-      <div>
-        <h2>Refrigerantes</h2>
+<!-- Categoria: Porções -->
+<section class="categoria porcoes">
+  <h1 class="categoria-titulo">🥔 Porções</h1>
+  <div class="container">
+    <div class="card">
+      <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
+      <h3>Porção de Batata Frita</h3>
+      <p><strong>R$45,00</strong></p>
+      <button onclick="adicionarPedido('Porção de Batata Frita',45)">+</button>
+      <button onclick="removerPedido('Porção de Batata Frita')">-</button>
+    </div>
+  </div>
+</section>
 
-        <h3> Coca Cola 200ml R$ 4,00</h3>
+<!-- Categoria: Espetinhos -->
+<section class="categoria espetinhos">
+  <h1 class="categoria-titulo">🍢 Espetinhos</h1>
+  <div class="container">
+    <div class="card">
+      <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos Avulsos">
+      <h3>Espetinhos Avulsos</h3>
+      <p><strong>R$10,00</strong></p>
+      <select id="espetinho">
+        <option value="Linguiça">Linguiça</option>
+        <option value="Carne">Carne</option>
+        <option value="Frango">Frango</option>
+        <option value="Queijo Coalho">Queijo Coalho</option>
+        <option value="Pão de Alho">Pão de Alho</option>
+      </select>
+      <button onclick="adicionarPedido(document.getElementById('espetinho').value, 10)">+</button>
+      <button onclick="removerPedido(document.getElementById('espetinho').value)">-</button>
+    </div>
+  </div>
+</section>
 
-        <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">+</button>
-        <button onclick="removerPedido('Coca Cola 200ml')">-</button>
+<!-- Categoria: Barcas de Petiscos -->
+<section class="categoria petiscos">
+  <h1 class="categoria-titulo">🍤 Barcas de Petiscos</h1>
+  <div class="container">
+    <div class="card">
+      <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Média">
+      <h3>Barca de Petiscos Média</h3>
+      <p>Serve até 3 pessoas: 5 proteínas + vinagrete, farofa e batata frita.</p>
+      <p><strong>R$89,99</strong></p>
+      <button onclick="adicionarPedido('Barca de Petiscos Média',89.99)">+</button>
+      <button onclick="removerPedido('Barca de Petiscos Média')">-</button>
+    </div>
 
-      </div>
+    <div class="card">
+      <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Grande">
+      <h3>Barca de Petiscos Grande</h3>
+      <p>Serve até 4 pessoas: 7 proteínas + vinagrete, farofa e batata frita.</p>
+      <p><strong>R$99,99</strong></p>
+      <button onclick="adicionarPedido('Barca de Petiscos Grande',99.99)">+</button>
+      <button onclick="removerPedido('Barca de Petiscos Grande')">-</button>
+    </div>
+  </div>
+</section>
 
-      <div>
-        <h3> Coca Cola 350ml Lata R$ 6,00</h3>
+<!-- Categoria: Bebidas -->
+<section class="categoria bebidas">
+  <h1 class="categoria-titulo">🥤 Bebidas</h1>
+  <div class="container">
+    <div class="card">
+      <h3>Coca Cola 200ml</h3>
+      <p><strong>R$4,00</strong></p>
+      <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">+</button>
+      <button onclick="removerPedido('Coca Cola 200ml')">-</button>
+    </div>
 
-        <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">+</button>
-        <button onclick="removerPedido('Coca Cola Lata 350ml')">-</button>
+    <div class="card">
+      <h3>Coca Cola Lata 350ml</h3>
+      <p><strong>R$6,00</strong></p>
+      <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">+</button>
+      <button onclick="removerPedido('Coca Cola Lata 350ml')">-</button>
+    </div>
 
-      </div>
+    <div class="card">
+      <h3>Dolly 2L</h3>
+      <p><strong>R$12,00</strong></p>
+      <button onclick="adicionarPedido('Dolly 2L', 12.00)">+</button>
+      <button onclick="removerPedido('Dolly 2L')">-</button>
+    </div>
 
+    <div class="card">
+      <h3>Coca Cola 2L</h3>
+      <p><strong>R$20,00</strong></p>
+      <button onclick="adicionarPedido('Coca Cola 2L', 20.00)">+</button>
+      <button onclick="removerPedido('Coca Cola 2L')">-</button>
+    </div>
+  </div>
+</section>
 
-
-      <div>
-        <h3>Dolly 2L R$ 12,00</h3>
-
-        <button onclick="adicionarPedido('Dolly 2L', 12.00)">+</button>
-        <button onclick="removerPedido('Dolly 2L')">-</button>
-
-      </div>
-      <div>
-        <h3>Coca Cola 2L R$ 20,00</h3>
-
-        <button onclick="adicionarPedido('Coca Cola 2L', 20.00)">+</button>
-        <button onclick="removerPedido('Coca Cola 2L')">-</button>
-
-      </div>
-
-    </section>
 
 
 
