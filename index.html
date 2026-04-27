@@ -113,7 +113,8 @@
       <h3>Barca de Petiscos Média</h3>
       <p>Serve até 3 pessoas: 5 proteínas + vinagrete, farofa e batata frita.</p>
       <p><strong>R$89,99</strong></p>
-      <button onclick="adicionarPedido('Barca de Petiscos Média',89.99)">+</button>
+        <input type="text" id="obs-barca-petisco-media" placeholder="Ex: Remover arroz...">
+      <button onclick="adicionarPedido('Barca de Petiscos Média',89.99, 1, document.getElementById('obs-barca-petisco-media').value)">+</button>
       <button onclick="removerPedido('Barca de Petiscos Média')">-</button>
     </div>
 
@@ -122,7 +123,8 @@
       <h3>Barca de Petiscos Grande</h3>
       <p>Serve até 4 pessoas: 7 proteínas + vinagrete, farofa e batata frita.</p>
       <p><strong>R$99,99</strong></p>
-      <button onclick="adicionarPedido('Barca de Petiscos Grande',99.99)">+</button>
+      <input type="text" id="obs-barca-petisco-grande" placeholder="Ex: Remover arroz...">
+      <button onclick="adicionarPedido('Barca de Petiscos Grande',99.99, 1, document.getElementById('obs-barca-petisco-grande').value)">+</button>
       <button onclick="removerPedido('Barca de Petiscos Grande')">-</button>
     </div>
   </div>
@@ -132,28 +134,28 @@
 <section class="categoria bebidas">
   <h1 class="categoria-titulo">🥤 Bebidas</h1>
   <div class="container">
-    <div class="card">
+    <div class="container1">
       <h3>Coca Cola 200ml</h3>
       <p><strong>R$4,00</strong></p>
       <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">+</button>
       <button onclick="removerPedido('Coca Cola 200ml')">-</button>
     </div>
 
-    <div class="card">
+    <div class="container1">
       <h3>Coca Cola Lata 350ml</h3>
       <p><strong>R$6,00</strong></p>
       <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">+</button>
       <button onclick="removerPedido('Coca Cola Lata 350ml')">-</button>
     </div>
 
-    <div class="card">
+    <div class="container1">
       <h3>Dolly 2L</h3>
       <p><strong>R$12,00</strong></p>
       <button onclick="adicionarPedido('Dolly 2L', 12.00)">+</button>
       <button onclick="removerPedido('Dolly 2L')">-</button>
     </div>
 
-    <div class="card">
+    <div class="container1">
       <h3>Coca Cola 2L</h3>
       <p><strong>R$20,00</strong></p>
       <button onclick="adicionarPedido('Coca Cola 2L', 20.00)">+</button>
