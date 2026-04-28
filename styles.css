@@ -37,13 +37,39 @@ header img {
   margin: 10px auto;
 }
 
-/* Botão principal */
-button,
-.btn {
+/* ===== BOTÕES DOS CARDS - LARGURA REDUZIDA ===== */
+.card button {
   background: #e60000;
   color: white;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 28px;
+  font-size: 32px;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 80px;
+  margin: 10px auto 0;
+  display: block;
+}
+
+.card button:hover {
+  background: #b30000;
+  transform: scale(1.1);
+}
+
+.card button:active {
+  transform: scale(0.95);
+}
+
+/* BOTÕES DO FEEDBACK E SIDEBAR CONTINUAM 100% */
+.feedback button,
+.sidebar-footer button {
+  background: #e60000;
+  color: white;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 22px;
   border: none;
   padding: 0.8rem 1.2rem;
   border-radius: 8px;
@@ -53,18 +79,13 @@ button,
   margin-top: 10px;
 }
 
-button:hover,
-.btn:hover {
+.feedback button:hover,
+.sidebar-footer button:hover {
   background: #b30000;
-  transform: scale(1.05);
 }
 
-button:active {
-  transform: scale(0.98);
-}
-
-.categoria-titulo {
-  font-size: 30px;
+.categoria-titulo  {
+  font-size: 40px;
   color: #d35400;
   margin: 30px 0 15px;
   text-align: center;
@@ -140,7 +161,7 @@ button:active {
 .card p {
   font-size: 18px;
   color: #000000;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-weight: 600;
 }
 
@@ -389,7 +410,7 @@ button:active {
   background: #444;
 }
 
-/* BOTÃO FLUTUANTE */
+/* BOTÃO FLUTUANTE - SEMPRE VISÍVEL */
 .btn-toggle-sidebar {
   position: fixed;
   bottom: 20px;
@@ -405,7 +426,9 @@ button:active {
   z-index: 9998;
   box-shadow: 0 5px 20px rgba(255, 99, 71, 0.6);
   transition: all 0.3s ease;
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-toggle-sidebar:hover {
@@ -468,32 +491,8 @@ button:active {
     right: -100%;
   }
 
-.btn-toggle-sidebar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
 .btn-fechar-sidebar {
     display: block;
-  }
-}
-
-@media (min-width: 969px) {
-.sidebar-carrinho {
-    right: 0;
-  }
-
-.btn-toggle-sidebar {
-    display: none;
-  }
-
-  body {
-    padding-right: 400px;
-  }
-
-.btn-fechar-sidebar {
-    display: none;
   }
 }
 
