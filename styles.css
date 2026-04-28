@@ -222,24 +222,30 @@ header img {
 }
 
 /* Botão Instagram fixo */
+/* Botão Instagram fixo - MESMO TAMANHO DO CARRINHO */
 .btn-instagram-fixo {
   position: fixed;
   bottom: 100px;
   right: 20px;
-  background: #e68900;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(90deg, #FF8C00, #FFA500, #FFD700);
   color: #fff;
-  font-size: 24px;
-  padding: 12px;
+  font-size: 32px;
   border-radius: 50%;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: transform 0.3s, background 0.3s;
   z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+
+
+
 .btn-instagram-fixo:hover {
-  background: #ff9800;
-  transform: scale(1.1);
+ transform: scale(1.1);
 }
 
 /* ===== CARRINHO LATERAL PONTO DO SABOR ===== */
