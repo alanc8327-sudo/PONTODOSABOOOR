@@ -299,7 +299,7 @@ header img {
   padding: 20px;
   color: #333;
   font-size: 18px;
-  font-family: 'Montserrat', sans-serif;
+   font-family: "Bebas Neue", sans-serif;
 }
 
 .item-pedido {
@@ -317,7 +317,7 @@ header img {
 }
 
 .item-pedido small {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Bebas Neue", sans-serif;
   font-weight: 700;
   color: #FF6347;
 }
