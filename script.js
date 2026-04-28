@@ -48,7 +48,7 @@ function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
   }
   atualizarResumo();
 
-  // Animação no botão mobile
+  // Animação no botão
   const btn = document.getElementById('btnToggleSidebar');
   btn.classList.add('pulse');
   setTimeout(() => btn.classList.remove('pulse'), 500);
