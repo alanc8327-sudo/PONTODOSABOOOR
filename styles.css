@@ -32,7 +32,7 @@ header h2 {
 }
 
 header img {
-  max-width: 250px;
+  max-width: 300px;
   height: auto;
   margin: 10px auto;
 }
@@ -94,6 +94,14 @@ header img {
 
 .bottom-sidebar.aberto {
   bottom: 0;
+}
+
+.sidebar-header {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  color: #d35400;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .sidebar-content {
