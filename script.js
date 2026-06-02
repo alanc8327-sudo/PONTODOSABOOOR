@@ -184,3 +184,32 @@ function enviarFeedback() {
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
   window.open(url, "_blank");
 }
+
+
+
+function toggleDeliveryBottom() {
+  const sidebar = document.getElementById('bottomSidebar');
+  const overlay = document.getElementById('bottomSidebarOverlay');
+  
+  sidebar.classList.toggle('aberto');
+  overlay.classList.toggle('ativo');
+}
+
+// Swipe down para fechar
+let startY = 0;
+const sidebar = document.getElementById('bottomSidebar');
+
+sidebar.addEventListener('touchstart', (e) => {
+  startY = e.touches[0].clientY;
+});
+
+sidebar.addEventListener('touchmove', (e) => {
+  const currentY = e.touches[0].clientY;
+  const diffY = currentY - startY;
+
+  if (diffY > 80) {
+    toggleDeliveryBottom();
+  }
+});
+
+
