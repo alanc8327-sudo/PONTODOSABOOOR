@@ -37,6 +37,129 @@ header img {
   margin: 10px auto;
 }
 
+.delivery-section {
+  text-align: center;
+  margin: 30px auto;
+  max-width: 600px;
+}
+
+/* Botão */
+.btn-delivery {
+  font-family: "Bebas Neue", sans-serif;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin: 20px auto;
+  display: block;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-delivery:hover {
+  background-color: #e63939;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn-delivery:active {
+  transform: scale(0.95);
+  animation: flash 0.3s;
+}
+
+@keyframes flash {
+  0% { background-color: #ff4d4d; }
+  50% { background-color: #ff8080; }
+  100% { background-color: #ff4d4d; }
+}
+
+/* Sidebar inferior */
+.bottom-sidebar {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  max-height: 70%;
+  background: #ffffff; /* fundo claro */
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.4);
+  transition: bottom 0.4s ease;
+  z-index: 9999; /* bem alto para ficar acima de ícones fixos */
+  padding: 20px;
+  border-radius: 12px 12px 0 0;
+  overflow-y: auto; /* mantém rolagem no PC */
+}
+
+.bottom-sidebar.aberto {
+  bottom: 0;
+}
+
+.sidebar-content {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sidebar-content h3 {
+  font-size: 28px;
+  color: #d35400;
+  margin-bottom: 20px;
+}
+
+.sidebar-content p {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 30px;
+}
+.sidebar-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-content li {
+  margin: 10px 0;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Mobile: ocupa tela cheia */
+@media (max-width: 768px) {
+  .bottom-sidebar {
+    max-height: 100%;
+    border-radius: 0;
+  }
+}
+
+/* Overlay escuro */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  z-index: 9998; /* logo abaixo do sidebar, mas acima dos ícones fixos */
+}
+
+.sidebar-overlay.ativo {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* ===== BOTÕES DOS CARDS - LARGURA REDUZIDA ===== */
 .card button {
   background: #e60000;
@@ -85,7 +208,7 @@ header img {
 }
 
 .categoria-titulo  {
-  font-size: 50px;
+  font-size: 40px;
   color: #d35400;
   margin: 30px 0 15px;
   text-align: center;
