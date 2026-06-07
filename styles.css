@@ -32,7 +32,7 @@ header h2 {
 }
 
 header img {
-  max-width: 300px;
+  max-width: 200px;
   height: auto;
   margin: 10px auto;
 }
@@ -58,6 +58,26 @@ header img {
   transition: all 0.3s ease;
   -webkit-tap-highlight-color: transparent;
 }
+
+/* Esconde o campo de troco por padrão */
+#troco-container {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  margin-top: 10px;
+}
+
+/* Classe que exibe o campo com animação */
+#troco-container.visivel {
+  opacity: 1;
+  max-height: 200px; /* altura suficiente para o conteúdo */
+}
+
+
+
+
+
 
 .btn-delivery:hover {
   background-color: #e63939;
