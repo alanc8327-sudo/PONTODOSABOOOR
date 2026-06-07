@@ -1,299 +1,474 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Ponto Do Sabor</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <title>Ponto Do Sabor</title>
-</head>
+  <body>
+    <header>
+      <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="Ponto Do Sabor" />
+      <h2>O Segredo Da Receita? Amor De Casa !!!</h2>
+    </header>
 
-<body>
-  <header>
-    <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="Ponto Do Sabor">
-    <h2>O Segredo Da Receita? Amor De Casa !!!</h2>
-  </header>
-
- <!-- Section de Delivery -->
-<section class="delivery-section">
-   <!-- Botão para abrir informações do Delivery -->
-  <button class="btn-delivery" onclick="toggleDeliveryBottom()">📦 Informações</button>
-
-  <!-- Sidebar de baixo para cima -->
-  <div class="bottom-sidebar" id="bottomSidebar">
-    <!-- Barra de arraste visual -->
-    <div class="drag-bar"></div>
-
-    <div class="sidebar-header">
-      <h2>📦 Informações </h2>
-      <!-- Removido o botão X -->
-    </div>
-
-    <div class="sidebar-content">
-      <h3>🚚 Tipo de Serviço</h3>
-      <p>Delivery rápido e confiável direto na sua casa.</p>
-      <p>Atendemos Somente a Cidade de Bertioga-SP</p>
-
-      <h3>⏰ Horários de Funcionamento</h3>
-      <p>Segunda a Sábado: 18h às 00hrs</p>
-      <p>Domingo: Fechado</p>
-
-      <h3>📍 Bairros Atendidos</h3>
-      <ul>
-        <li>Rio da praia</li>
-        <li>Maitinga</li>
-        <li>Mangue seco</li>
-        <li>Jardim Rafael</li>
-        <li>Jardim das canções</li>
-        <li>Vila HO</li>
-        <li>Riviera</li>
-        <li>Centro</li>
-        <li>Centreville (balsa)</li>
-        <li>Sítio São João</li>
-        <li>São Lourenço</li>
-        <li>Chácaras</li>
-        <li>Vista linda</li>
-        <li>Indaiá</li>
-        <li>Saoc</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Overlay -->
-  <div class="sidebar-overlay" id="bottomSidebarOverlay" onclick="toggleDeliveryBottom()"></div>
-</section>
-
-
-<!-- Categoria: Barcas de Jantar -->
-  <section class="categoria barcas-jantar">
-    <h1 class="categoria-titulo">🍽️ Jantinhas</h1>
-    <div class="container">
-      <div class="card">
-        <img src="./jantinha pequena.jpeg" alt="Jantinha Pequena">
-        <h3>Jantinha Pequena</h3>
-        <p>Descrição: Arroz, farofa, 1 proteína, vinagrete.</p>
-        <p><strong>R$20,00</strong></p>
-        <input type="text" id="obs-jantinha-pequena" placeholder="Ex: Sem arroz...">
-        <button onclick="adicionarPedido('Jantinha Pequena', 20, 1, document.getElementById('obs-jantinha-pequena').value)">+</button>
-      </div>
-
-      <div class="card">
-        <img src="./jamtinha especial.jpeg" alt="Jantinha Especial">
-        <h3>Jantinha Especial</h3>
-        <p>2 proteínas, arroz, vinagrete, farofa e batata frita.</p>
-        <p><strong>R$ 30,00</strong></p>
-        <input type="text" id="obs-jantinha-especial" placeholder="Ex: Sem linguiça...">
-        <button onclick="adicionarPedido('Jantinha Especial', 30, 1, document.getElementById('obs-jantinha-especial').value)">+</button>
-      </div>
-
-    
-    </div>
-  </section>
-
-
-
-
-
-  <!-- Categoria: Barcas de Jantar -->
-  <section class="categoria barcas-jantar">
-    <h1 class="categoria-titulo">🍽️ Barcas de Jantar</h1>
-    <div class="container">
-      <div class="card">
-        <img src="./Barca pequena.jpeg" alt="Barca Pequena">
-        <h3>Barca Pequena</h3>
-        <p>Descrição: 2 proteínas, arroz, farofa, vinagrete, pão de alho e batata frita.</p>
-        <p><strong>R$55,00</strong></p>
-        <input type="text" id="obs-barca-pequena" placeholder="Ex: Sem arroz...">
-        <button onclick="adicionarPedido('Barca Pequena', 55, 1, document.getElementById('obs-barca-pequena').value)">+</button>
-      </div>
-
-      <div class="card">
-        <img src="./barca média completa.jpeg" alt="Barca Média Completa">
-        <h3>Barca Média Completa</h3>
-        <p>Descrição: 3 Proteínas, arroz, farofa, vinagrete, pão de alho, queijo coalho, batata frita.</p>
-        <p><strong>R$78,90</strong></p>
-        <input type="text" id="obs-barca-media" placeholder="Ex: Sem linguiça...">
-        <button onclick="adicionarPedido('Barca Média Completa', 78.9, 1, document.getElementById('obs-barca-media').value)">+</button>
-      </div>
-
-      <div class="card">
-        <img src="./barca grande completa.jpeg" alt="Barca Família Completa">
-        <h3>Barca Família Completa</h3>
-        <p>Descrição: 4 Proteínas, arroz, farofa, vinagrete, pão de alho, queijo coalho, batata frita com cheddar e bacon.</p>
-        <p><strong>R$89,90</strong></p>
-        <input type="text" id="obs-barca-grande" placeholder="Ex: Sem vinagrete...">
-        <button onclick="adicionarPedido('Barca Família Completa', 89.9, 1, document.getElementById('obs-barca-grande').value)">+</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categoria: Porções -->
-  <section class="categoria porcoes">
-    <h1 class="categoria-titulo">🥔 Porções</h1>
-    <div class="container">
-      <div class="card">
-        <img src="./Porção de batata frita completa.jpeg" alt="Porção de Batata Frita">
-        <h3>Porção de Batata Frita</h3>
-        <p><strong>R$45,00</strong></p>
-        <button onclick="adicionarPedido('Porção de Batata Frita', 45)">+</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categoria: Espetinhos -->
-  <section class="categoria espetinhos">
-    <h1 class="categoria-titulo">🍢 Espetinhos</h1>
-    <div class="container">
-      <div class="card">
-        <img src="./Espetinhos avulsos variados.jpeg" alt="Espetinhos Avulsos">
-        <h3>Espetinhos Avulsos</h3>
-        <p><strong>R$10,00</strong></p>
-        <select id="espetinho">
-          <option value="Linguiça">Linguiça</option>
-          <option value="Carne">Carne</option>
-          <option value="Frango">Frango</option>
-          <option value="Queijo Coalho">Queijo Coalho</option>
-          <option value="Pão de Alho">Pão de Alho</option>
-        </select>
-        <button onclick="adicionarPedido('Espetinho de ' + document.getElementById('espetinho').value, 10)">+</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categoria: Barcas de Petiscos -->
-  <section class="categoria petiscos">
-    <h1 class="categoria-titulo">🍤 Barcas de Petiscos</h1>
-    <div class="container">
-      <div class="card">
-        <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Média">
-        <h3>Barca de Petiscos Média</h3>
-        <p>5 PROTEÍNAS, BATATA FRITA, VINAGRETE, FAROFA, PÃO DE ALHO, QUEIJO COALHO</p>
-        <p><strong>R$95,99</strong></p>
-        <input type="text" id="obs-barca-petisco-media" placeholder="Ex: Sem farofa...">
-        <button onclick="adicionarPedido('Barca de Petiscos Média', 95.99, 1, document.getElementById('obs-barca-petisco-media').value)">+</button>
-      </div>
-
-      <div class="card">
-        <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Grande">
-        <h3>Barca de Petiscos Grande</h3>
-        <p>SERVE ATE 7 PESSOAS - TODAS as PROTEÍNAS, BATATA FRITA COM CHEDDAR E BACON, VINAGRETE, FAROFA, PÃO DE ALHO, QUEIJO COALHO.</p>
-        <p><strong>R$129,99</strong></p>
-        <input type="text" id="obs-barca-petisco-grande" placeholder="Ex: Sem batata...">
-        <button onclick="adicionarPedido('Barca de Petiscos Grande', 129.99, 1, document.getElementById('obs-barca-petisco-grande').value)">+</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Categoria: Bebidas -->
-  <section class="categoria bebidas">
-    <h1 class="categoria-titulo">🥤 Bebidas</h1>
-    <div class="container">
-      <div class="card">
-        <h3>Coca Cola 200ml</h3>
-        <p><strong>R$4,00</strong></p>
-        <button onclick="adicionarPedido('Coca Cola 200ml', 4.00)">+</button>
-      </div>
-
-      <div class="card">
-        <h3>Coca Cola Lata 350ml</h3>
-        <p><strong>R$6,00</strong></p>
-        <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.00)">+</button>
-      </div>
-
-      <div class="card">
-        <h3>Dolly 2L</h3>
-        <p><strong>R$12,00</strong></p>
-        <button onclick="adicionarPedido('Dolly 2L', 12.00)">+</button>
-      </div>
-
-      <div class="card">
-        <h3>Coca Cola 2L</h3>
-        <p><strong>R$20,00</strong></p>
-        <button onclick="adicionarPedido('Coca Cola 2L', 20.00)">+</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Feedback -->
-  <section class="feedback">
-    <h2>Deixe seu Feedback</h2>
-    <div class="stars">
-      <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
-      <i class="fa-regular fa-star" onclick="avaliar(2)"></i>
-      <i class="fa-regular fa-star" onclick="avaliar(3)"></i>
-      <i class="fa-regular fa-star" onclick="avaliar(4)"></i>
-      <i class="fa-regular fa-star" onclick="avaliar(5)"></i>
-    </div>
-    <textarea id="feedbackMsg" placeholder="Deixe sua opinião aqui..."></textarea>
-    <input type="text" id="feedbackNome" placeholder="Seu nome">
-    <button onclick="enviarFeedback()">Enviar pelo WhatsApp</button>
-  </section>
-
-  <!-- Instagram -->
-  <a href="https://www.instagram.com/ponto.do.sabor.fs/" target="_blank" class="btn-instagram-fixo">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <!-- BOTÃO FLUTUANTE - ÍCONE CARRINHO -->
-  <button class="btn-toggle-sidebar" onclick="toggleSidebar()" id="btnToggleSidebar">
-    <i class="fas fa-shopping-cart"></i>
-    <span id="badgeQtd">0</span>
-  </button>
-
-  <!-- CARRINHO LATERAL -->
-  <div class="sidebar-carrinho" id="sidebarCarrinho">
-    <div class="sidebar-header">
-      <h2><i class="fas fa-shopping-cart"></i> Seu Pedido</h2>
-      <button class="btn-fechar-sidebar" onclick="toggleSidebar()">
-        <i class="fas fa-times"></i>
+    <!-- Section de Delivery -->
+    <section class="delivery-section">
+      <!-- Botão para abrir informações do Delivery -->
+      <button class="btn-delivery" onclick="toggleDeliveryBottom()">
+        📦 Informações
       </button>
+
+      <!-- Sidebar de baixo para cima -->
+      <div class="bottom-sidebar" id="bottomSidebar">
+        <!-- Barra de arraste visual -->
+        <div class="drag-bar"></div>
+
+        <div class="sidebar-header">
+          <h2>📦 Informações</h2>
+          <!-- Removido o botão X -->
+        </div>
+
+        <div class="sidebar-content">
+          <h3>🚚 Tipo de Serviço</h3>
+          <p>Delivery rápido e confiável direto na sua casa.</p>
+          <p>Atendemos Somente a Cidade de Bertioga-SP</p>
+
+          <h3>⏰ Horários de Funcionamento</h3>
+          <p>Segunda a Sábado: 18h às 00hrs</p>
+          <p>Domingo: Fechado</p>
+
+          <h3>📍 Bairros Atendidos</h3>
+          <ul>
+            <li>Rio da praia</li>
+            <li>Maitinga</li>
+            <li>Mangue seco</li>
+            <li>Jardim Rafael</li>
+            <li>Jardim das canções</li>
+            <li>Vila HO</li>
+            <li>Riviera</li>
+            <li>Centro</li>
+            <li>Centreville (balsa)</li>
+            <li>Sítio São João</li>
+            <li>São Lourenço</li>
+            <li>Chácaras</li>
+            <li>Vista linda</li>
+            <li>Indaiá</li>
+            <li>Saoc</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Overlay -->
+      <div
+        class="sidebar-overlay"
+        id="bottomSidebarOverlay"
+        onclick="toggleDeliveryBottom()"
+      ></div>
+    </section>
+
+    <!-- Categoria: Barcas de Jantar -->
+    <section class="categoria barcas-jantar">
+      <h1 class="categoria-titulo">🍽️ Jantinhas</h1>
+      <div class="container">
+        <div class="card">
+          <img src="./jantinha pequena.jpeg" alt="Jantinha Pequena" />
+          <h3>Jantinha Pequena</h3>
+          <p>Descrição: Arroz, farofa, 1 proteína, vinagrete.</p>
+          <p><strong>R$20,00</strong></p>
+          <input
+            type="text"
+            id="obs-jantinha-pequena"
+            placeholder="Ex: Sem arroz..."
+          />
+          <button
+            onclick="
+              adicionarPedido(
+                'Jantinha Pequena',
+                20,
+                1,
+                document.getElementById('obs-jantinha-pequena').value,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+
+        <div class="card">
+          <img src="./jamtinha especial.jpeg" alt="Jantinha Especial" />
+          <h3>Jantinha Especial</h3>
+          <p>2 proteínas, arroz, vinagrete, farofa e batata frita.</p>
+          <p><strong>R$ 30,00</strong></p>
+          <input
+            type="text"
+            id="obs-jantinha-especial"
+            placeholder="Ex: Sem linguiça..."
+          />
+          <button
+            onclick="
+              adicionarPedido(
+                'Jantinha Especial',
+                30,
+                1,
+                document.getElementById('obs-jantinha-especial').value,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categoria: Barcas de Jantar -->
+    <section class="categoria barcas-jantar">
+      <h1 class="categoria-titulo">🍽️ Barcas de Jantar</h1>
+      <div class="container">
+        <div class="card">
+          <img src="./Barca pequena.jpeg" alt="Barca Pequena" />
+          <h3>Barca Pequena</h3>
+          <p>
+            Descrição: 2 proteínas, arroz, farofa, vinagrete, pão de alho e
+            batata frita.
+          </p>
+          <p><strong>R$55,00</strong></p>
+          <input
+            type="text"
+            id="obs-barca-pequena"
+            placeholder="Ex: Sem arroz..."
+          />
+          <button
+            onclick="
+              adicionarPedido(
+                'Barca Pequena',
+                55,
+                1,
+                document.getElementById('obs-barca-pequena').value,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+
+        <div class="card">
+          <img src="./barca média completa.jpeg" alt="Barca Média Completa" />
+          <h3>Barca Média Completa</h3>
+          <p>
+            Descrição: 3 Proteínas, arroz, farofa, vinagrete, pão de alho,
+            queijo coalho, batata frita.
+          </p>
+          <p><strong>R$78,90</strong></p>
+          <input
+            type="text"
+            id="obs-barca-media"
+            placeholder="Ex: Sem linguiça..."
+          />
+          <button
+            onclick="
+              adicionarPedido(
+                'Barca Média Completa',
+                78.9,
+                1,
+                document.getElementById('obs-barca-media').value,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+
+        <div class="card">
+          <img
+            src="./barca grande completa.jpeg"
+            alt="Barca Família Completa"
+          />
+          <h3>Barca Família Completa</h3>
+          <p>
+            Descrição: 4 Proteínas, arroz, farofa, vinagrete, pão de alho,
+            queijo coalho, batata frita com cheddar e bacon.
+          </p>
+          <p><strong>R$89,90</strong></p>
+          <input
+            type="text"
+            id="obs-barca-grande"
+            placeholder="Ex: Sem vinagrete..."
+          />
+          <button
+            onclick="
+              adicionarPedido(
+                'Barca Família Completa',
+                89.9,
+                1,
+                document.getElementById('obs-barca-grande').value,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categoria: Porções -->
+    <section class="categoria porcoes">
+      <h1 class="categoria-titulo">🥔 Porções</h1>
+      <div class="container">
+        <div class="card">
+          <img
+            src="./Porção de batata frita completa.jpeg"
+            alt="Porção de Batata Frita"
+          />
+          <h3>Porção de Batata Frita</h3>
+          <p><strong>R$45,00</strong></p>
+          <button onclick="adicionarPedido('Porção de Batata Frita', 45)">
+            +
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categoria: Espetinhos -->
+    <section class="categoria espetinhos">
+      <h1 class="categoria-titulo">🍢 Espetinhos</h1>
+      <div class="container">
+        <div class="card">
+          <img
+            src="./Espetinhos avulsos variados.jpeg"
+            alt="Espetinhos Avulsos"
+          />
+          <h3>Espetinhos Avulsos</h3>
+          <p><strong>R$10,00</strong></p>
+          <select id="espetinho">
+            <option value="Linguiça">Linguiça</option>
+            <option value="Carne">Carne</option>
+            <option value="Frango">Frango</option>
+            <option value="Queijo Coalho">Queijo Coalho</option>
+            <option value="Pão de Alho">Pão de Alho</option>
+          </select>
+          <button
+            onclick="
+              adicionarPedido(
+                'Espetinho de ' + document.getElementById('espetinho').value,
+                10,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categoria: Barcas de Petiscos -->
+    <section class="categoria petiscos">
+      <h1 class="categoria-titulo">🍤 Barcas de Petiscos</h1>
+      <div class="container">
+        <div class="card">
+          <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Média" />
+          <h3>Barca de Petiscos Média</h3>
+          <p>
+            5 PROTEÍNAS, BATATA FRITA, VINAGRETE, FAROFA, PÃO DE ALHO, QUEIJO
+            COALHO
+          </p>
+          <p><strong>R$95,99</strong></p>
+          <input
+            type="text"
+            id="obs-barca-petisco-media"
+            placeholder="Ex: Sem farofa..."
+          />
+          <button
+            onclick="
+              adicionarPedido(
+                'Barca de Petiscos Média',
+                95.99,
+                1,
+                document.getElementById('obs-barca-petisco-media').value,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+
+        <div class="card">
+          <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Grande" />
+          <h3>Barca de Petiscos Grande</h3>
+          <p>
+            SERVE ATE 7 PESSOAS - TODAS as PROTEÍNAS, BATATA FRITA COM CHEDDAR E
+            BACON, VINAGRETE, FAROFA, PÃO DE ALHO, QUEIJO COALHO.
+          </p>
+          <p><strong>R$129,99</strong></p>
+          <input
+            type="text"
+            id="obs-barca-petisco-grande"
+            placeholder="Ex: Sem batata..."
+          />
+          <button
+            onclick="
+              adicionarPedido(
+                'Barca de Petiscos Grande',
+                129.99,
+                1,
+                document.getElementById('obs-barca-petisco-grande').value,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categoria: Bebidas -->
+    <section class="categoria bebidas">
+      <h1 class="categoria-titulo">🥤 Bebidas</h1>
+      <div class="container">
+        <div class="card">
+          <h3>Coca Cola 200ml</h3>
+          <p><strong>R$4,00</strong></p>
+          <button onclick="adicionarPedido('Coca Cola 200ml', 4.0)">+</button>
+        </div>
+
+        <div class="card">
+          <h3>Coca Cola Lata 350ml</h3>
+          <p><strong>R$6,00</strong></p>
+          <button onclick="adicionarPedido('Coca Cola Lata 350ml', 6.0)">
+            +
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>Dolly 2L</h3>
+          <p><strong>R$12,00</strong></p>
+          <button onclick="adicionarPedido('Dolly 2L', 12.0)">+</button>
+        </div>
+
+        <div class="card">
+          <h3>Coca Cola 2L</h3>
+          <p><strong>R$20,00</strong></p>
+          <button onclick="adicionarPedido('Coca Cola 2L', 20.0)">+</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback -->
+    <section class="feedback">
+      <h2>Deixe seu Feedback</h2>
+      <div class="stars">
+        <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
+        <i class="fa-regular fa-star" onclick="avaliar(2)"></i>
+        <i class="fa-regular fa-star" onclick="avaliar(3)"></i>
+        <i class="fa-regular fa-star" onclick="avaliar(4)"></i>
+        <i class="fa-regular fa-star" onclick="avaliar(5)"></i>
+      </div>
+      <textarea
+        id="feedbackMsg"
+        placeholder="Deixe sua opinião aqui..."
+      ></textarea>
+      <input type="text" id="feedbackNome" placeholder="Seu nome" />
+      <button onclick="enviarFeedback()">Enviar pelo WhatsApp</button>
+    </section>
+
+    <!-- Instagram -->
+    <a
+      href="https://www.instagram.com/ponto.do.sabor.fs/"
+      target="_blank"
+      class="btn-instagram-fixo"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <!-- BOTÃO FLUTUANTE - ÍCONE CARRINHO -->
+    <button
+      class="btn-toggle-sidebar"
+      onclick="toggleSidebar()"
+      id="btnToggleSidebar"
+    >
+      <i class="fas fa-shopping-cart"></i>
+      <span id="badgeQtd">0</span>
+    </button>
+
+    <!-- CARRINHO LATERAL -->
+    <div class="sidebar-carrinho" id="sidebarCarrinho">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-shopping-cart"></i> Seu Pedido</h2>
+        <button class="btn-fechar-sidebar" onclick="toggleSidebar()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-itens" id="resumo">Nenhum pedido ainda.</div>
+
+      <div class="sidebar-footer">
+        <input type="text" id="endereco" placeholder="Rua, número..." />
+        <select id="bairro">
+          <option value="">Selecione o bairro</option>
+          <option value="Saoc">Saoc</option>
+          <option value="Albatroz 2">Albatroz 2</option>
+          <option value="Centro">Centro</option>
+          <option value="Sitio">Sitio</option>
+          <option value="Maitinga">Maitinga</option>
+          <option value="Rio Da Praia">Rio Da Praia</option>
+          <option value="Mangue Seco">Mangue Seco</option>
+          <option value="Pedralina">Pedralina</option>
+          <option value="Ana Paula">Ana Paula</option>
+          <option value=" V.L Lado Praia">V.L Lado Praia</option>
+          <option value="V.L Lado Chacara">V.L Lado Chacara</option>
+          <option value="V.L Invasao">V.L Invasao</option>
+          <option value="Indiaia">Indiaia</option>
+          <option value="Rivieira">Rivieira</option>
+          <option value="Sao Lourenco">Sao Lourenco</option>
+        </select>
+
+        <select id="pagamento">
+          <option value="">Forma de pagamento</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Débito">Débito</option>
+          <option value="Crédito">Crédito</option>
+          <option value="Pix">Pix</option>
+        </select>
+
+       <div id="troco-container" class="hidden">
+  <label for="troco">Precisa de troco para quanto?</label>
+  <input
+    type="number"
+    id="troco"
+    name="troco"
+    placeholder="Ex: 100.00"
+  />
+</div>
+
+        <div class="sidebar-total" id="sidebarTotal">Total: R$ 0,00</div>
+
+        <button class="btn-finalizar" onclick="finalizarPedido()">
+          Finalizar Pedido
+        </button>
+        <button class="btn-limpar" onclick="limparPedidos()">
+          Limpar Pedido
+        </button>
+      </div>
     </div>
 
-    <div class="sidebar-itens" id="resumo">Nenhum pedido ainda.</div>
+    <!-- OVERLAY -->
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+      onclick="toggleSidebar()"
+    ></div>
 
-    <div class="sidebar-footer">
-      <input type="text" id="endereco" placeholder="Rua, número...">
-      <select id="bairro">
-        <option value="">Selecione o bairro</option>
-        <option value="Saoc">Saoc</option>
-        <option value="Albatroz 2">Albatroz 2</option>
-        <option value="Centro">Centro</option>
-        <option value="Sitio">Sitio</option>
-        <option value="Maitinga">Maitinga</option>
-        <option value="Rio Da Praia">Rio Da Praia</option>
-        <option value="Mangue Seco">Mangue Seco</option>
-        <option value="Pedralina">Pedralina</option>
-        <option value="Ana Paula">Ana Paula</option>
-        <option value=" V.L Lado Praia">V.L Lado Praia</option>
-        <option value="V.L Lado Chacara">V.L Lado Chacara</option>
-        <option value="V.L Invasao">V.L Invasao</option>
-        <option value="Indiaia">Indiaia</option>
-        <option value="Rivieira">Rivieira</option>
-        <option value="Sao Lourenco">Sao Lourenco</option>
-      </select>
-
-      <select id="pagamento">
-        <option value="">Forma de pagamento</option>
-        <option value="Dinheiro">Dinheiro</option>
-        <option value="Débito">Débito</option>
-        <option value="Crédito">Crédito</option>
-        <option value="Pix">Pix</option>
-      </select>
-
-      <div class="sidebar-total" id="sidebarTotal">Total: R$ 0,00</div>
-
-      <button class="btn-finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
-      <button class="btn-limpar" onclick="limparPedidos()">Limpar Pedido</button>
-    </div>
-  </div>
-
-  <!-- OVERLAY -->
-  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
