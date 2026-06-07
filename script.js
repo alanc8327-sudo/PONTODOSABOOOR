@@ -108,10 +108,25 @@ function atualizarResumo() {
   totalEl.textContent = `Total: R$ ${subtotal.toFixed(2)}`;
 }
 
+const pagamentoSelect = document.getElementById("pagamento");
+const trocoContainer = document.getElementById("troco-container");
+
+pagamentoSelect.addEventListener("change", function() {
+  if (this.value === "Dinheiro") {
+    trocoContainer.classList.add("visivel");
+  } else {
+    trocoContainer.classList.remove("visivel");
+    document.getElementById("troco").value = "";
+  }
+});
+
+
+
 function finalizarPedido() {
   let endereco = document.getElementById("endereco").value;
   let bairro = document.getElementById("bairro").value;
   let pagamento = document.getElementById("pagamento").value;
+  let troco = document.getElementById("troco").value;
 
   if (!endereco ||!bairro ||!pagamento || pedidos.length === 0) {
     alert("Por favor, preencha todos os campos.");
@@ -121,6 +136,16 @@ function finalizarPedido() {
   let subtotal = pedidos.reduce((acc, item) => acc + (item.quantidade * item.preco), 0);
   let taxaEntrega = taxas[bairro] || 0;
   let total = subtotal + taxaEntrega;
+
+  // Validação do troco
+  if (pagamento === "Dinheiro" && troco) {
+    if (parseFloat(troco) < total) {
+      alert("O valor informado para troco deve ser maior que o total da compra.");
+      return;
+    }
+  }
+
+
 
   let resumo = "🧾 *PEDIDO PONTO DO SABOR*\n\n";
   pedidos.forEach(item => {
@@ -134,6 +159,11 @@ function finalizarPedido() {
   resumo += `\n*Total: R$ ${total.toFixed(2)}*`;
   resumo += `\n\n📍 Endereço: ${endereco} - ${bairro}`;
   resumo += `\n💳 Pagamento: ${pagamento}`;
+
+   if (pagamento === "Dinheiro" && troco) {
+    resumo += `\n💵 Troco para: R$ ${parseFloat(troco).toFixed(2)}`;
+  }
+
   resumo += `\n⏱ Prazo de entrega: 55-65 minutos`;
   resumo += `\n\nObrigado por escolher o Ponto Do Sabor!`;
 
