@@ -180,11 +180,18 @@ header img {
 
 
 
+#resultado-troco {
+  font-weight: bold;
+  margin-top: 10px;
+}
 
+#resultado-troco.ok {
+  color: green;
+}
 
-
-
-
+#resultado-troco.error {
+  color: red;
+}
 
 
 
