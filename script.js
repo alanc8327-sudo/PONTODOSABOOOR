@@ -11,7 +11,7 @@ const taxas = {
   "Mangue Seco": 9,
   "Pedralina": 8,
   "Ana Paula": 10,
-  " V.L Lado Praia": 10,
+  "V.L Lado Praia": 10,
   "V.L Lado Chacara": 12,
   "V.L Invasao": 15,
   "Indiaia": 18,
@@ -21,18 +21,18 @@ const taxas = {
 
 // ===== TOGGLE SIDEBAR =====
 function toggleSidebar() {
-    const sidebar = document.getElementById('sidebarCarrinho');
-    const overlay = document.getElementById('sidebarOverlay');
-    const body = document.body;
+  const sidebar = document.getElementById('sidebarCarrinho');
+  const overlay = document.getElementById('sidebarOverlay');
+  const body = document.body;
 
-    sidebar.classList.toggle('aberto');
-    overlay.classList.toggle('ativo');
-    body.classList.toggle('sidebar-aberta');
+  sidebar.classList.toggle('aberto');
+  overlay.classList.toggle('ativo');
+  body.classList.toggle('sidebar-aberta');
 }
 
 // ===== ADICIONAR/REMOVER PEDIDO =====
 function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
-  let nomeChave = observacao? `${nome}_${observacao}` : nome;
+  let nomeChave = observacao ? `${nome}_${observacao}` : nome;
   let itemExistente = pedidos.find(p => p.nomeChave === nomeChave);
 
   if (itemExistente) {
@@ -64,7 +64,7 @@ function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
 
 function removerPedido(nome) {
   let index = pedidos.findIndex(p => p.nome === nome);
-  if (index!== -1) {
+  if (index !== -1) {
     pedidos[index].quantidade -= 1;
     if (pedidos[index].quantidade <= 0) {
       pedidos.splice(index, 1);
@@ -94,7 +94,7 @@ function atualizarResumo() {
     const subtotalItem = item.quantidade * item.preco;
     subtotal += subtotalItem;
     qtdTotal += item.quantidade;
-    let obs = item.observacao? `<br><small>Obs: ${item.observacao}</small>` : "";
+    let obs = item.observacao ? `<br><small>Obs: ${item.observacao}</small>` : "";
 
     html += `
       <div class="item-pedido">
@@ -105,30 +105,75 @@ function atualizarResumo() {
 
   resumoEl.innerHTML = html;
   badgeEl.textContent = qtdTotal;
-  totalEl.textContent = `Total: R$ ${subtotal.toFixed(2)}`;
+
+  // Atualiza total com taxa de entrega
+  let bairro = document.getElementById("bairro").value;
+  let taxaEntrega = taxas[bairro] || 0;
+  let total = subtotal + taxaEntrega;
+
+  totalEl.textContent = `Total: ${formatarReal(total)}`;
+
+  // Atualiza troco se necessário
+  atualizarTroco();
 }
 
+// ===== TROCO =====
 const pagamentoSelect = document.getElementById("pagamento");
 const trocoContainer = document.getElementById("troco-container");
+const trocoInput = document.getElementById("troco");
+const resultadoTroco = document.getElementById("resultado-troco");
 
-pagamentoSelect.addEventListener("change", function() {
+pagamentoSelect.addEventListener("change", function () {
   if (this.value === "Dinheiro") {
     trocoContainer.classList.add("visivel");
   } else {
     trocoContainer.classList.remove("visivel");
-    document.getElementById("troco").value = "";
+    trocoInput.value = "";
+    resultadoTroco.textContent = "";
   }
 });
 
+trocoInput.addEventListener("input", atualizarTroco);
+document.getElementById("bairro").addEventListener("change", atualizarResumo);
 
+function formatarReal(valor) {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
 
+function atualizarTroco() {
+  let subtotal = pedidos.reduce((acc, item) => acc + (item.quantidade * item.preco), 0);
+  let bairro = document.getElementById("bairro").value;
+  let taxaEntrega = taxas[bairro] || 0;
+  let total = subtotal + taxaEntrega;
+
+  const valorEntregue = parseFloat(trocoInput.value);
+
+  if (!isNaN(valorEntregue)) {
+    const troco = valorEntregue - total;
+    if (troco >= 0) {
+      resultadoTroco.textContent = `Troco a devolver: ${formatarReal(troco)}`;
+      resultadoTroco.className = "ok";
+    } else {
+      resultadoTroco.textContent = "Valor insuficiente!";
+      resultadoTroco.className = "error";
+    }
+  } else {
+    resultadoTroco.textContent = "";
+    resultadoTroco.className = "";
+  }
+}
+
+// ===== FINALIZAR PEDIDO =====
 function finalizarPedido() {
   let endereco = document.getElementById("endereco").value;
   let bairro = document.getElementById("bairro").value;
   let pagamento = document.getElementById("pagamento").value;
   let troco = document.getElementById("troco").value;
 
-  if (!endereco ||!bairro ||!pagamento || pedidos.length === 0) {
+  if (!endereco || !bairro || !pagamento || pedidos.length === 0) {
     alert("Por favor, preencha todos os campos.");
     return;
   }
@@ -145,23 +190,23 @@ function finalizarPedido() {
     }
   }
 
-
-
   let resumo = "🧾 *PEDIDO PONTO DO SABOR*\n\n";
   pedidos.forEach(item => {
     let subtotalItem = item.quantidade * item.preco;
-    let obs = item.observacao? ` (Obs: ${item.observacao})` : "";
+    let obs = item.observacao ? ` (Obs: ${item.observacao})` : "";
     resumo += `${item.quantidade}x ${item.nome} - R$ ${subtotalItem.toFixed(2)}${obs}\n`;
   });
 
-  resumo += `\nSubtotal: R$ ${subtotal.toFixed(2)}`;
-  resumo += `\nTaxa de entrega (${bairro}): R$ ${taxaEntrega.toFixed(2)}`;
-  resumo += `\n*Total: R$ ${total.toFixed(2)}*`;
+  resumo += `\nSubtotal: ${formatarReal(subtotal)}`;
+  resumo += `\nTaxa de entrega (${bairro}): ${formatarReal(taxaEntrega)}`;
+  resumo += `\n*Total: ${formatarReal(total)}*`;
   resumo += `\n\n📍 Endereço: ${endereco} - ${bairro}`;
   resumo += `\n💳 Pagamento: ${pagamento}`;
 
-   if (pagamento === "Dinheiro" && troco) {
-    resumo += `\n💵 Troco para: R$ ${parseFloat(troco).toFixed(2)}`;
+  if (pagamento === "Dinheiro" && troco) {
+    let valorTroco = parseFloat(troco) - total;
+    resumo += `\n💵 Troco para: ${formatarReal(parseFloat(troco))}`;
+    resumo += `\n💵 Troco a devolver: ${formatarReal(valorTroco)}`;
   }
 
   resumo += `\n⏱ Prazo de entrega: 55-65 minutos`;
@@ -172,6 +217,7 @@ function finalizarPedido() {
   window.open(url, "_blank");
 }
 
+// ===== LIMPAR PEDIDOS =====
 function limparPedidos() {
   pedidos = [];
   atualizarResumo();
@@ -201,45 +247,10 @@ function enviarFeedback() {
   const mensagem = document.getElementById("feedbackMsg").value;
 
   if (!nota) {
-    alert("Por favor, selecione uma nota de 1 a 5 estrelas.");
-    return;
-  }
-  if (!mensagem) {
-    alert("Por favor, escreva seu feedback antes de enviar.");
+    alert("Por favor, selecione uma nota.");
     return;
   }
 
-  const texto = `⭐ Avaliação: ${nota} estrelas\n👤 Nome: ${nome || "Cliente"}\n💬 Feedback: ${mensagem}`;
-  const numero = "5513991873557";
-  const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
-  window.open(url, "_blank");
+  // Aqui você pode enviar o feedback para o servidor ou realizar outras ações
+  console.log("Feedback enviado:", { nome, mensagem, nota });
 }
-
-
-
-function toggleDeliveryBottom() {
-  const sidebar = document.getElementById('bottomSidebar');
-  const overlay = document.getElementById('bottomSidebarOverlay');
-  
-  sidebar.classList.toggle('aberto');
-  overlay.classList.toggle('ativo');
-}
-
-// Swipe down para fechar
-let startY = 0;
-const sidebar = document.getElementById('bottomSidebar');
-
-sidebar.addEventListener('touchstart', (e) => {
-  startY = e.touches[0].clientY;
-});
-
-sidebar.addEventListener('touchmove', (e) => {
-  const currentY = e.touches[0].clientY;
-  const diffY = currentY - startY;
-
-  if (diffY > 80) {
-    toggleDeliveryBottom();
-  }
-});
-
-
