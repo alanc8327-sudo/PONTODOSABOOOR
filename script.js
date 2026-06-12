@@ -1,6 +1,6 @@
 let pedidos = [];
 
-// Tabela de taxas por bairro
+// ===== TABELA DE TAXAS POR BAIRRO =====
 const taxas = {
   "Saoc": 6,
   "Albatroz 2": 7,
@@ -19,7 +19,41 @@ const taxas = {
   "Sao Lourenco": 30,
 };
 
-// ===== TOGGLE SIDEBAR =====
+// ===== SIDEBAR INFERIOR DELIVERY =====
+function toggleDeliveryBottom() {
+  const sidebar = document.getElementById("bottomSidebar");
+  const overlay = document.querySelector(".sidebar-overlay");
+
+  sidebar.classList.toggle("aberto");
+  overlay.classList.toggle("ativo");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.querySelector(".sidebar-overlay");
+  const sidebar = document.getElementById("bottomSidebar");
+
+  // Fecha ao clicar no overlay
+  overlay.addEventListener("click", () => {
+    sidebar.classList.remove("aberto");
+    overlay.classList.remove("ativo");
+  });
+
+  // Fecha ao arrastar para baixo (mobile)
+  let startY = 0;
+  sidebar.addEventListener("touchstart", e => {
+    startY = e.touches[0].clientY;
+  });
+
+  sidebar.addEventListener("touchend", e => {
+    const endY = e.changedTouches[0].clientY;
+    if (endY - startY > 100) {
+      sidebar.classList.remove("aberto");
+      overlay.classList.remove("ativo");
+    }
+  });
+});
+
+// ===== TOGGLE SIDEBAR CARRINHO =====
 function toggleSidebar() {
   const sidebar = document.getElementById('sidebarCarrinho');
   const overlay = document.getElementById('sidebarOverlay');
@@ -38,13 +72,7 @@ function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
   if (itemExistente) {
     itemExistente.quantidade += quantidade;
   } else {
-    pedidos.push({
-      nome,
-      nomeChave,
-      preco,
-      quantidade,
-      observacao
-    });
+    pedidos.push({ nome, nomeChave, preco, quantidade, observacao });
   }
   atualizarResumo();
 
@@ -62,8 +90,8 @@ function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
   }
 }
 
-function removerPedido(nome) {
-  let index = pedidos.findIndex(p => p.nome === nome);
+function removerPedido(nomeChave) {
+  let index = pedidos.findIndex(p => p.nomeChave === nomeChave);
   if (index !== -1) {
     pedidos[index].quantidade -= 1;
     if (pedidos[index].quantidade <= 0) {
@@ -99,7 +127,7 @@ function atualizarResumo() {
     html += `
       <div class="item-pedido">
         <span>${item.quantidade}x ${item.nome} - R$ ${subtotalItem.toFixed(2)}${obs}</span>
-        <button class="btn-remover" onclick="removerPedido('${item.nome}')">×</button>
+        <button class="btn-remover" onclick="removerPedido('${item.nomeChave}')">×</button>
       </div>`;
   });
 
@@ -113,7 +141,6 @@ function atualizarResumo() {
 
   totalEl.textContent = `Total: ${formatarReal(total)}`;
 
-  // Atualiza troco se necessário
   atualizarTroco();
 }
 
@@ -137,10 +164,7 @@ trocoInput.addEventListener("input", atualizarTroco);
 document.getElementById("bairro").addEventListener("change", atualizarResumo);
 
 function formatarReal(valor) {
-  return valor.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
+  return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
 function atualizarTroco() {
@@ -168,9 +192,9 @@ function atualizarTroco() {
 
 // ===== FINALIZAR PEDIDO =====
 function finalizarPedido() {
-  let endereco = document.getElementById("endereco").value;
-  let bairro = document.getElementById("bairro").value;
-  let pagamento = document.getElementById("pagamento").value;
+  let endereco = document.getElementById("endereco").value.trim();
+  let bairro = document.getElementById("bairro").value.trim();
+  let pagamento = document.getElementById("pagamento").value.trim();
   let troco = document.getElementById("troco").value;
 
   if (!endereco || !bairro || !pagamento || pedidos.length === 0) {
@@ -182,7 +206,6 @@ function finalizarPedido() {
   let taxaEntrega = taxas[bairro] || 0;
   let total = subtotal + taxaEntrega;
 
-  // Validação do troco
   if (pagamento === "Dinheiro" && troco) {
     if (parseFloat(troco) < total) {
       alert("O valor informado para troco deve ser maior que o total da compra.");
