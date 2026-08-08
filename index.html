@@ -19,6 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+
     <title>Ponto Do Sabor</title>
   </head>
 
@@ -91,7 +92,7 @@
           <img src="./jantinha pequena.jpeg" alt="Jantinha Pequena" />
           <h3>Jantinha Pequena</h3>
           <p>Descrição: Arroz, farofa, 1 proteína, vinagrete.</p>
-          <p><strong>R$30,00</strong></p>
+          <p><strong>R$20,00</strong></p>
           <input
             type="text"
             id="obs-jantinha-pequena"
@@ -101,7 +102,7 @@
             onclick="
               adicionarPedido(
                 'Jantinha Pequena',
-                30,
+                20,
                 1,
                 document.getElementById('obs-jantinha-pequena').value,
               )
@@ -115,7 +116,7 @@
           <img src="./jamtinha especial.jpeg" alt="Jantinha Especial" />
           <h3>Jantinha Especial</h3>
           <p>2 proteínas, arroz, vinagrete, farofa e batata frita.</p>
-          <p><strong>R$ 38,90</strong></p>
+          <p><strong>R$ 30,00</strong></p>
           <input
             type="text"
             id="obs-jantinha-especial"
@@ -125,7 +126,7 @@
             onclick="
               adicionarPedido(
                 'Jantinha Especial',
-                38.9,
+                30,
                 1,
                 document.getElementById('obs-jantinha-especial').value,
               )
@@ -195,7 +196,7 @@
           </button>
         </div>
 
-        <div class="card">
+       <!-- <div class="card">
           <img
             src="./barca grande completa.jpeg"
             alt="Barca Família Completa"
@@ -223,7 +224,7 @@
           >
             +
           </button>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -242,7 +243,23 @@
             +
           </button>
         </div>
+
+        
+      <div class="container">
+        <div class="card">
+          <img
+            src="./frango com batata.jpeg"
+            alt="Frango a passarinho com batata frita"
+          />
+          <h3>Frango a passarinho com batata frita</h3>
+          <p><strong>R$55,00</strong></p>
+          <button onclick="adicionarPedido('Frango a passarinho com batata frita', 55)">
+            +
+          </button>
+        </div>
       </div>
+         
+      
     </section>
 
     <!-- Categoria: Espetinhos -->
@@ -308,7 +325,7 @@
           </button>
         </div>
 
-        <div class="card">
+       <!-- <div class="card">
           <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Grande" />
           <h3>Barca de Petiscos Grande</h3>
           <p>
@@ -333,7 +350,7 @@
           >
             +
           </button>
-        </div>
+        </div> -->
       </div>
     </section>
 
@@ -446,11 +463,16 @@
           <option value="Pix">Pix</option>
         </select>
 
-       <div id="troco-container" class="hidden">
-  <label for="troco">Precisa de troco para quanto?</label>
-  <input type="number"id="troco" name="troco"placeholder="Ex: 150,20" />
-  <p id="resultado-troco"></p>
-</div>
+        <div id="troco-container" class="hidden">
+          <label for="troco">Precisa de troco para quanto?</label>
+          <input
+            type="number"
+            id="troco"
+            name="troco"
+            placeholder="Ex: 150,20"
+          />
+          <p id="resultado-troco"></p>
+        </div>
 
         <div class="sidebar-total" id="sidebarTotal">Total: R$ 0,00</div>
 
