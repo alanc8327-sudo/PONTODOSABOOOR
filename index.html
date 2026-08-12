@@ -87,30 +87,6 @@
     <!-- Categoria: Barcas de Jantar -->
     <section class="categoria barcas-jantar">
       <h1 class="categoria-titulo">🍽️ Jantinhas</h1>
-      <div class="container">
-        <div class="card">
-          <img src="./jantinha pequena.jpeg" alt="Jantinha Pequena" />
-          <h3>Jantinha Pequena</h3>
-          <p>Descrição: Arroz, farofa, 1 proteína, vinagrete.</p>
-          <p><strong>R$20,00</strong></p>
-          <input
-            type="text"
-            id="obs-jantinha-pequena"
-            placeholder="Ex: Sem arroz..."
-          />
-          <button
-            onclick="
-              adicionarPedido(
-                'Jantinha Pequena',
-                20,
-                1,
-                document.getElementById('obs-jantinha-pequena').value,
-              )
-            "
-          >
-            +
-          </button>
-        </div>
 
         <div class="card">
           <img src="./jamtinha especial.jpeg" alt="Jantinha Especial" />
@@ -142,32 +118,7 @@
     <section class="categoria barcas-jantar">
       <h1 class="categoria-titulo">🍽️ Barcas de Jantar</h1>
       <div class="container">
-        <div class="card">
-          <img src="./Barca pequena.jpeg" alt="Barca Pequena" />
-          <h3>Barca Pequena</h3>
-          <p>
-            Descrição: 2 proteínas, arroz, farofa, vinagrete, pão de alho e
-            batata frita.
-          </p>
-          <p><strong>R$55,00</strong></p>
-          <input
-            type="text"
-            id="obs-barca-pequena"
-            placeholder="Ex: Sem arroz..."
-          />
-          <button
-            onclick="
-              adicionarPedido(
-                'Barca Pequena',
-                55,
-                1,
-                document.getElementById('obs-barca-pequena').value,
-              )
-            "
-          >
-            +
-          </button>
-        </div>
+       
 
         <div class="card">
           <img src="./barca média completa.jpeg" alt="Barca Média Completa" />
@@ -176,7 +127,7 @@
             Descrição: 3 Proteínas, arroz, farofa, vinagrete, pão de alho,
             queijo coalho, batata frita.
           </p>
-          <p><strong>R$78,90</strong></p>
+          <p><strong>R$99,90</strong></p>
           <input
             type="text"
             id="obs-barca-media"
@@ -186,7 +137,7 @@
             onclick="
               adicionarPedido(
                 'Barca Média Completa',
-                78.9,
+                99.9,
                 1,
                 document.getElementById('obs-barca-media').value,
               )
@@ -196,7 +147,7 @@
           </button>
         </div>
 
-       <!-- <div class="card">
+        <div class="card">
           <img
             src="./barca grande completa.jpeg"
             alt="Barca Família Completa"
@@ -206,7 +157,7 @@
             Descrição: 4 Proteínas, arroz, farofa, vinagrete, pão de alho,
             queijo coalho, batata frita com cheddar e bacon.
           </p>
-          <p><strong>R$89,90</strong></p>
+          <p><strong>R$130,00</strong></p>
           <input
             type="text"
             id="obs-barca-grande"
@@ -216,7 +167,7 @@
             onclick="
               adicionarPedido(
                 'Barca Família Completa',
-                89.9,
+                130,
                 1,
                 document.getElementById('obs-barca-grande').value,
               )
@@ -224,7 +175,7 @@
           >
             +
           </button>
-        </div> -->
+        </div> 
       </div>
     </section>
 
@@ -294,30 +245,30 @@
       </div>
     </section>
 
-    <!-- Categoria: Barcas de Petiscos -->
+    <!-- Categoria:Combos -->
     <section class="categoria petiscos">
-      <h1 class="categoria-titulo">🍤 Barcas de Petiscos</h1>
+      <h1 class="categoria-titulo">🍔Combos</h1>
       <div class="container">
         <div class="card">
-          <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Média" />
-          <h3>Barca de Petiscos Média</h3>
+          <img src="#" alt="Combo Solteiro" />
+          <h3>Combo Solteiro</h3>
           <p>
-            5 PROTEÍNAS, BATATA FRITA, VINAGRETE, FAROFA, PÃO DE ALHO, QUEIJO
-            COALHO
+           1 X-Búrguer ou X-Salada
+                 1 Fritas pequena
           </p>
-          <p><strong>R$95,99</strong></p>
+          <p><strong>R$35,00</strong></p>
           <input
             type="text"
-            id="obs-barca-petisco-media"
-            placeholder="Ex: Sem farofa..."
+            id="obs-combo-solteiro"
+            placeholder="Ex: Remover Alface."
           />
           <button
             onclick="
               adicionarPedido(
-                'Barca de Petiscos Média',
-                95.99,
+                'Combo Solteiro',
+                35.00,
                 1,
-                document.getElementById('obs-barca-petisco-media').value,
+                document.getElementById('obs-combo-solteiro').value,
               )
             "
           >
@@ -325,32 +276,63 @@
           </button>
         </div>
 
-       <!-- <div class="card">
-          <img src="./barca de pesticos.jpeg" alt="Barca de Petiscos Grande" />
-          <h3>Barca de Petiscos Grande</h3>
+         <div class="container">
+        <div class="card">
+          <img src="#" alt="Combo Casal" />
+          <h3>COMBO CASAL</h3>
           <p>
-            SERVE ATE 7 PESSOAS - TODAS as PROTEÍNAS, BATATA FRITA COM CHEDDAR E
-            BACON, VINAGRETE, FAROFA, PÃO DE ALHO, QUEIJO COALHO.
+           2 X-Burguer ou X-Salada
+              1 Fritas grande
           </p>
-          <p><strong>R$129,99</strong></p>
+          <p><strong>R$60,00</strong></p>
           <input
             type="text"
-            id="obs-barca-petisco-grande"
-            placeholder="Ex: Sem batata..."
+            id="obs-combo-casal"
+            placeholder="Ex: Remover Alface."
           />
           <button
             onclick="
               adicionarPedido(
-                'Barca de Petiscos Grande',
-                129.99,
+                'Combo Casal',
+                60.00,
                 1,
-                document.getElementById('obs-barca-petisco-grande').value,
+                document.getElementById('obs-combo-casal').value,
               )
             "
           >
             +
           </button>
-        </div> -->
+        </div>
+
+         <div class="container">
+        <div class="card">
+          <img src="#" alt="Combo Familia" />
+          <h3>Combo Familia</h3>
+          <p>
+          4 x-burguer ou x-salada
+           1 Fritas grande
+          </p>
+          <p><strong>R$90,00</strong></p>
+          <input
+            type="text"
+            id="obs-combo-familia"
+            placeholder="Ex: Remover Alface."
+          />
+          <button
+            onclick="
+              adicionarPedido(
+                'Combo Familia',
+                90.00,
+                1,
+                document.getElementById('obs-combo-familia').value,
+              )
+            "
+          >
+            +
+          </button>
+        </div>
+
+      
       </div>
     </section>
 
