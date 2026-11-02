@@ -21,12 +21,14 @@ const taxas = {
 
 // ===== SIDEBAR INFERIOR DELIVERY =====
 function toggleDeliveryBottom() {
-  const sidebar = document.getElementById("bottomSidebar");
-  const overlay = document.querySelector(".sidebar-overlay");
+
+  const sidebar =
+    document.getElementById("bottomSidebar");
 
   sidebar.classList.toggle("aberto");
-  overlay.classList.toggle("ativo");
+
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.querySelector(".sidebar-overlay");
@@ -63,6 +65,65 @@ function toggleSidebar() {
   overlay.classList.toggle('ativo');
   body.classList.toggle('sidebar-aberta');
 }
+
+//Abrir e Fechar Left sidebar ao clicar no overlay //
+
+// ======================================
+// SIDEBAR ESQUERDA
+// ======================================
+
+function toggleLeftSidebar() {
+
+  const sidebar =
+    document.getElementById("leftSidebar");
+
+  const overlay =
+    document.getElementById("leftSidebarOverlay");
+
+  const btnMenu =
+    document.querySelector(".btn-menu");
+
+  sidebar.classList.add("active");
+  overlay.classList.add("active");
+
+  btnMenu.classList.add("hidden");
+
+}
+
+function fecharLeftSidebar() {
+
+  const sidebar =
+    document.getElementById("leftSidebar");
+
+  const overlay =
+    document.getElementById("leftSidebarOverlay");
+
+  const btnMenu =
+    document.querySelector(".btn-menu");
+
+  sidebar.classList.remove("active");
+  overlay.classList.remove("active");
+
+  btnMenu.classList.remove("hidden");
+
+}
+
+function abrirInformacoes() {
+
+  fecharLeftSidebar();
+
+  const sidebar =
+    document.getElementById("bottomSidebar");
+
+  sidebar.classList.add("aberto");
+
+}
+
+
+
+
+
+
 
 // ===== ADICIONAR/REMOVER PEDIDO =====
 function adicionarPedido(nome, preco, quantidade = 1, observacao = "") {
