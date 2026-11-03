@@ -82,11 +82,13 @@ function toggleLeftSidebar() {
 
   const btnMenu =
     document.querySelector(".btn-menu");
+    const indicadorMenu = document.querySelector(".indicador-menu");
 
   sidebar.classList.add("active");
   overlay.classList.add("active");
 
   btnMenu.classList.add("hidden");
+  indicadorMenu.classList.add("hidden");
 
 }
 
@@ -105,6 +107,7 @@ function fecharLeftSidebar() {
   overlay.classList.remove("active");
 
   btnMenu.classList.remove("hidden");
+  indicadorMenu.classList.remove("hidden");
 
 }
 
