@@ -58,11 +58,61 @@
 
 </div>
 
+<style>
+
+    #login, #painel {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        font-size: 18px;
+        background-color: #f9f9f9;
+        color: #333;
+        border: 1px solid #ccc;
+        padding: 20px;
+
+    }
+    .categoria {
+        font-family: Arial, sans-serif;
+        padding: 10px;
+        margin: 10px;
+        background-color: #f0f0f0;
+        color: #333;
+        border-radius: 5px;
+        font-size: 18px;
+        text-align: center;
+    }
+      .categoria button {
+        margin: 5px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 6px;
+    }
+
+    categoria button:hover {
+        background-color: #052648;
+    }
+    h1 {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    input {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        display: block;
+        margin: 10px auto;
+        padding: 5px;
+    }
+
+</style>
 <script>
 
 // CONFIGURAÇÃO DO LOGIN
 const USUARIO = "admin";
-const SENHA = "2026";
+const SENHA = "Pontodosabor2026";
 
 // Verificar sessão
 if(localStorage.getItem("adminLogado") === "true"){
