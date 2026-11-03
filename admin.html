@@ -1,102 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo</title>
+</head>
 <body>
 
 <!-- LOGIN -->
 <div id="login">
     <h1>🔐 Login Administrativo</h1>
-
     <input type="text" id="usuario" placeholder="Usuário">
     <input type="password" id="senha" placeholder="Senha">
-
-    <button onclick="fazerLogin()">Entrar</button>
-
+    <button class="btn-entrar" onclick="fazerLogin()">Entrar</button>
     <p id="erro"></p>
 </div>
 
 <!-- PAINEL -->
 <div id="painel" style="display:none;">
-
     <h1>Painel Administrativo</h1>
 
     <div class="categoria">
-        🍽️ Jantinhas e Barcas
-        <button onclick="liberar('jantinhas')">Liberar</button>
-        <button onclick="bloquear('jantinhas')">Bloquear</button>
+        <span>🍽️ Jantinhas e Barcas</span>
+        <div class="botoes">
+            <button onclick="liberar('jantinhas')">Liberar</button>
+            <button class="btn-bloquear" onclick="bloquear('jantinhas')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🍔 Combos
-        <button onclick="liberar('combos')">Liberar</button>
-        <button onclick="bloquear('combos')">Bloquear</button>
+        <span>🍔 Combos</span>
+        <div class="botoes">
+            <button onclick="liberar('combos')">Liberar</button>
+            <button class="btn-bloquear" onclick="bloquear('combos')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🥔 Porções
-        <button onclick="liberar('porcoes')">Liberar</button>
-        <button onclick="bloquear('porcoes')">Bloquear</button>
+        <span>🥔 Porções</span>
+        <div class="botoes">
+            <button onclick="liberar('porcoes')">Liberar</button>
+            <button class="btn-bloquear" onclick="bloquear('porcoes')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🥤 Bebidas
-        <button onclick="liberar('bebidas')">Liberar</button>
-        <button onclick="bloquear('bebidas')">Bloquear</button>
+        <span>🥤 Bebidas</span>
+        <div class="botoes">
+            <button onclick="liberar('bebidas')">Liberar</button>
+            <button class="btn-bloquear" onclick="bloquear('bebidas')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🍢 Espetinhos
-        <button onclick="liberar('espetinhos')">Liberar</button>
-        <button onclick="bloquear('espetinhos')">Bloquear</button>
+        <span>🍢 Espetinhos</span>
+        <div class="botoes">
+            <button onclick="liberar('espetinhos')">Liberar</button>
+            <button class="btn-bloquear" onclick="bloquear('espetinhos')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🍱 Marmitex
-        <button onclick="liberar('marmitex')">Liberar</button>
-        <button onclick="bloquear('marmitex')">Bloquear</button>
+        <span>🍱 Marmitex</span>
+        <div class="botoes">
+            <button onclick="liberar('marmitex')">Liberar</button>
+            <button class="btn-bloquear" onclick="bloquear('marmitex')">Bloquear</button>
+        </div>
     </div>
 
     <br>
-    <button onclick="sair()">🚪 Sair</button>
-
+    <button class="btn-sair" onclick="sair()">🚪 Sair</button>
 </div>
 
 <style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 15px;
+        font-family: Arial, sans-serif;
+        background-color: #eee;
+    }
 
     #login, #painel {
         font-family: Arial, sans-serif;
         text-align: center;
-        margin-top: 50px;
+        margin: 30px auto;
+        max-width: 500px;
+        width: 100%;
         font-size: 18px;
         background-color: #f9f9f9;
         color: #333;
         border: 1px solid #ccc;
         padding: 20px;
-
+        border-radius: 10px;
     }
+
     .categoria {
         font-family: Arial, sans-serif;
-        padding: 10px;
-        margin: 10px;
+        padding: 12px;
+        margin: 10px 0;
         background-color: #f0f0f0;
         color: #333;
-        border-radius: 5px;
+        border-radius: 8px;
         font-size: 18px;
         text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
     }
-      .categoria button {
-        margin: 5px;
-        padding: 5px 10px;
+
+    .categoria span {
+        flex: 1;
+        min-width: 160px;
+        text-align: left;
+    }
+
+    .botoes {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .categoria button {
+        padding: 8px 14px;
         font-size: 16px;
         cursor: pointer;
-        background-color: #007BFF;
+        background-color: #28a745;
         color: white;
+        border: none;
         border-radius: 6px;
+        flex: 1;
+        white-space: nowrap;
+    }
+
+    .categoria button.btn-bloquear {
+        background-color: #dc3545;
     }
 
     .categoria button:hover {
-        background-color: #052648;
+        opacity: 0.85;
     }
+
     h1 {
         font-family: Arial, sans-serif;
         text-align: center;
+        font-size: 24px;
     }
 
     input {
@@ -104,12 +157,86 @@
         border: 1px solid #ccc;
         display: block;
         margin: 10px auto;
-        padding: 5px;
+        padding: 12px;
+        width: 100%;
+        max-width: 350px;
+        border-radius: 6px;
+        font-size: 16px;
     }
 
-</style>
-<script>
+    .btn-entrar, .btn-sair {
+        width: 100%;
+        max-width: 350px;
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 6px;
+    }
 
+    .btn-sair {
+        background-color: #333;
+    }
+
+    #erro {
+        color: red;
+        font-size: 15px;
+    }
+
+    /* ===== RESPONSIVIDADE ===== */
+
+    /* Tablets */
+    @media (max-width: 768px) {
+        #login, #painel {
+            margin-top: 15px;
+            padding: 16px;
+            font-size: 17px;
+        }
+        h1 { font-size: 21px; }
+        .categoria { font-size: 17px; }
+    }
+
+    /* Celulares */
+    @media (max-width: 480px) {
+        body { padding: 10px; }
+
+        #login, #painel {
+            margin: 10px auto;
+            padding: 15px 12px;
+        }
+
+        h1 { font-size: 19px; }
+
+        .categoria {
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+        }
+
+        .categoria span {
+            text-align: center;
+            min-width: auto;
+        }
+
+        .botoes {
+            width: 100%;
+        }
+
+        .botoes button {
+            flex: 1;
+            padding: 10px 5px;
+            font-size: 15px;
+        }
+
+        input, .btn-entrar, .btn-sair {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<script>
 // CONFIGURAÇÃO DO LOGIN
 const USUARIO = "admin";
 const SENHA = "Ponto123";
@@ -120,22 +247,14 @@ if(localStorage.getItem("adminLogado") === "true"){
 }
 
 function fazerLogin(){
-
     let usuario = document.getElementById("usuario").value;
     let senha = document.getElementById("senha").value;
-
     if(usuario === USUARIO && senha === SENHA){
-
         localStorage.setItem("adminLogado","true");
         mostrarPainel();
-
     }else{
-
-        document.getElementById("erro").innerText =
-        "Usuário ou senha inválidos";
-
+        document.getElementById("erro").innerText = "Usuário ou senha inválidos";
     }
-
 }
 
 function mostrarPainel(){
@@ -157,7 +276,7 @@ function bloquear(categoria){
     localStorage.setItem(categoria,"bloqueado");
     alert("🔒 Categoria bloqueada!");
 }
-
 </script>
 
 </body>
+</html>
