@@ -27,7 +27,11 @@
   <body>
     <header>
     
-    <img src="./WhatsApp Image 2026-02-17 at 08.png" alt="Ponto Do Sabor">
+    <img
+  id="logoAdmin"
+  src="./WhatsApp Image 2026-02-17 at 08.png"
+  alt="Ponto Do Sabor"
+>
      <h2>O Segredo Da Receita? Amor De Casa !!!</h2>
     </header>
     
@@ -236,5 +240,79 @@
     ></div>
 
     <script src="script.js"></script>
+
+   <script>
+
+// ===== ACESSO SECRETO ADMIN =====
+
+const logoAdmin = document.getElementById("logoAdmin");
+
+let cliques = 0;
+let temporizadorCliques;
+let temporizadorPressionado;
+
+// FUNÇÃO PARA PEDIR SENHA
+function abrirAdmin() {
+
+    const senha = prompt("🔐 Código de acesso:");
+
+    if (senha === "123") {
+        window.location.href = "admin.html";
+    } else {
+        alert("Acesso negado!");
+    }
+}
+
+// ===== 5 CLIQUES =====
+logoAdmin.addEventListener("click", () => {
+
+    cliques++;
+
+    clearTimeout(temporizadorCliques);
+
+    temporizadorCliques = setTimeout(() => {
+        cliques = 0;
+    }, 3000);
+
+    if (cliques >= 5) {
+        cliques = 0;
+        abrirAdmin();
+    }
+
+});
+
+// ===== SEGURAR 3 SEGUNDOS (CELULAR E PC) =====
+
+// Celular
+logoAdmin.addEventListener("touchstart", () => {
+
+    temporizadorPressionado = setTimeout(() => {
+        abrirAdmin();
+    }, 3000);
+
+});
+
+logoAdmin.addEventListener("touchend", () => {
+    clearTimeout(temporizadorPressionado);
+});
+
+// Computador
+logoAdmin.addEventListener("mousedown", () => {
+
+    temporizadorPressionado = setTimeout(() => {
+        abrirAdmin();
+    }, 3000);
+
+});
+
+logoAdmin.addEventListener("mouseup", () => {
+    clearTimeout(temporizadorPressionado);
+});
+
+logoAdmin.addEventListener("mouseleave", () => {
+    clearTimeout(temporizadorPressionado);
+});
+
+</script>
   </body>
 </html>
