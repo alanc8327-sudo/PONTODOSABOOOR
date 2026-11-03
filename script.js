@@ -119,7 +119,33 @@ function abrirInformacoes() {
 
 }
 
+const categorias = [
+    "jantinhas",
+    "combos",
+    "porcoes",
+    "bebidas",
+    "espetinhos",
+    "marmitex"
+];
 
+categorias.forEach(id => {
+
+    const link = document.getElementById(id);
+    const status = localStorage.getItem(id);
+
+    if(status === "bloqueado"){
+
+        link.style.opacity = "0.5";
+        link.innerHTML += " 🔒";
+
+        link.addEventListener("click", function(e){
+            e.preventDefault();
+            alert("Categoria temporariamente indisponível.");
+        });
+
+    }
+
+});
 
 
 
