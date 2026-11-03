@@ -60,9 +60,11 @@
 
 <script>
 
+// CONFIGURAÇÃO DO LOGIN
 const USUARIO = "admin";
-const SENHA = "123";
+const SENHA = "Pontososabor2026";
 
+// Verificar sessão
 if(localStorage.getItem("adminLogado") === "true"){
     mostrarPainel();
 }
@@ -98,12 +100,12 @@ function sair(){
 
 function liberar(categoria){
     localStorage.setItem(categoria,"liberado");
-    alert("Categoria liberada!");
+    alert("✅ Categoria liberada!");
 }
 
 function bloquear(categoria){
     localStorage.setItem(categoria,"bloqueado");
-    alert("Categoria bloqueada!");
+    alert("🔒 Categoria bloqueada!");
 }
 
 </script>
