@@ -1,98 +1,111 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel Admin</title>
-
-<style>
-body{
-    font-family: Arial, sans-serif;
-    padding:20px;
-    display:flex;
-    flex-direction:column;
-
-}
-
-h1{
-    text-align:center;
-}
-
-.categoria{
-    margin:10px 0;
-}
-
-button{
-    padding:10px;
-    margin-left:10px;
-}
-</style>
-
-</head>
 <body>
 
-<h1>Painel Administrativo</h1>
+<!-- LOGIN -->
+<div id="login">
+    <h1>🔐 Login Administrativo</h1>
 
-<div class="categoria">
-    🍽️ Jantinhas e Barcas
-    <button onclick="liberar('jantinhas')">Liberar</button>
-    <button onclick="bloquear('jantinhas')">Bloquear</button>
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+
+    <button onclick="fazerLogin()">Entrar</button>
+
+    <p id="erro"></p>
 </div>
 
-<div class="categoria">
-    🍔 Combos
-    <button onclick="liberar('combos')">Liberar</button>
-    <button onclick="bloquear('combos')">Bloquear</button>
-</div>
+<!-- PAINEL -->
+<div id="painel" style="display:none;">
 
-<div class="categoria">
-    🥔 Porções
-    <button onclick="liberar('porcoes')">Liberar</button>
-    <button onclick="bloquear('porcoes')">Bloquear</button>
-</div>
+    <h1>Painel Administrativo</h1>
 
-<div class="categoria">
-    🥤 Bebidas
-    <button onclick="liberar('bebidas')">Liberar</button>
-    <button onclick="bloquear('bebidas')">Bloquear</button>
-</div>
+    <div class="categoria">
+        🍽️ Jantinhas e Barcas
+        <button onclick="liberar('jantinhas')">Liberar</button>
+        <button onclick="bloquear('jantinhas')">Bloquear</button>
+    </div>
 
-<div class="categoria">
-    🍢 Espetinhos
-    <button onclick="liberar('espetinhos')">Liberar</button>
-    <button onclick="bloquear('espetinhos')">Bloquear</button>
-</div>
+    <div class="categoria">
+        🍔 Combos
+        <button onclick="liberar('combos')">Liberar</button>
+        <button onclick="bloquear('combos')">Bloquear</button>
+    </div>
 
-<div class="categoria">
-    🍱 Marmitex
-    <button onclick="liberar('marmitex')">Liberar</button>
-    <button onclick="bloquear('marmitex')">Bloquear</button>
+    <div class="categoria">
+        🥔 Porções
+        <button onclick="liberar('porcoes')">Liberar</button>
+        <button onclick="bloquear('porcoes')">Bloquear</button>
+    </div>
+
+    <div class="categoria">
+        🥤 Bebidas
+        <button onclick="liberar('bebidas')">Liberar</button>
+        <button onclick="bloquear('bebidas')">Bloquear</button>
+    </div>
+
+    <div class="categoria">
+        🍢 Espetinhos
+        <button onclick="liberar('espetinhos')">Liberar</button>
+        <button onclick="bloquear('espetinhos')">Bloquear</button>
+    </div>
+
+    <div class="categoria">
+        🍱 Marmitex
+        <button onclick="liberar('marmitex')">Liberar</button>
+        <button onclick="bloquear('marmitex')">Bloquear</button>
+    </div>
+
+    <br>
+    <button onclick="sair()">🚪 Sair</button>
+
 </div>
 
 <script>
+
+const USUARIO = "admin";
+const SENHA = "123";
+
+if(localStorage.getItem("adminLogado") === "true"){
+    mostrarPainel();
+}
+
+function fazerLogin(){
+
+    let usuario = document.getElementById("usuario").value;
+    let senha = document.getElementById("senha").value;
+
+    if(usuario === USUARIO && senha === SENHA){
+
+        localStorage.setItem("adminLogado","true");
+        mostrarPainel();
+
+    }else{
+
+        document.getElementById("erro").innerText =
+        "Usuário ou senha inválidos";
+
+    }
+
+}
+
+function mostrarPainel(){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("painel").style.display = "block";
+}
+
+function sair(){
+    localStorage.removeItem("adminLogado");
+    location.reload();
+}
+
 function liberar(categoria){
-    localStorage.setItem(categoria, "liberado");
-    alert(categoria + " liberada!");
+    localStorage.setItem(categoria,"liberado");
+    alert("Categoria liberada!");
 }
 
 function bloquear(categoria){
-    localStorage.setItem(categoria, "bloqueado");
-    alert(categoria + " bloqueada!");
+    localStorage.setItem(categoria,"bloqueado");
+    alert("Categoria bloqueada!");
 }
-
-
-
-const senha = prompt("Digite a senha do administrador:");
-
-if(senha !== "123456"){
-    alert("Acesso negado!");
-    window.location.href = "index.html";
-}
-
-</script>
-
 
 </script>
 
 </body>
-</html>
