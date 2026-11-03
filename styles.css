@@ -243,6 +243,30 @@ header img {
 }
 
 
+/* Mão indicando o menu */
+.indicador-menu {
+  position: fixed;
+  top: 20px;
+  left: 75px;
+  font-size: 42px;
+  z-index: 9999;
+  animation: apontarMenu 1s infinite;
+  pointer-events: none;
+}
+
+@keyframes apontarMenu {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-12px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
 /* ====================================
    MARMITEX
 ==================================== */
