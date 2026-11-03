@@ -1,318 +1,163 @@
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- LOGIN -->
+<div id="login">
+    <h1>🔐 Login Administrativo</h1>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
 
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <button onclick="fazerLogin()">Entrar</button>
 
-  <link rel="stylesheet" href="styles.css">
+    <p id="erro"></p>
+</div>
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
-  <link rel="icon" type="image/png" sizes="40x40" href="/favicon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  <link rel="manifest" href="/site.webmanifest">
-  <link rel="shortcut icon" href="/favicon.png">
+<!-- PAINEL -->
+<div id="painel" style="display:none;">
 
-  <title>Ponto Do Sabor</title>
-</head>
+    <h1>Painel Administrativo</h1>
 
-  <body>
-    <header>
-    
-    <img
-  id="logoAdmin"
-  src="./WhatsApp Image 2026-02-17 at 08.png"
-  alt="Ponto Do Sabor"
->
-     <h2>O Segredo Da Receita? Amor De Casa !!!</h2>
-    </header>
-    
-   <!-- OVERLAY -->
-<div
-  class="left-sidebar-overlay"
-  id="leftSidebarOverlay"
-  onclick="fecharLeftSidebar()"
-></div>
+    <div class="categoria">
+        🍽️ Jantinhas e Barcas
+        <button onclick="liberar('jantinhas')">Liberar</button>
+        <button onclick="bloquear('jantinhas')">Bloquear</button>
+    </div>
 
-<!-- SIDEBAR -->
-<div class="left-sidebar" id="leftSidebar">
+    <div class="categoria">
+        🍔 Combos
+        <button onclick="liberar('combos')">Liberar</button>
+        <button onclick="bloquear('combos')">Bloquear</button>
+    </div>
 
-  <button
-    class="btn-fechar-menu"
-    onclick="fecharLeftSidebar()"
-  >
-    ✕
-  </button>
+    <div class="categoria">
+        🥔 Porções
+        <button onclick="liberar('porcoes')">Liberar</button>
+        <button onclick="bloquear('porcoes')">Bloquear</button>
+    </div>
 
-  
+    <div class="categoria">
+        🥤 Bebidas
+        <button onclick="liberar('bebidas')">Liberar</button>
+        <button onclick="bloquear('bebidas')">Bloquear</button>
+    </div>
 
-  <nav>
-   <a id="marmitex" href="marmitex.html">🍱 Marmitex</a>
-    <a id="jantinhas" href="jantinhas e barcas.html">🍽️ Jantinhas e Barcas</a>
-    <a id="combos" href="combos.html">🍔 Combos</a>
-    <a id="porcoes" href="porcoes.html">🥔 Porções</a>
-    <a id="bebidas" href="bebidas.html">🥤 Bebidas</a>
-    <a id="espetinhos" href="espetinhos.html">🍢 Espetinhos</a>
-</nav>
+    <div class="categoria">
+        🍢 Espetinhos
+        <button onclick="liberar('espetinhos')">Liberar</button>
+        <button onclick="bloquear('espetinhos')">Bloquear</button>
+    </div>
+
+    <div class="categoria">
+        🍱 Marmitex
+        <button onclick="liberar('marmitex')">Liberar</button>
+        <button onclick="bloquear('marmitex')">Bloquear</button>
+    </div>
+
+    <br>
+    <button onclick="sair()">🚪 Sair</button>
 
 </div>
 
-<!-- BOTÃO ABRIR MENU -->
-<button
-  class="btn-menu"
-  onclick="toggleLeftSidebar()"
->
-  ☰
-</button>
+<style>
 
-<section class="delivery-section" id="deliveryInfo">
+    #login, #painel {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        font-size: 18px;
+        background-color: #f9f9f9;
+        color: #333;
+        border: 1px solid #ccc;
+        padding: 20px;
 
- 
-
-  <div class="bottom-sidebar" id="bottomSidebar">
-
-    <div class="drag-bar"></div>
-
-    <div class="sidebar-header">
-      <h2>📦 Informações</h2>
-
-      <button
-        class="btn-fechar-info"
-        onclick="toggleDeliveryBottom()">
-        ✕
-      </button>
-    </div>
-
-    <div class="sidebar-content">
-
-      <h3>🚚 Tipo de Serviço</h3>
-      <p>Delivery rápido e confiável direto na sua casa.</p>
-      <p>Atendemos somente a cidade de Bertioga-SP.</p>
-
-      <h3>⏰ Horários de Funcionamento</h3>
-      <p>Segunda a Sábado: 10:50 às 15:00</p>
-      <p>18:00 às 00:00</p>
-      <p>Domingo: Fechado</p>
-
-      <h3>📍 Bairros Atendidos</h3>
-
-      <ul>
-        <li>Rio da Praia</li>
-        <li>Maitinga</li>
-        <li>Mangue Seco</li>
-        <li>Jardim Rafael</li>
-        <li>Jardim das Canções</li>
-        <li>Vila HO</li>
-        <li>Riviera</li>
-        <li>Centro</li>
-        <li>Centreville (Balsa)</li>
-        <li>Sítio São João</li>
-        <li>São Lourenço</li>
-        <li>Chácaras</li>
-        <li>Vista Linda</li>
-        <li>Indaiá</li>
-        <li>SAOC</li>
-      </ul>
-
-    </div>
-
-  </div>
-
-    <h1>Bem-Vindos(as) Ao Ponto do Sabor!!</h1>
-     <h2>Façam seus pedidos no menu ao Lado!!</h2>
-     <h2>voltem sempre e um bom apetite!!</h2>
-
-  
-   
-
-    
-    <section class="feedback">
-      <h2>Deixe seu Feedback</h2>
-      <div class="stars">
-        <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
-        <i class="fa-regular fa-star" onclick="avaliar(2)"></i>
-        <i class="fa-regular fa-star" onclick="avaliar(3)"></i>
-        <i class="fa-regular fa-star" onclick="avaliar(4)"></i>
-        <i class="fa-regular fa-star" onclick="avaliar(5)"></i>
-      </div>
-      <textarea
-        id="feedbackMsg"
-        placeholder="Deixe sua opinião aqui..."
-      ></textarea>
-      <input type="text" id="feedbackNome" placeholder="Seu nome" />
-      <button onclick="enviarFeedback()">Enviar pelo WhatsApp</button>
-    </section>
-
-    
-    <a
-      href="https://www.instagram.com/ponto.do.sabor.fs/"
-      target="_blank"
-      class="btn-instagram-fixo"
-    >
-      <i class="fab fa-instagram"></i>
-    </a>
-
-    
-    <button
-      class="btn-toggle-sidebar"
-      onclick="toggleSidebar()"
-      id="btnToggleSidebar"
-    >
-      <i class="fas fa-shopping-cart"></i>
-      <span id="badgeQtd">0</span>
-    </button>
-
-    
-    <div class="sidebar-carrinho" id="sidebarCarrinho">
-      <div class="sidebar-header">
-        <h2><i class="fas fa-shopping-cart"></i> Seu Pedido</h2>
-        <button class="btn-fechar-sidebar" onclick="toggleSidebar()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-
-      <div class="sidebar-itens" id="resumo">Nenhum pedido ainda.</div>
-
-     <div class="sidebar-footer">
-        <input type="text" id="endereco" placeholder="Rua, número..." />
-        <select id="bairro">
-          <option value="">Selecione o bairro</option>
-          <option value="Saoc">Saoc</option>
-          <option value="Albatroz 2">Albatroz 2</option>
-          <option value="Centro">Centro</option>
-          <option value="Sitio">Sitio</option>
-          <option value="Maitinga">Maitinga</option>
-          <option value="Rio Da Praia">Rio Da Praia</option>
-          <option value="Mangue Seco">Mangue Seco</option>
-          <option value="Pedralina">Pedralina</option>
-          <option value="Ana Paula">Ana Paula</option>
-          <option value=" V.L Lado Praia">V.L Lado Praia</option>
-          <option value="V.L Lado Chacara">V.L Lado Chacara</option>
-          <option value="V.L Invasao">V.L Invasao</option>
-          <option value="Indiaia">Indiaia</option>
-          <option value="Rivieira">Rivieira</option>
-          <option value="Sao Lourenco">Sao Lourenco</option>
-        </select>
-
-        <select id="pagamento">
-          <option value="">Forma de pagamento</option>
-          <option value="Dinheiro">Dinheiro</option>
-          <option value="Débito">Débito</option>
-          <option value="Crédito">Crédito</option>
-          <option value="Pix">Pix</option>
-        </select>
-
-        <div id="troco-container" class="hidden">
-          <label for="troco">Precisa de troco para quanto?</label>
-          <input
-            type="number"
-            id="troco"
-            name="troco"
-            placeholder="Ex: 150,20"
-          />
-          <p id="resultado-troco"></p>
-        </div>
-
-        <div class="sidebar-total" id="sidebarTotal">Total: R$ 0,00</div>
-
-        <button class="btn-finalizar" onclick="finalizarPedido()">
-          Finalizar Pedido
-        </button>
-        <button class="btn-limpar" onclick="limparPedidos()">
-          Limpar Pedido
-        </button>
-      </div>
-    </div> 
-
-    <!-- OVERLAY -->
-    <div
-      class="sidebar-overlay"
-      id="sidebarOverlay"
-      onclick="toggleSidebar()"
-    ></div>
-
-    <script src="script.js"></script>
-
-   <script>
-
-// ===== ACESSO SECRETO ADMIN =====
-
-const logoAdmin = document.getElementById("logoAdmin");
-
-let cliques = 0;
-let temporizadorCliques;
-let temporizadorPressionado;
-
-// FUNÇÃO PARA PEDIR SENHA
-function abrirAdmin() {
-
-    const senha = prompt("🔐 Código de acesso:");
-
-    if (senha === "123") {
-        window.location.href = "admin.html";
-    } else {
-        alert("Acesso negado!");
     }
+    .categoria {
+        font-family: Arial, sans-serif;
+        padding: 10px;
+        margin: 10px;
+        background-color: #f0f0f0;
+        color: #333;
+        border-radius: 5px;
+        font-size: 18px;
+        text-align: center;
+    }
+      .categoria button {
+        margin: 5px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 6px;
+    }
+
+    .categoria button:hover {
+        background-color: #052648;
+    }
+    h1 {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    input {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        display: block;
+        margin: 10px auto;
+        padding: 5px;
+    }
+
+</style>
+<script>
+
+// CONFIGURAÇÃO DO LOGIN
+const USUARIO = "admin";
+const SENHA = "Ponto123";
+
+// Verificar sessão
+if(localStorage.getItem("adminLogado") === "true"){
+    mostrarPainel();
 }
 
-// ===== 5 CLIQUES =====
-logoAdmin.addEventListener("click", () => {
+function fazerLogin(){
 
-    cliques++;
+    let usuario = document.getElementById("usuario").value;
+    let senha = document.getElementById("senha").value;
 
-    clearTimeout(temporizadorCliques);
+    if(usuario === USUARIO && senha === SENHA){
 
-    temporizadorCliques = setTimeout(() => {
-        cliques = 0;
-    }, 3000);
+        localStorage.setItem("adminLogado","true");
+        mostrarPainel();
 
-    if (cliques >= 2) {
-        cliques = 0;
-        abrirAdmin();
+    }else{
+
+        document.getElementById("erro").innerText =
+        "Usuário ou senha inválidos";
+
     }
 
-});
+}
 
-// ===== SEGURAR 3 SEGUNDOS (CELULAR E PC) =====
+function mostrarPainel(){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("painel").style.display = "block";
+}
 
-// Celular
-logoAdmin.addEventListener("touchstart", () => {
+function sair(){
+    localStorage.removeItem("adminLogado");
+    location.reload();
+}
 
-    temporizadorPressionado = setTimeout(() => {
-        abrirAdmin();
-    }, 3000);
+function liberar(categoria){
+    localStorage.setItem(categoria,"liberado");
+    alert("✅ Categoria liberada!");
+}
 
-});
-
-logoAdmin.addEventListener("touchend", () => {
-    clearTimeout(temporizadorPressionado);
-});
-
-// Computador
-logoAdmin.addEventListener("mousedown", () => {
-
-    temporizadorPressionado = setTimeout(() => {
-        abrirAdmin();
-    }, 3000);
-
-});
-
-logoAdmin.addEventListener("mouseup", () => {
-    clearTimeout(temporizadorPressionado);
-});
-
-logoAdmin.addEventListener("mouseleave", () => {
-    clearTimeout(temporizadorPressionado);
-});
+function bloquear(categoria){
+    localStorage.setItem(categoria,"bloqueado");
+    alert("🔒 Categoria bloqueada!");
+}
 
 </script>
-  </body>
-</html>
+
+</body>
