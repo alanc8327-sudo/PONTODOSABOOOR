@@ -1,178 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ponto Do Sabor - ADM</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+    color:#333;
+    min-height:100vh;
+    padding:16px;
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+  }
+  #login, #painel{
+    width:100%;
+    max-width:520px;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
+    text-align:center;
+  }
+  h1{font-size:22px;margin-bottom:16px;line-height:1.2}
+  #login h1{font-size:26px}
+  #login input[type="text"], #login input[type="password"]{
+    width:100%;
+    display:block;
+    margin:10px auto;
+    padding:12px;
+    font-size:16px;
+    background:#f0f0f0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+  }
+  #login input:focus{border-color:#007BFF;background:#fff}
+  #login label{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    font-size:14px;
+    margin:8px 0;
+    cursor:pointer;
+  }
+  #login label input{
+    width:20px;height:20px;
+    margin:0;
+    transform:scale(1.2);
+    cursor:pointer;
+  }
+  #login button{
+    width:100%;
+    padding:13px;
+    font-size:17px;
+    font-weight:bold;
+    background:#007BFF;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:8px;
+  }
+  #login button:hover{opacity:.9}
+  #erro{color:#d00;font-size:14px;margin-top:10px;min-height:20px}
+
+  .categoria{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px;
+    margin:10px 0;
+    background:#f0f0f0;
+    border-radius:10px;
+    font-size:16px;
+    text-align:left;
+  }
+  .categoria span{flex:1;line-height:1.3}
+  .categoria .btns{
+    display:flex;
+    gap:6px;
+    flex-shrink:0;
+  }
+  .categoria button{
+    padding:8px 12px;
+    font-size:14px;
+    cursor:pointer;
+    background:#007BFF;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    white-space:nowrap;
+  }
+  .categoria button:last-child{background:#dc3545}
+  .categoria button:hover{opacity:.85}
+  hr{margin:18px 0;border:none;border-top:1px solid #ddd}
+  .acoes{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+  }
+  .acoes button{
+    flex:1 1 140px;
+    padding:12px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
+    border:none;
+    border-radius:8px;
+    color:#fff;
+  }
+  .btn-liberar-tudo{background:green}
+  .btn-bloquear-tudo{background:red}
+  .btn-sair{background:#333}
+  .acoes button:hover{opacity:.85}
+
+  /* CELULAR */
+  @media (max-width:480px){
+    body{padding:10px;align-items:flex-start}
+    #login, #painel{padding:16px;border-radius:12px}
+    h1{font-size:19px}
+    #login h1{font-size:22px}
+    .categoria{
+      flex-direction:column;
+      align-items:stretch;
+      text-align:center;
+      font-size:16px;
+    }
+    .categoria span{text-align:center}
+    .categoria .btns{justify-content:center}
+    .categoria button{flex:1;padding:10px}
+    .acoes button{flex:1 1 100%}
+  }
+  /* TABLET */
+  @media (min-width:481px) and (max-width:768px){
+    #login, #painel{max-width:600px}
+  }
+</style>
+</head>
 <body>
 
 <!-- LOGIN -->
 <div id="login">
     <h1>🔐 Login ADM</h1>
-
-    <input type="text" id="usuario" placeholder="Usuário">
-    <input type="password" id="senha" placeholder="Senha">
-
-<label>
-    <input
-        type="checkbox"
-        onclick="verSenha()"
-    >
-    Mostrar senha
-</label>
-
+    <input type="text" id="usuario" placeholder="Usuário" autocomplete="username">
+    <input type="password" id="senha" placeholder="Senha" autocomplete="current-password">
+    <label>
+        <input type="checkbox" onclick="verSenha()"> Mostrar senha
+    </label>
     <button onclick="fazerLogin()">Entrar</button>
-
     <p id="erro"></p>
 </div>
 
 <!-- PAINEL -->
 <div id="painel" style="display:none;">
-
-    <h1> Ponto Do Sabor-ADM</h1>
+    <h1>Ponto Do Sabor - ADM</h1>
 
     <div class="categoria">
-        🏠 Página Inicial
-        <button onclick="liberar('index')">Liberar</button>
-        <button onclick="bloquear('index')">Bloquear</button>
+        <span>🏠 Página Inicial</span>
+        <div class="btns">
+            <button onclick="liberar('index')">Liberar</button>
+            <button onclick="bloquear('index')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🍽️ Jantinhas e Barcas
-        <button onclick="liberar('jantinhas')">Liberar</button>
-        <button onclick="bloquear('jantinhas')">Bloquear</button>
+        <span>🍽️ Jantinhas e Barcas</span>
+        <div class="btns">
+            <button onclick="liberar('jantinhas')">Liberar</button>
+            <button onclick="bloquear('jantinhas')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🍔 Combos
-        <button onclick="liberar('combos')">Liberar</button>
-        <button onclick="bloquear('combos')">Bloquear</button>
+        <span>🍔 Combos</span>
+        <div class="btns">
+            <button onclick="liberar('combos')">Liberar</button>
+            <button onclick="bloquear('combos')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🥔 Porções
-        <button onclick="liberar('porcoes')">Liberar</button>
-        <button onclick="bloquear('porcoes')">Bloquear</button>
+        <span>🥔 Porções</span>
+        <div class="btns">
+            <button onclick="liberar('porcoes')">Liberar</button>
+            <button onclick="bloquear('porcoes')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🥤 Bebidas
-        <button onclick="liberar('bebidas')">Liberar</button>
-        <button onclick="bloquear('bebidas')">Bloquear</button>
+        <span>🥤 Bebidas</span>
+        <div class="btns">
+            <button onclick="liberar('bebidas')">Liberar</button>
+            <button onclick="bloquear('bebidas')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🍢 Espetinhos
-        <button onclick="liberar('espetinhos')">Liberar</button>
-        <button onclick="bloquear('espetinhos')">Bloquear</button>
+        <span>🍢 Espetinhos</span>
+        <div class="btns">
+            <button onclick="liberar('espetinhos')">Liberar</button>
+            <button onclick="bloquear('espetinhos')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🍱 Marmitex
-        <button onclick="liberar('marmitex')">Liberar</button>
-        <button onclick="bloquear('marmitex')">Bloquear</button>
-    </div>
-
-
-
-    <div class="categoria">
-        📦 Informações Delivery
-        <button onclick="liberar('delivery')">Liberar</button>
-        <button onclick="bloquear('delivery')">Bloquear</button>
+        <span>🍱 Marmitex</span>
+        <div class="btns">
+            <button onclick="liberar('marmitex')">Liberar</button>
+            <button onclick="bloquear('marmitex')">Bloquear</button>
+        </div>
     </div>
 
     <div class="categoria">
-        🛒 Carrinho
-        <button onclick="liberar('carrinho')">Liberar</button>
-        <button onclick="bloquear('carrinho')">Bloquear</button>
+        <span>📦 Informações Delivery</span>
+        <div class="btns">
+            <button onclick="liberar('delivery')">Liberar</button>
+            <button onclick="bloquear('delivery')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria">
+        <span>🛒 Carrinho</span>
+        <div class="btns">
+            <button onclick="liberar('carrinho')">Liberar</button>
+            <button onclick="bloquear('carrinho')">Bloquear</button>
+        </div>
     </div>
 
     <hr>
 
-    <button onclick="liberarTudo()" style="background:green;color:white;">
-        ✅ Liberar Tudo
-    </button>
-
-    <button onclick="bloquearTudo()" style="background:red;color:white;">
-        🔒 Bloquear Tudo
-    </button>
-
-    <button onclick="sair()">
-        🚪 Sair
-    </button>
-
+    <div class="acoes">
+        <button onclick="liberarTudo()" class="btn-liberar-tudo">✅ Liberar Tudo</button>
+        <button onclick="bloquearTudo()" class="btn-bloquear-tudo">🔒 Bloquear Tudo</button>
+        <button onclick="sair()" class="btn-sair">🚪 Sair</button>
+    </div>
 </div>
 
-
-<style>
-
-    #login, #painel {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin-top: 50px;
-        font-size: 18px;
-        background-color: #f9f9f9;
-        color: #333;
-        border: 1px solid #ccc;
-        padding: 20px;
-
-    }
-    .categoria {
-        font-family: Arial, sans-serif;
-        padding: 10px;
-        margin: 10px;
-        background-color: #f0f0f0;
-        color: #333;
-        border-radius: 5px;
-        font-size: 18px;
-        text-align: center;
-    }
-      .categoria button {
-        margin: 5px;
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
-        background-color: #007BFF;
-        color: white;
-        border-radius: 6px;
-    }
-
-    .categoria button:hover {
-        background-color: #052648;
-    }
-
-
-    button {
-        font-family: Arial, sans-serif;
-        padding: 10px 20px;
-        margin: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    button:hover {
-        opacity: 0.8;
-    }
-    h1 {
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
-
-    input {
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        display: block;
-        margin: 15px auto;
-        padding: 5px;
-    }  
-
-   input[type="checkbox"] {
-    width: 20px;
-    display: inline-block;
-    margin-right: 5px;
-    transform: scale(1.2);
-    cursor: pointer;
-}
-    
-
-</style>
 <script>
-
 // CONFIGURAÇÃO DO LOGIN
 const USUARIO = "admin";
 const SENHA = "Ponto123";
@@ -183,22 +255,14 @@ if(localStorage.getItem("adminLogado") === "true"){
 }
 
 function fazerLogin(){
-
     let usuario = document.getElementById("usuario").value;
     let senha = document.getElementById("senha").value;
-
     if(usuario === USUARIO && senha === SENHA){
-
         localStorage.setItem("adminLogado","true");
         mostrarPainel();
-
     }else{
-
-        document.getElementById("erro").innerText =
-        "Usuário ou senha inválidos";
-
+        document.getElementById("erro").innerText = "Usuário ou senha inválidos";
     }
-
 }
 
 function mostrarPainel(){
@@ -221,49 +285,23 @@ function bloquear(categoria){
     alert("🔒 Categoria bloqueada!");
 }
 
-const itens = [
-    "index",
-    "jantinhas",
-    "combos",
-    "porcoes",
-    "bebidas",
-    "espetinhos",
-    "marmitex",
-    "delivery",
-    "carrinho"
-];
-
+const itens = ["index","jantinhas","combos","porcoes","bebidas","espetinhos","marmitex","delivery","carrinho"];
 
 function liberarTudo(){
-
-    itens.forEach(item => {
-        localStorage.setItem(item, "liberado");
-    });
-
+    itens.forEach(item => { localStorage.setItem(item, "liberado"); });
     alert("✅ Tudo liberado!");
 }
 
 function bloquearTudo(){
-
-    itens.forEach(item => {
-        localStorage.setItem(item, "bloqueado");
-    });
-
+    itens.forEach(item => { localStorage.setItem(item, "bloqueado"); });
     alert("🔒 Tudo bloqueado!");
 }
 
 function verSenha() {
-
     const campoSenha = document.getElementById("senha");
-
-    campoSenha.type =
-        campoSenha.type === "password"
-        ? "text"
-        : "password";
-
+    campoSenha.type = campoSenha.type === "password" ? "text" : "password";
 }
-
-
 </script>
 
 </body>
+</html>
