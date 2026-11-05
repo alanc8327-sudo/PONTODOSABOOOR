@@ -122,35 +122,120 @@ function abrirInformacoes(){
 
 }
 
-const categorias = [
-    "index",
-    "jantinhas",
-    "combos",
-    "porcoes",
-    "bebidas",
-    "espetinhos",
-    "marmitex",
-    "delivery",
-    "carrinho"
-];
-
-function liberarTudo() {
+  // Categorias do menu lateral
+    const categorias = [
+        "jantinhas",
+        "combos",
+        "porcoes",
+        "bebidas",
+        "espetinhos",
+        "marmitex"
+    ];
 
     categorias.forEach(categoria => {
-        localStorage.setItem(categoria, "liberado");
+
+        const link = document.getElementById(categoria);
+
+        if (
+            link &&
+            localStorage.getItem(categoria) === "bloqueado"
+        ) {
+
+            link.style.opacity = "0.4";
+            link.style.pointerEvents = "none";
+            link.innerHTML += " 🔒";
+
+        }
+
     });
 
-    alert("✅ Todas as páginas foram liberadas!");
+    // Informações Delivery
+    if (localStorage.getItem("delivery") === "bloqueado") {
+
+        const deliveryBox =
+            document.getElementById("deliveryInfo");
+
+        if (deliveryBox) {
+            deliveryBox.style.display = "none";
+        }
+
+    }
+
+    // Carrinho
+    if (localStorage.getItem("carrinho") === "bloqueado") {
+
+        const btnCarrinho =
+            document.getElementById("btnToggleSidebar");
+
+        if (btnCarrinho) {
+            btnCarrinho.style.display = "none";
+        }
+
+    }
+
 }
 
-function bloquearTudo() {
+document.addEventListener("DOMContentLoaded", function(){
 
-    categorias.forEach(categoria => {
-        localStorage.setItem(categoria, "bloqueado");
-    });
+    // Bloquear site inteiro
+    if(localStorage.getItem("index") === "bloqueado"){
 
-    alert("🔒 Todas as páginas foram bloqueadas!");
-}
+        document.body.innerHTML = `
+        <div style="
+            text-align:center;
+            padding:100px;
+            font-family:Arial;
+        ">
+            <h1>🚫 Estamos fechados no momento</h1>
+            <h3>Tente novamente mais tarde.</h3>
+        </div>
+        `;
+
+        return;
+    }
+
+    // Jantinhas
+    if(localStorage.getItem("jantinhas") === "bloqueado"){
+        document.getElementById("jantinhas").style.display = "none";
+    }
+
+    // Combos
+    if(localStorage.getItem("combos") === "bloqueado"){
+        document.getElementById("combos").style.display = "none";
+    }
+
+    // Porções
+    if(localStorage.getItem("porcoes") === "bloqueado"){
+        document.getElementById("porcoes").style.display = "none";
+    }
+
+    // Bebidas
+    if(localStorage.getItem("bebidas") === "bloqueado"){
+        document.getElementById("bebidas").style.display = "none";
+    }
+
+    // Espetinhos
+    if(localStorage.getItem("espetinhos") === "bloqueado"){
+        document.getElementById("espetinhos").style.display = "none";
+    }
+
+    // Marmitex
+    if(localStorage.getItem("marmitex") === "bloqueado"){
+        document.getElementById("marmitex").style.display = "none";
+    }
+
+    // Delivery
+    if(localStorage.getItem("delivery") === "bloqueado"){
+        document.getElementById("deliveryInfo").style.display = "none";
+    }
+
+    // Carrinho
+    if(localStorage.getItem("carrinho") === "bloqueado"){
+        document.getElementById("btnToggleSidebar").style.display = "none";
+    }
+
+});
+
 
 
 
