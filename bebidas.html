@@ -52,12 +52,12 @@
 
   <nav>
     <a href="index.html">Pagina Inicial</a>
-<a href="#">🍱 Marmitex</a>
     <a href="jantinhas e barcas.html">🍽️ Jantinhas e Barcas</a>
-    <a href="#">🍔 Combos</a>
-    <a href="#">🥔 Porções</a>
+    <a href="combos.html">🍔 Combos</a>
+    <a href="porcoes.html">🥔 Porções</a>
     <a href="bebidas.html">🥤 Bebidas</a>
-    <a href="#">🍢 Espetinhos</a>
+    <a href="espetinhos.html">🍢 Espetinhos</a>
+    <a href="marmitex.html">🍱 Marmitex</a>
     <a href="#" onclick="abrirInformacoes()">
   📦 Informações
 </a>
@@ -270,5 +270,16 @@
     ></div>
 
     <script src="script.js"></script>
+
+    <scritpt>
+      if(localStorage.getItem("bebidas") === "bloqueado"){
+
+    document.body.innerHTML = `
+    <div style="text-align:center;padding:100px;">
+        <h1>🚫 Categoria Indisponível</h1>
+    </div>
+    `;
+}
+    </scritpt>
   </body>
 </html>
