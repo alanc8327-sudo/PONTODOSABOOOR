@@ -111,44 +111,46 @@ function fecharLeftSidebar() {
 
 }
 
-function abrirInformacoes() {
+function abrirInformacoes(){
 
-  fecharLeftSidebar();
+    if(localStorage.getItem("delivery") === "bloqueado"){
+        alert("🚫 Informações temporariamente indisponíveis.");
+        return;
+    }
 
-  const sidebar =
-    document.getElementById("bottomSidebar");
-
-  sidebar.classList.add("aberto");
+    toggleDeliveryBottom();
 
 }
 
 const categorias = [
+    "index",
     "jantinhas",
     "combos",
     "porcoes",
     "bebidas",
     "espetinhos",
-    "marmitex"
+    "marmitex",
+    "delivery",
+    "carrinho"
 ];
 
-categorias.forEach(id => {
+function liberarTudo() {
 
-    const link = document.getElementById(id);
-    const status = localStorage.getItem(id);
+    categorias.forEach(categoria => {
+        localStorage.setItem(categoria, "liberado");
+    });
 
-    if(status === "bloqueado"){
+    alert("✅ Todas as páginas foram liberadas!");
+}
 
-        link.style.opacity = "0.5";
-        link.innerHTML += " 🔒";
+function bloquearTudo() {
 
-        link.addEventListener("click", function(e){
-            e.preventDefault();
-            alert("Categoria temporariamente indisponível.");
-        });
+    categorias.forEach(categoria => {
+        localStorage.setItem(categoria, "bloqueado");
+    });
 
-    }
-
-});
+    alert("🔒 Todas as páginas foram bloqueadas!");
+}
 
 
 
