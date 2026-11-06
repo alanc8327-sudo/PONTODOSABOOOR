@@ -55,12 +55,12 @@
   
 
   <nav>
-     <a id="marmitex" href="marmitex.html">🍱 Marmitex</a>
     <a id="jantinhas" href="jantinhas e barcas.html">🍽️ Jantinhas e Barcas</a>
     <a id="combos" href="combos.html">🍔 Combos</a>
     <a id="porcoes" href="porcoes.html">🥔 Porções</a>
     <a id="bebidas" href="bebidas.html">🥤 Bebidas</a>
     <a id="espetinhos" href="espetinhos.html">🍢 Espetinhos</a>
+    <a id="marmitex" href="marmitex.html">🍱 Marmitex</a>
  <a href="#" onclick="abrirInformacoes(); return false;">
     📦 Informações
 </a>
@@ -250,91 +250,125 @@
     <script src="script.js"></script>
 
    <script>
+// ==========================
+// ACESSO ADMINISTRADOR
+// ==========================
 
-// ===== ACESSO SECRETO ADMIN =====
+document.addEventListener("DOMContentLoaded", () => {
 
-const logoAdmin = document.getElementById("logoAdmin");
+    const logoAdmin = document.getElementById("logoAdmin");
 
-let cliques = 0;
-let temporizadorCliques;
-let temporizadorPressionado;
+    if (!logoAdmin) return;
 
-// FUNÇÃO PARA PEDIR SENHA
-function abrirAdmin() {
+    let cliques = 0;
+    let temporizadorCliques;
+    let temporizadorPressionado;
 
-    const senha = prompt("🔐 Código de acesso:");
+    function abrirAdmin() {
 
-    if (senha === "123") {
-        window.location.href = "admin.html";
-    } else {
-        alert("Acesso negado!");
-    }
-}
+        const senha = prompt("🔐 Código de acesso:");
 
-// ===== 5 CLIQUES =====
-logoAdmin.addEventListener("click", () => {
+        const SENHA_ADMIN = "123";
 
-    cliques++;
+        if (senha === SENHA_ADMIN) {
 
-    clearTimeout(temporizadorCliques);
+            localStorage.setItem("adminLogado", "sim");
 
-    temporizadorCliques = setTimeout(() => {
-        cliques = 0;
-    }, 3000);
+            window.location.href = "admin.html";
 
-    if (cliques >= 5) {
-        cliques = 0;
-        abrirAdmin();
+        } else {
+
+            alert("❌ Acesso negado!");
+
+        }
     }
 
-});
+    // ===== 5 CLIQUES =====
 
-// ===== SEGURAR 3 SEGUNDOS (CELULAR E PC) =====
+    logoAdmin.addEventListener("click", () => {
 
-// Celular
-logoAdmin.addEventListener("touchstart", () => {
+        cliques++;
 
-    temporizadorPressionado = setTimeout(() => {
-        abrirAdmin();
-    }, 3000);
+        clearTimeout(temporizadorCliques);
 
-});
+        temporizadorCliques = setTimeout(() => {
+            cliques = 0;
+        }, 3000);
 
-logoAdmin.addEventListener("touchend", () => {
-    clearTimeout(temporizadorPressionado);
-});
+        if (cliques >= 5) {
 
-// Computador
-logoAdmin.addEventListener("mousedown", () => {
+            cliques = 0;
 
-    temporizadorPressionado = setTimeout(() => {
-        abrirAdmin();
-    }, 3000);
+            abrirAdmin();
 
-});
+        }
 
-logoAdmin.addEventListener("mouseup", () => {
-    clearTimeout(temporizadorPressionado);
-});
+    });
 
-logoAdmin.addEventListener("mouseleave", () => {
-    clearTimeout(temporizadorPressionado);
-});
+    // ===== SEGURAR POR 3 SEGUNDOS =====
 
-window.onload = function() {
+    logoAdmin.addEventListener("touchstart", () => {
 
-    // Página Inicial
+        temporizadorPressionado = setTimeout(() => {
+
+            abrirAdmin();
+
+        }, 3000);
+
+    });
+
+    logoAdmin.addEventListener("touchend", () => {
+
+        clearTimeout(temporizadorPressionado);
+
+    });
+
+    logoAdmin.addEventListener("mousedown", () => {
+
+        temporizadorPressionado = setTimeout(() => {
+
+            abrirAdmin();
+
+        }, 3000);
+
+    });
+
+    logoAdmin.addEventListener("mouseup", () => {
+
+        clearTimeout(temporizadorPressionado);
+
+    });
+
+    logoAdmin.addEventListener("mouseleave", () => {
+
+        clearTimeout(temporizadorPressionado);
+
+    });
+
+    // ==========================
+    // BLOQUEIO DA PÁGINA INICIAL
+    // ==========================
+
     if (localStorage.getItem("index") === "bloqueado") {
+
         document.body.innerHTML = `
-            <div style="text-align:center;padding:50px;">
-                <h1>🚫 Site temporariamente indisponível</h1>
+            <div style="
+                text-align:center;
+                padding:100px;
+                font-family:Arial,sans-serif;
+            ">
+                <h1>🚫 Estamos fechados no momento</h1>
                 <p>Tente novamente mais tarde.</p>
             </div>
         `;
+
         return;
     }
 
-    // Categorias do menu lateral
+    // ==========================
+    // CATEGORIAS
+    // ==========================
+
     const categorias = [
         "jantinhas",
         "combos",
@@ -346,119 +380,108 @@ window.onload = function() {
 
     categorias.forEach(categoria => {
 
-        const link = document.getElementById(categoria);
+        const elemento = document.getElementById(categoria);
 
         if (
-            link &&
+            elemento &&
             localStorage.getItem(categoria) === "bloqueado"
         ) {
 
-            link.style.opacity = "0.4";
-            link.style.pointerEvents = "none";
-            link.innerHTML += " 🔒";
+            elemento.style.display = "none";
 
         }
 
     });
 
-    // Informações Delivery
+    // ==========================
+    // DELIVERY
+    // ==========================
+
     if (localStorage.getItem("delivery") === "bloqueado") {
 
-        const deliveryBox =
+        const deliveryInfo =
             document.getElementById("deliveryInfo");
 
-        if (deliveryBox) {
-            deliveryBox.style.display = "none";
+        if (deliveryInfo) {
+
+            deliveryInfo.style.display = "none";
+
         }
 
     }
 
-    // Carrinho
+    // ==========================
+    // CARRINHO
+    // ==========================
+
     if (localStorage.getItem("carrinho") === "bloqueado") {
 
         const btnCarrinho =
             document.getElementById("btnToggleSidebar");
 
         if (btnCarrinho) {
+
             btnCarrinho.style.display = "none";
+
         }
 
     }
 
-}
-
-document.addEventListener("DOMContentLoaded", function(){
-
-    // Bloquear site inteiro
-    if(localStorage.getItem("index") === "bloqueado"){
-
-        document.body.innerHTML = `
-        <div style="
-            text-align:center;
-            padding:100px;
-            font-family:Arial;
-        ">
-            <h1>🚫 Estamos fechados no momento</h1>
-            <h3>Tente novamente mais tarde.</h3>
-        </div>
-        `;
-
-        return;
-    }
-
-    // Jantinhas
-    if(localStorage.getItem("jantinhas") === "bloqueado"){
-        document.getElementById("jantinhas").style.display = "none";
-    }
-
-    // Combos
-    if(localStorage.getItem("combos") === "bloqueado"){
-        document.getElementById("combos").style.display = "none";
-    }
-
-    // Porções
-    if(localStorage.getItem("porcoes") === "bloqueado"){
-        document.getElementById("porcoes").style.display = "none";
-    }
-
-    // Bebidas
-    if(localStorage.getItem("bebidas") === "bloqueado"){
-        document.getElementById("bebidas").style.display = "none";
-    }
-
-    // Espetinhos
-    if(localStorage.getItem("espetinhos") === "bloqueado"){
-        document.getElementById("espetinhos").style.display = "none";
-    }
-
-    // Marmitex
-    if(localStorage.getItem("marmitex") === "bloqueado"){
-        document.getElementById("marmitex").style.display = "none";
-    }
-
-    // Delivery
-    if(localStorage.getItem("delivery") === "bloqueado"){
-        document.getElementById("deliveryInfo").style.display = "none";
-    }
-
-    // Carrinho
-    if(localStorage.getItem("carrinho") === "bloqueado"){
-        document.getElementById("btnToggleSidebar").style.display = "none";
-    }
-
 });
 
-function abrirInformacoes(){
+// ==========================
+// INFORMAÇÕES
+// ==========================
 
-    if(localStorage.getItem("delivery") === "bloqueado"){
+function abrirInformacoes() {
+
+    if (localStorage.getItem("delivery") === "bloqueado") {
+
         alert("🚫 Informações temporariamente indisponíveis.");
+
         return;
     }
 
-    toggleDeliveryBottom();
+    if (typeof toggleDeliveryBottom === "function") {
+
+        toggleDeliveryBottom();
+
+    }
 
 }
 
+// ==========================
+// FEEDBACK
+// ==========================
+
+function validarFeedback() {
+
+    const nome =
+        document.getElementById("feedbackNome")?.value.trim();
+
+    const mensagem =
+        document.getElementById("feedbackMsg")?.value.trim();
+
+    if (!nome) {
+
+        alert("Digite seu nome.");
+
+        return false;
+
+    }
+
+    if (!mensagem) {
+
+        alert("Digite seu feedback.");
+
+        return false;
+
+    }
+
+    return true;
+}
 </script>
+
+
   </body>
 </html>
