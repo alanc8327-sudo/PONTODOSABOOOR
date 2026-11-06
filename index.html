@@ -1,469 +1,487 @@
-<body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- LOGIN -->
-<div id="login">
-    <h1>🔐 Login ADM</h1>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <input type="text" id="usuario" placeholder="Usuário">
-    <input type="password" id="senha" placeholder="Senha">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet">
 
-<label>
-    <input
-        type="checkbox"
-        onclick="verSenha()"
-    >
-    Mostrar senha
-</label>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <button onclick="fazerLogin()">Entrar</button>
+  <link rel="stylesheet" href="styles.css">
 
-    <p id="erro"></p>
-</div>
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="40x40" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.png">
 
-<!-- PAINEL -->
-<div id="painel" style="display:none;">
+  <title>Ponto Do Sabor</title>
+</head>
 
-    <h1> Ponto Do Sabor-ADM</h1>
-
-   <div class="categoria" data-item="index">
-🏠 Página Inicial
-<button onclick="liberar('index')">Liberar</button>
-<button onclick="bloquear('index')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="jantinhas">
-🍽️ Jantinhas e Barcas
-<button onclick="liberar('jantinhas')">Liberar</button>
-<button onclick="bloquear('jantinhas')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="combos">
-🍔 Combos
-<button onclick="liberar('combos')">Liberar</button>
-<button onclick="bloquear('combos')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="porcoes">
-🥔 Porções
-<button onclick="liberar('porcoes')">Liberar</button>
-<button onclick="bloquear('porcoes')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="bebidas">
-🥤 Bebidas
-<button onclick="liberar('bebidas')">Liberar</button>
-<button onclick="bloquear('bebidas')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="espetinhos">
-🍢 Espetinhos
-<button onclick="liberar('espetinhos')">Liberar</button>
-<button onclick="bloquear('espetinhos')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="marmitex">
-🍱 Marmitex
-<button onclick="liberar('marmitex')">Liberar</button>
-<button onclick="bloquear('marmitex')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="delivery">
-📦 Informações Delivery
-<button onclick="liberar('delivery')">Liberar</button>
-<button onclick="bloquear('delivery')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="carrinho">
-🛒 Carrinho
-<button onclick="liberar('carrinho')">Liberar</button>
-<button onclick="bloquear('carrinho')">Bloquear</button>
-</div>
-
-    <hr>
-
-    <button onclick="liberarTudo()" style="background:green;color:white;">
-        ✅ Liberar Tudo
-    </button>
-
-    <button onclick="bloquearTudo()" style="background:red;color:white;">
-        🔒 Bloquear Tudo
-    </button>
-
-    <button onclick="sair()">
-        🚪 Sair
-    </button>
-
-</div>
-
-
-<style>
-
-    #login, #painel {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        margin-top: 50px;
-        font-size: 18px;
-        background-color: #f9f9f9;
-        color: #333;
-        border: 1px solid #ccc;
-        padding: 20px;
-
-    }
-    .categoria {
-        font-family: Arial, sans-serif;
-        padding: 10px;
-        margin: 10px;
-        background-color: #f0f0f0;
-        color: #333;
-        border-radius: 5px;
-        font-size: 18px;
-        text-align: center;
-    }
-      .categoria button {
-        margin: 5px;
-        padding: 5px 10px;
-        font-size: 16px;
-        cursor: pointer;
-        background-color: #007BFF;
-        color: white;
-        border-radius: 6px;
-    }
-
-    .categoria button:hover {
-        background-color: #052648;
-    }
-
-
-    button {
-        font-family: Arial, sans-serif;
-        padding: 10px 20px;
-        margin: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    button:hover {
-        opacity: 0.8;
-    }
-    h1 {
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
-
-    input {
-        background-color: #f0f0f0;
-        border: 1px solid #ccc;
-        display: block;
-        margin: 15px auto;
-        padding: 5px;
-    }  
-
-   input[type="checkbox"] {
-    width: 20px;
-    display: inline-block;
-    margin-right: 5px;
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-#erro{
-    color:red;
-    font-weight:bold;
-    margin-top:10px;
-}
-
-.status{
-    display:inline-block;
-    font-size:14px;
-    font-weight:bold;
-}
+  <body>
+    <header>
     
+    <img
+  id="logoAdmin"
+  src="./WhatsApp Image 2026-02-17 at 08.png"
+  alt="Ponto Do Sabor"
+>
+     <h2>O Segredo Da Receita? Amor De Casa !!!</h2>
+    </header>
+    
+   <!-- OVERLAY -->
+<div
+  class="left-sidebar-overlay"
+  id="leftSidebarOverlay"
+  onclick="fecharLeftSidebar()"
+></div>
 
-</style>
-<script>
+<!-- SIDEBAR -->
+<div class="left-sidebar" id="leftSidebar">
 
-// =========================
-// CONFIGURAÇÕES
-// =========================
+  <button
+    class="btn-fechar-menu"
+    onclick="fecharLeftSidebar()"
+  >
+    ✕
+  </button>
 
-const USUARIO = "admin";
-const SENHA = "Pontodosabor123";
+  
 
-const itens = [
-    "index",
-    "jantinhas",
-    "combos",
-    "porcoes",
-    "bebidas",
-    "espetinhos",
-    "marmitex",
-    "delivery",
-    "carrinho"
-];
+  <nav>
+    <a id="jantinhas" href="jantinhas e barcas.html">🍽️ Jantinhas e Barcas</a>
+    <a id="combos" href="combos.html">🍔 Combos</a>
+    <a id="porcoes" href="porcoes.html">🥔 Porções</a>
+    <a id="bebidas" href="bebidas.html">🥤 Bebidas</a>
+    <a id="espetinhos" href="espetinhos.html">🍢 Espetinhos</a>
+    <a id="marmitex" href="marmitex.html">🍱 Marmitex</a>
+ <a href="#" onclick="abrirInformacoes(); return false;">
+    📦 Informações
+</a>
+</nav>
 
-// =========================
-// INICIALIZAÇÃO
-// =========================
+</div>
+
+<!-- BOTÃO ABRIR MENU -->
+<button
+  class="btn-menu"
+  onclick="toggleLeftSidebar()"
+>
+  ☰
+</button>
+
+<!-- MÃO INDICANDO O MENU -->
+<div class="indicador-menu">
+  👈
+</div>
+
+<section class="delivery-section" id="deliveryInfo">
+
+ 
+
+  <div class="bottom-sidebar" id="bottomSidebar">
+
+    <div class="drag-bar"></div>
+
+    <div class="sidebar-header">
+      <h2>📦 Informações</h2>
+
+      <button
+        class="btn-fechar-info"
+        onclick="toggleDeliveryBottom()">
+        ✕
+      </button>
+    </div>
+
+    <div class="sidebar-content">
+
+      <h3>🚚 Tipo de Serviço</h3>
+      <p>Delivery rápido e confiável direto na sua casa.</p>
+      <p>Atendemos somente a cidade de Bertioga-SP.</p>
+
+      <h3>⏰ Horários de Funcionamento</h3>
+      <p>Segunda a Sábado: 10:50 às 15:00</p>
+      <p>18:00 às 00:00</p>
+      <p>Domingo: Fechado</p>
+
+      <h3>📍 Bairros Atendidos</h3>
+
+      <ul>
+        <li>Rio da Praia</li>
+        <li>Maitinga</li>
+        <li>Mangue Seco</li>
+        <li>Jardim Rafael</li>
+        <li>Jardim das Canções</li>
+        <li>Vila HO</li>
+        <li>Riviera</li>
+        <li>Centro</li>
+        <li>Centreville (Balsa)</li>
+        <li>Sítio São João</li>
+        <li>São Lourenço</li>
+        <li>Chácaras</li>
+        <li>Vista Linda</li>
+        <li>Indaiá</li>
+        <li>SAOC</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+    <h1>Bem-Vindos(as) Ao Ponto do Sabor!!</h1>
+     <h2>Façam seus pedidos no menu ao Lado!!</h2>
+     <h2>voltem sempre e um bom apetite!!</h2>
+
+  
+   
+
+    
+    <section class="feedback">
+      <h2>Deixe seu Feedback</h2>
+      <div class="stars">
+        <i class="fa-regular fa-star" onclick="avaliar(1)"></i>
+        <i class="fa-regular fa-star" onclick="avaliar(2)"></i>
+        <i class="fa-regular fa-star" onclick="avaliar(3)"></i>
+        <i class="fa-regular fa-star" onclick="avaliar(4)"></i>
+        <i class="fa-regular fa-star" onclick="avaliar(5)"></i>
+      </div>
+      <textarea
+        id="feedbackMsg"
+        placeholder="Deixe sua opinião aqui..."
+      ></textarea>
+      <input type="text" id="feedbackNome" placeholder="Seu nome" />
+      <button onclick="enviarFeedback()">Enviar pelo WhatsApp</button>
+    </section>
+
+    
+    <a
+      href="https://www.instagram.com/ponto.do.sabor.fs/"
+      target="_blank"
+      class="btn-instagram-fixo"
+    >
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    
+    <button
+      class="btn-toggle-sidebar"
+      onclick="toggleSidebar()"
+      id="btnToggleSidebar"
+    >
+      <i class="fas fa-shopping-cart"></i>
+      <span id="badgeQtd">0</span>
+    </button>
+
+    
+    <div class="sidebar-carrinho" id="sidebarCarrinho">
+      <div class="sidebar-header">
+        <h2><i class="fas fa-shopping-cart"></i> Seu Pedido</h2>
+        <button class="btn-fechar-sidebar" onclick="toggleSidebar()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-itens" id="resumo">Nenhum pedido ainda.</div>
+
+     <div class="sidebar-footer">
+        <input type="text" id="endereco" placeholder="Rua, número..." />
+        <select id="bairro">
+          <option value="">Selecione o bairro</option>
+          <option value="Saoc">Saoc</option>
+          <option value="Albatroz 2">Albatroz 2</option>
+          <option value="Centro">Centro</option>
+          <option value="Sitio">Sitio</option>
+          <option value="Maitinga">Maitinga</option>
+          <option value="Rio Da Praia">Rio Da Praia</option>
+          <option value="Mangue Seco">Mangue Seco</option>
+          <option value="Pedralina">Pedralina</option>
+          <option value="Ana Paula">Ana Paula</option>
+          <option value=" V.L Lado Praia">V.L Lado Praia</option>
+          <option value="V.L Lado Chacara">V.L Lado Chacara</option>
+          <option value="V.L Invasao">V.L Invasao</option>
+          <option value="Indiaia">Indiaia</option>
+          <option value="Rivieira">Rivieira</option>
+          <option value="Sao Lourenco">Sao Lourenco</option>
+        </select>
+
+        <select id="pagamento">
+          <option value="">Forma de pagamento</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Débito">Débito</option>
+          <option value="Crédito">Crédito</option>
+          <option value="Pix">Pix</option>
+        </select>
+
+        <div id="troco-container" class="hidden">
+          <label for="troco">Precisa de troco para quanto?</label>
+          <input
+            type="number"
+            id="troco"
+            name="troco"
+            placeholder="Ex: 150,20"
+          />
+          <p id="resultado-troco"></p>
+        </div>
+
+        <div class="sidebar-total" id="sidebarTotal">Total: R$ 0,00</div>
+
+        <button class="btn-finalizar" onclick="finalizarPedido()">
+          Finalizar Pedido
+        </button>
+        <button class="btn-limpar" onclick="limparPedidos()">
+          Limpar Pedido
+        </button>
+      </div>
+    </div> 
+
+    <!-- OVERLAY -->
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+      onclick="toggleSidebar()"
+    ></div>
+
+    <script src="script.js"></script>
+
+   <script>
+// ==========================
+// ACESSO ADMINISTRADOR
+// ==========================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    if (sessionStorage.getItem("adminLogado") === "true") {
+    const logoAdmin = document.getElementById("logoAdmin");
 
-        mostrarPainel();
+    if (!logoAdmin) return;
 
+    let cliques = 0;
+    let temporizadorCliques;
+    let temporizadorPressionado;
+
+    function abrirAdmin() {
+
+        const senha = prompt("🔐 Código de acesso:");
+
+        const SENHA_ADMIN = "123";
+
+        if (senha === SENHA_ADMIN) {
+
+            localStorage.setItem("adminLogado", "sim");
+
+            window.location.href = "admin.html";
+
+        } else {
+
+            alert("❌ Acesso negado!");
+
+        }
     }
 
-    const senhaInput = document.getElementById("senha");
+    // ===== 5 CLIQUES =====
 
-    senhaInput.addEventListener("keypress", function(e){
+    logoAdmin.addEventListener("click", () => {
 
-        if(e.key === "Enter"){
+        cliques++;
 
-            fazerLogin();
+        clearTimeout(temporizadorCliques);
+
+        temporizadorCliques = setTimeout(() => {
+            cliques = 0;
+        }, 3000);
+
+        if (cliques >= 5) {
+
+            cliques = 0;
+
+            abrirAdmin();
 
         }
 
     });
+
+    // ===== SEGURAR POR 3 SEGUNDOS =====
+
+    logoAdmin.addEventListener("touchstart", () => {
+
+        temporizadorPressionado = setTimeout(() => {
+
+            abrirAdmin();
+
+        }, 3000);
+
+    });
+
+    logoAdmin.addEventListener("touchend", () => {
+
+        clearTimeout(temporizadorPressionado);
+
+    });
+
+    logoAdmin.addEventListener("mousedown", () => {
+
+        temporizadorPressionado = setTimeout(() => {
+
+            abrirAdmin();
+
+        }, 3000);
+
+    });
+
+    logoAdmin.addEventListener("mouseup", () => {
+
+        clearTimeout(temporizadorPressionado);
+
+    });
+
+    logoAdmin.addEventListener("mouseleave", () => {
+
+        clearTimeout(temporizadorPressionado);
+
+    });
+
+    // ==========================
+    // BLOQUEIO DA PÁGINA INICIAL
+    // ==========================
+
+    if (localStorage.getItem("index") === "bloqueado") {
+
+        document.body.innerHTML = `
+            <div style="
+                text-align:center;
+                padding:100px;
+                font-family:Arial,sans-serif;
+            ">
+                <h1>🚫 Estamos fechados no momento</h1>
+                <p>Tente novamente mais tarde.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    // ==========================
+    // CATEGORIAS
+    // ==========================
+
+    const categorias = [
+        "jantinhas",
+        "combos",
+        "porcoes",
+        "bebidas",
+        "espetinhos",
+        "marmitex"
+    ];
+
+    categorias.forEach(categoria => {
+
+        const elemento = document.getElementById(categoria);
+
+        if (
+            elemento &&
+            localStorage.getItem(categoria) === "bloqueado"
+        ) {
+
+            elemento.style.display = "none";
+
+        }
+
+    });
+
+    // ==========================
+    // DELIVERY
+    // ==========================
+
+    if (localStorage.getItem("delivery") === "bloqueado") {
+
+        const deliveryInfo =
+            document.getElementById("deliveryInfo");
+
+        if (deliveryInfo) {
+
+            deliveryInfo.style.display = "none";
+
+        }
+
+    }
+
+    // ==========================
+    // CARRINHO
+    // ==========================
+
+    if (localStorage.getItem("carrinho") === "bloqueado") {
+
+        const btnCarrinho =
+            document.getElementById("btnToggleSidebar");
+
+        if (btnCarrinho) {
+
+            btnCarrinho.style.display = "none";
+
+        }
+
+    }
 
 });
 
-// =========================
-// LOGIN
-// =========================
+// ==========================
+// INFORMAÇÕES
+// ==========================
 
-function fazerLogin(){
+function abrirInformacoes() {
 
-    const usuario =
-        document.getElementById("usuario").value.trim();
+    if (localStorage.getItem("delivery") === "bloqueado") {
 
-    const senha =
-        document.getElementById("senha").value;
-
-    const erro =
-        document.getElementById("erro");
-
-    erro.innerText = "";
-
-    if(!usuario || !senha){
-
-        erro.innerText =
-        "Preencha usuário e senha.";
+        alert("🚫 Informações temporariamente indisponíveis.");
 
         return;
-
     }
 
-    if(usuario === USUARIO && senha === SENHA){
+    if (typeof toggleDeliveryBottom === "function") {
 
-        sessionStorage.setItem(
-            "adminLogado",
-            "true"
-        );
-
-        mostrarPainel();
-
-    }else{
-
-        erro.innerText =
-        "Usuário ou senha inválidos.";
+        toggleDeliveryBottom();
 
     }
 
 }
 
-// =========================
-// MOSTRAR PAINEL
-// =========================
+// ==========================
+// FEEDBACK
+// ==========================
 
-function mostrarPainel(){
+function validarFeedback() {
 
-    document.getElementById("login")
-        .style.display = "none";
+    const nome =
+        document.getElementById("feedbackNome")?.value.trim();
 
-    document.getElementById("painel")
-        .style.display = "block";
+    const mensagem =
+        document.getElementById("feedbackMsg")?.value.trim();
 
-    atualizarStatus();
+    if (!nome) {
 
-}
+        alert("Digite seu nome.");
 
-// =========================
-// SAIR
-// =========================
-
-function sair(){
-
-    if(confirm("Deseja sair do painel?")){
-
-        sessionStorage.removeItem(
-            "adminLogado"
-        );
-
-        location.reload();
+        return false;
 
     }
 
-}
+    if (!mensagem) {
 
-// =========================
-// LIBERAR
-// =========================
+        alert("Digite seu feedback.");
 
-function liberar(categoria){
+        return false;
 
-    localStorage.setItem(
-        categoria,
-        "liberado"
-    );
-
-    atualizarStatus();
-
-    alert(
-        "✅ " +
-        categoria +
-        " liberado!"
-    );
-
-}
-
-// =========================
-// BLOQUEAR
-// =========================
-
-function bloquear(categoria){
-
-    localStorage.setItem(
-        categoria,
-        "bloqueado"
-    );
-
-    atualizarStatus();
-
-    alert(
-        "🔒 " +
-        categoria +
-        " bloqueado!"
-    );
-
-}
-
-// =========================
-// LIBERAR TUDO
-// =========================
-
-function liberarTudo(){
-
-    if(
-        !confirm(
-            "Liberar todas as categorias?"
-        )
-    ){
-        return;
     }
 
-    itens.forEach(item=>{
-
-        localStorage.setItem(
-            item,
-            "liberado"
-        );
-
-    });
-
-    atualizarStatus();
-
-    alert(
-        "✅ Tudo liberado!"
-    );
-
+    return true;
 }
-
-// =========================
-// BLOQUEAR TUDO
-// =========================
-
-function bloquearTudo(){
-
-    if(
-        !confirm(
-            "ATENÇÃO!\nDeseja realmente bloquear todo o site?"
-        )
-    ){
-        return;
-    }
-
-    itens.forEach(item=>{
-
-        localStorage.setItem(
-            item,
-            "bloqueado"
-        );
-
-    });
-
-    atualizarStatus();
-
-    alert(
-        "🔒 Tudo bloqueado!"
-    );
-
-}
-
-// =========================
-// STATUS
-// =========================
-
-function atualizarStatus(){
-
-    document.querySelectorAll(".status")
-    .forEach(item => item.remove());
-
-    document.querySelectorAll(".categoria")
-    .forEach(categoria => {
-
-        const item = categoria.dataset.item;
-
-        const span = document.createElement("span");
-
-        span.className = "status";
-        span.style.marginLeft = "10px";
-
-        if(localStorage.getItem(item) === "bloqueado"){
-
-            span.innerHTML = " 🔴 BLOQUEADO";
-            span.style.color = "red";
-
-        }else{
-
-            span.innerHTML = " 🟢 LIBERADO";
-            span.style.color = "green";
-
-        }
-
-        categoria.appendChild(span);
-
-    });
-
-}
-
-// =========================
-// VER SENHA
-// =========================
-
-function verSenha(){
-
-    const campo =
-        document.getElementById("senha");
-
-    campo.type =
-        campo.type === "password"
-        ? "text"
-        : "password";
-
-}
-
-
 </script>
 
-</body>
+
+  </body>
+</html>
