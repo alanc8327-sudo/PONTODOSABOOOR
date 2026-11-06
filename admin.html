@@ -1,117 +1,19 @@
-<body>
-
-<!-- LOGIN -->
-<div id="login">
-    <h1>🔐 Login ADM</h1>
-
-    <input type="text" id="usuario" placeholder="Usuário">
-    <input type="password" id="senha" placeholder="Senha">
-
-<label>
-    <input
-        type="checkbox"
-        onclick="verSenha()"
-    >
-    Mostrar senha
-</label>
-
-    <button onclick="fazerLogin()">Entrar</button>
-
-    <p id="erro"></p>
-</div>
-
-<!-- PAINEL -->
-<div id="painel" style="display:none;">
-
-    <h1> Ponto Do Sabor-ADM</h1>
-
-   <div class="categoria" data-item="index">
-🏠 Página Inicial
-<button onclick="liberar('index')">Liberar</button>
-<button onclick="bloquear('index')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="jantinhas">
-🍽️ Jantinhas e Barcas
-<button onclick="liberar('jantinhas')">Liberar</button>
-<button onclick="bloquear('jantinhas')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="combos">
-🍔 Combos
-<button onclick="liberar('combos')">Liberar</button>
-<button onclick="bloquear('combos')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="porcoes">
-🥔 Porções
-<button onclick="liberar('porcoes')">Liberar</button>
-<button onclick="bloquear('porcoes')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="bebidas">
-🥤 Bebidas
-<button onclick="liberar('bebidas')">Liberar</button>
-<button onclick="bloquear('bebidas')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="espetinhos">
-🍢 Espetinhos
-<button onclick="liberar('espetinhos')">Liberar</button>
-<button onclick="bloquear('espetinhos')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="marmitex">
-🍱 Marmitex
-<button onclick="liberar('marmitex')">Liberar</button>
-<button onclick="bloquear('marmitex')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="delivery">
-📦 Informações Delivery
-<button onclick="liberar('delivery')">Liberar</button>
-<button onclick="bloquear('delivery')">Bloquear</button>
-</div>
- 
-<div class="categoria" data-item="carrinho">
-🛒 Carrinho
-<button onclick="liberar('carrinho')">Liberar</button>
-<button onclick="bloquear('carrinho')">Bloquear</button>
-</div>
-
-    <hr>
-
-    <button onclick="liberarTudo()" style="background:green;color:white;">
-        ✅ Liberar Tudo
-    </button>
-
-    <button onclick="bloquearTudo()" style="background:red;color:white;">
-        🔒 Bloquear Tudo
-    </button>
-
-    <button onclick="sair()">
-        🚪 Sair
-    </button>
-
-</div>
-
-
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ponto Do Sabor - ADM</title>
 <style>
-
-  *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
     background:#f5f5f5;
     padding:15px;
     font-family:Arial,sans-serif;
-}
-
-#login,
-#painel{
+    min-height:100vh;
+    -webkit-tap-highlight-color:transparent;
+  }
+  #login,#painel{
     width:100%;
     max-width:900px;
     margin:20px auto;
@@ -122,445 +24,247 @@ body{
     border-radius:12px;
     padding:20px;
     box-shadow:0 2px 10px rgba(0,0,0,.1);
-}
+  }
+  h1{margin-bottom:20px;font-size:2rem;line-height:1.2}
+  input[type="text"],input[type="password"]{
+    width:100%;max-width:400px;
+    padding:12px;margin:10px auto;
+    border:1px solid #ccc;border-radius:8px;
+    font-size:16px;display:block;outline:none;
+  }
+  input:focus{border-color:#007BFF}
+  label{display:flex;justify-content:center;align-items:center;gap:8px;margin:15px 0;cursor:pointer}
+  input[type="checkbox"]{width:20px;height:20px;transform:scale(1.2);cursor:pointer}
+  button{
+    border:none;border-radius:8px;
+    padding:12px 16px;font-size:16px;
+    cursor:pointer;transition:.2s;
+    touch-action:manipulation;
+  }
+  button:active{transform:scale(.97)}
+  button:hover{opacity:.85}
+  #login > button{width:100%;max-width:400px;background:#007BFF;color:#fff;font-weight:bold}
+  .categoria{
+    display:flex;flex-wrap:wrap;
+    justify-content:space-between;align-items:center;
+    gap:10px;background:#f0f0f0;
+    margin:12px 0;padding:15px;
+    border-radius:10px;font-size:18px;font-weight:bold;text-align:left;
+  }
+  .categoria .nome{flex:1 1 200px}
+  .categoria .botoes{display:flex;gap:8px;flex-shrink:0}
+  .categoria button{background:#007BFF;color:white;min-width:110px}
+  .categoria button:last-child{background:#dc3545}
+  .categoria button:hover{background:#052648}
+  .categoria button:last-child:hover{background:#a71d2a}
+  .status{display:block;width:100%;margin-top:8px;font-size:15px;font-weight:bold}
+  #erro{color:red;font-weight:bold;margin-top:15px;min-height:20px}
+  .acoes-gerais{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:20px}
+  .acoes-gerais button{flex:1 1 160px;color:#fff;font-weight:bold}
+  .btn-verde{background:green}.btn-vermelho{background:red}.btn-cinza{background:#333}
 
-h1{
-    margin-bottom:20px;
-    font-size:2rem;
-}
+  /* ========== TABLET 768px ========== */
+  @media (max-width:768px){
+    body{padding:12px}
+    #login,#painel{margin:10px auto;padding:18px}
+    h1{font-size:1.6rem}
+    .categoria{font-size:16px;padding:13px}
+    .categoria .nome{flex:1 1 100%;text-align:center}
+    .categoria .botoes{width:100%;justify-content:center}
+    .categoria button{flex:1;min-width:0}
+    .acoes-gerais button{flex:1 1 45%}
+  }
 
-input[type="text"],
-input[type="password"]{
-    width:100%;
-    max-width:400px;
-    padding:12px;
-    margin:10px auto;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:16px;
-    display:block;
-}
-
-label{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    margin:15px 0;
-}
-
-input[type="checkbox"]{
-    width:auto;
-    transform:scale(1.2);
-    cursor:pointer;
-}
-
-button{
-    border:none;
-    border-radius:8px;
-    padding:12px 16px;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
-}
-
-button:hover{
-    opacity:.85;
-}
-
-.categoria{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:center;
-    gap:10px;
-    background:#f0f0f0;
-    margin:12px 0;
-    padding:15px;
-    border-radius:10px;
-    font-size:18px;
-    font-weight:bold;
-}
-
-.categoria button{
-    background:#007BFF;
-    color:white;
-    min-width:110px;
-}
-
-.categoria button:hover{
-    background:#052648;
-}
-
-.status{
-    display:block;
-    width:100%;
-    margin-top:8px;
-    font-size:15px;
-    font-weight:bold;
-}
-
-#erro{
-    color:red;
-    font-weight:bold;
-    margin-top:15px;
-}
-
-.acoes-gerais{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:20px;
-}
-
-/* ==========================
-   TABLET
-========================== */
-
-@media (max-width:768px){
-
-    h1{
-        font-size:1.6rem;
-    }
-
-    .categoria{
-        font-size:16px;
-        padding:12px;
-    }
-
-    .categoria button{
-        width:100%;
-        max-width:250px;
-    }
-
-}
-
-/* ==========================
-   CELULAR
-========================== */
-
-@media (max-width:480px){
-
-    body{
-        padding:10px;
-    }
-
-    #login,
-    #painel{
-        padding:15px;
-    }
-
-    h1{
-        font-size:1.3rem;
-    }
-
-    input{
-        font-size:15px;
-    }
-
-    .categoria{
-        flex-direction:column;
-        gap:8px;
-        font-size:15px;
-    }
-
-    .categoria button{
-        width:100%;
-        max-width:none;
-    }
-
-    button{
-        width:100%;
-    }
-
-}
-    
-
+  /* ========== CELULAR 480px ========== */
+  @media (max-width:480px){
+    body{padding:8px}
+    #login,#painel{padding:15px;border-radius:10px;margin:8px auto}
+    h1{font-size:1.35rem;margin-bottom:15px}
+    input[type="text"],input[type="password"]{font-size:16px;padding:13px}
+    .categoria{flex-direction:column;gap:10px;font-size:15px;padding:14px;text-align:center}
+    .categoria .nome{text-align:center}
+    .categoria .botoes{flex-direction:column;width:100%}
+    .categoria button{width:100%;max-width:none;padding:13px;font-size:15px}
+    .status{font-size:14px}
+    .acoes-gerais{flex-direction:column}
+    .acoes-gerais button{width:100%;flex:none;padding:14px}
+    button{width:100%}
+    #login > button{max-width:none}
+  }
 </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login">
+    <h1>🔐 Login ADM</h1>
+    <input type="text" id="usuario" placeholder="Usuário" autocomplete="username">
+    <input type="password" id="senha" placeholder="Senha" autocomplete="current-password">
+    <label><input type="checkbox" onclick="verSenha()"> Mostrar senha</label>
+    <button onclick="fazerLogin()">Entrar</button>
+    <p id="erro"></p>
+</div>
+
+<!-- PAINEL -->
+<div id="painel" style="display:none;">
+    <h1>Ponto Do Sabor - ADM</h1>
+
+    <div class="categoria" data-item="index">
+        <span class="nome">🏠 Página Inicial</span>
+        <div class="botoes">
+            <button onclick="liberar('index')">Liberar</button>
+            <button onclick="bloquear('index')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria" data-item="jantinhas">
+        <span class="nome">🍽️ Jantinhas e Barcas</span>
+        <div class="botoes">
+            <button onclick="liberar('jantinhas')">Liberar</button>
+            <button onclick="bloquear('jantinhas')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria" data-item="combos">
+        <span class="nome">🍔 Combos</span>
+        <div class="botoes">
+            <button onclick="liberar('combos')">Liberar</button>
+            <button onclick="bloquear('combos')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria" data-item="porcoes">
+        <span class="nome">🥔 Porções</span>
+        <div class="botoes">
+            <button onclick="liberar('porcoes')">Liberar</button>
+            <button onclick="bloquear('porcoes')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria" data-item="bebidas">
+        <span class="nome">🥤 Bebidas</span>
+        <div class="botoes">
+            <button onclick="liberar('bebidas')">Liberar</button>
+            <button onclick="bloquear('bebidas')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria" data-item="espetinhos">
+        <span class="nome">🍢 Espetinhos</span>
+        <div class="botoes">
+            <button onclick="liberar('espetinhos')">Liberar</button>
+            <button onclick="bloquear('espetinhos')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria" data-item="marmitex">
+        <span class="nome">🍱 Marmitex</span>
+        <div class="botoes">
+            <button onclick="liberar('marmitex')">Liberar</button>
+            <button onclick="bloquear('marmitex')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria" data-item="delivery">
+        <span class="nome">📦 Informações Delivery</span>
+        <div class="botoes">
+            <button onclick="liberar('delivery')">Liberar</button>
+            <button onclick="bloquear('delivery')">Bloquear</button>
+        </div>
+    </div>
+
+    <div class="categoria" data-item="carrinho">
+        <span class="nome">🛒 Carrinho</span>
+        <div class="botoes">
+            <button onclick="liberar('carrinho')">Liberar</button>
+            <button onclick="bloquear('carrinho')">Bloquear</button>
+        </div>
+    </div>
+
+    <hr>
+    <div class="acoes-gerais">
+        <button onclick="liberarTudo()" class="btn-verde">✅ Liberar Tudo</button>
+        <button onclick="bloquearTudo()" class="btn-vermelho">🔒 Bloquear Tudo</button>
+        <button onclick="sair()" class="btn-cinza">🚪 Sair</button>
+    </div>
+</div>
+
 <script>
-
-// =========================
-// CONFIGURAÇÕES
-// =========================
-
 const USUARIO = "admin";
 const SENHA = "Pontodosabor123";
-
-const itens = [
-    "index",
-    "jantinhas",
-    "combos",
-    "porcoes",
-    "bebidas",
-    "espetinhos",
-    "marmitex",
-    "delivery",
-    "carrinho"
-];
-
-// =========================
-// INICIALIZAÇÃO
-// =========================
+const itens = ["index","jantinhas","combos","porcoes","bebidas","espetinhos","marmitex","delivery","carrinho"];
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    if (sessionStorage.getItem("adminLogado") === "true") {
-
-        mostrarPainel();
-
-    }
-
+    if (sessionStorage.getItem("adminLogado") === "true") { mostrarPainel(); }
     const senhaInput = document.getElementById("senha");
-
-    senhaInput.addEventListener("keypress", function(e){
-
-        if(e.key === "Enter"){
-
-            fazerLogin();
-
-        }
-
-    });
-
+    senhaInput.addEventListener("keypress", function(e){ if(e.key === "Enter"){ fazerLogin(); } });
 });
 
-// =========================
-// LOGIN
-// =========================
-
 function fazerLogin(){
-
-    const usuario =
-        document.getElementById("usuario").value.trim();
-
-    const senha =
-        document.getElementById("senha").value;
-
-    const erro =
-        document.getElementById("erro");
-
+    const usuario = document.getElementById("usuario").value.trim();
+    const senha = document.getElementById("senha").value;
+    const erro = document.getElementById("erro");
     erro.innerText = "";
-
-    if(!usuario || !senha){
-
-        erro.innerText =
-        "Preencha usuário e senha.";
-
-        return;
-
-    }
-
+    if(!usuario || !senha){ erro.innerText = "Preencha usuário e senha."; return; }
     if(usuario === USUARIO && senha === SENHA){
-
-        sessionStorage.setItem(
-            "adminLogado",
-            "true"
-        );
-
+        sessionStorage.setItem("adminLogado","true");
         mostrarPainel();
-
-    }else{
-
-        erro.innerText =
-        "Usuário ou senha inválidos.";
-
-    }
-
+    }else{ erro.innerText = "Usuário ou senha inválidos."; }
 }
-
-// =========================
-// MOSTRAR PAINEL
-// =========================
-
 function mostrarPainel(){
-
-    document.getElementById("login")
-        .style.display = "none";
-
-    document.getElementById("painel")
-        .style.display = "block";
-
+    document.getElementById("login").style.display = "none";
+    document.getElementById("painel").style.display = "block";
     atualizarStatus();
-
 }
-
-// =========================
-// SAIR
-// =========================
-
 function sair(){
-
     if(confirm("Deseja sair do painel?")){
-
-        sessionStorage.removeItem(
-            "adminLogado"
-        );
-
+        sessionStorage.removeItem("adminLogado");
         location.reload();
-
     }
-
 }
-
-// =========================
-// LIBERAR
-// =========================
-
 function liberar(categoria){
-
-    localStorage.setItem(
-        categoria,
-        "liberado"
-    );
-
+    localStorage.setItem(categoria,"liberado");
     atualizarStatus();
-
-    alert(
-        "✅ " +
-        categoria +
-        " liberado!"
-    );
-
+    alert("✅ " + categoria + " liberado!");
 }
-
-// =========================
-// BLOQUEAR
-// =========================
-
 function bloquear(categoria){
-
-    localStorage.setItem(
-        categoria,
-        "bloqueado"
-    );
-
+    localStorage.setItem(categoria,"bloqueado");
     atualizarStatus();
-
-    alert(
-        "🔒 " +
-        categoria +
-        " bloqueado!"
-    );
-
+    alert("🔒 " + categoria + " bloqueado!");
 }
-
-// =========================
-// LIBERAR TUDO
-// =========================
-
 function liberarTudo(){
-
-    if(
-        !confirm(
-            "Liberar todas as categorias?"
-        )
-    ){
-        return;
-    }
-
-    itens.forEach(item=>{
-
-        localStorage.setItem(
-            item,
-            "liberado"
-        );
-
-    });
-
+    if(!confirm("Liberar todas as categorias?")){ return; }
+    itens.forEach(item=>{ localStorage.setItem(item,"liberado"); });
     atualizarStatus();
-
-    alert(
-        "✅ Tudo liberado!"
-    );
-
+    alert("✅ Tudo liberado!");
 }
-
-// =========================
-// BLOQUEAR TUDO
-// =========================
-
 function bloquearTudo(){
-
-    if(
-        !confirm(
-            "ATENÇÃO!\nDeseja realmente bloquear todo o site?"
-        )
-    ){
-        return;
-    }
-
-    itens.forEach(item=>{
-
-        localStorage.setItem(
-            item,
-            "bloqueado"
-        );
-
-    });
-
+    if(!confirm("ATENÇÃO!\nDeseja realmente bloquear todo o site?")){ return; }
+    itens.forEach(item=>{ localStorage.setItem(item,"bloqueado"); });
     atualizarStatus();
-
-    alert(
-        "🔒 Tudo bloqueado!"
-    );
-
+    alert("🔒 Tudo bloqueado!");
 }
-
-// =========================
-// STATUS
-// =========================
-
 function atualizarStatus(){
-
-    document.querySelectorAll(".status")
-    .forEach(item => item.remove());
-
-    document.querySelectorAll(".categoria")
-    .forEach(categoria => {
-
+    document.querySelectorAll(".status").forEach(item => item.remove());
+    document.querySelectorAll(".categoria").forEach(categoria => {
         const item = categoria.dataset.item;
-
         const span = document.createElement("span");
-
         span.className = "status";
-        span.style.marginLeft = "10px";
-
         if(localStorage.getItem(item) === "bloqueado"){
-
             span.innerHTML = " 🔴 BLOQUEADO";
             span.style.color = "red";
-
         }else{
-
             span.innerHTML = " 🟢 LIBERADO";
             span.style.color = "green";
-
         }
-
         categoria.appendChild(span);
-
     });
-
 }
-
-// =========================
-// VER SENHA
-// =========================
-
 function verSenha(){
-
-    const campo =
-        document.getElementById("senha");
-
-    campo.type =
-        campo.type === "password"
-        ? "text"
-        : "password";
-
+    const campo = document.getElementById("senha");
+    campo.type = campo.type === "password" ? "text" : "password";
 }
-
-
 </script>
 
 </body>
+</html>
